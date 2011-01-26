@@ -1,8 +1,6 @@
 
 @import "compass/reset";
 @import "compass/css3";
-@import "compass/typography/lists/inline-block-list";
-@import "compass/layout/stretching"; 
 @import "blueprint/grid";
 
 $text: #eee;
@@ -43,7 +41,7 @@ body {
             font-size: 1.2em;
         }
         #navi { 
-            @include inline-block-list;
+            li { display: inline; }
             position: absolute;
             right: 60px;
             bottom: 10px;
@@ -59,8 +57,8 @@ body {
     color: darken($text, 75%);
     padding: 20px;
     @include container;
-    @include box-shadow;
-    @include border-radius(10px);
+    @include box-shadow(#000, 3px, 3px, 20px);
+    @include border-radius(20px);
     background-color: rgba(250,250,250,0.5);
     h1, h2, h3 { font-size: 1.2em; font-weight: bold;  }
     p, ul { margin: 20px 10px 20px 10px; }
