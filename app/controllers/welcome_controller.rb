@@ -1,13 +1,12 @@
 require 'epic/socket_client'
 class WelcomeController < ApplicationController
-  def index
-    render :layout => 'simple' 
-  end
 
-  ## jqm == jquery mobile
-  def jqm
-    render :layout => 'page'
+  layout 'simple'
+
+  def app
+    render :layout => 'application'
   end
+  ## jqm == jquery mobile
 
   def xmpp
     render :layout => 'jasmine'

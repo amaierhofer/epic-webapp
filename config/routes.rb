@@ -1,6 +1,10 @@
 EpicWebapp::Application.routes.draw do
   devise_for :users
 
+  root :to => "welcome#index"
+  match 'welcome/app'
+  match 'welcome/todo'
+
   match 'test', :to => 'jasmine#index', :as => :jasmine_index
   match 'test/docs', :to => 'jasmine#docs', :as => :jasmine_docs
   match 'test/webos', :to => 'jasmine#webos', :as => :jasmine_webos
@@ -10,10 +14,7 @@ EpicWebapp::Application.routes.draw do
     get 'options', :on => :member
     post 'options', :on => :member
   end
-
   match 'profile', :to => 'users#show', :as => :user_profile
-  match 'welcome/app'
-  root :to => "welcome#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
