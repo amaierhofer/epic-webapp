@@ -1,14 +1,12 @@
-- title 'Home'
+- title "Home"
+%h1 Welcome home
 
-:maruku 
-
-.center
-  %p 
-    Please use one of the following links
-    %ul{'data-role' => 'content', 'style' => 'list-style: none' }
-      %li= link_to 'Mobile app', :welcome_app
-      %li= link_to 'Jasmine', :jasmine_index
-      %li= link_to 'Jasmine Docs', :jasmine_docs
-      %li= link_to 'Jasmine webOS', :jasmine_webos
-      %li= link_to 'Compass css ', :jasmine_compass
+%p 
+  Please use one of the following links
+  %ul
+    %li= link_to 'Mobile app', :welcome_app
+    %li= link_to 'Jasmine', :jasmine_index
+    %li= link_to 'Jasmine Docs', :jasmine_docs
+    %li= link_to 'Jasmine webOS', :jasmine_webos
+    %li= link_to 'Compass css ', :jasmine_compass
 

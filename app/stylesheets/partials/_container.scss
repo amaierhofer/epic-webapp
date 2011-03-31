@@ -1,0 +1,31 @@
+#container {
+    width: 75%;
+    margin: 0 auto;
+    background-color: #FFF;
+    padding: 20px 40px;
+    border: solid 1px black;
+    margin-top: 20px;
+
+    h1, h2, h3 {
+        @include text-shadow;
+    }
+    .section .box{
+        @include display-box;
+        fieldset { 
+            @include box-flex(2);
+            width: 40%; }
+    }
+}
+
+#top_bar {
+    font-size: 0.8em;
+    #page_nav { float: left; }
+    #user_nav { float: right; }
+    #clear { clear: both; }
+}
+#bottom_bar {
+    font-size: 0.8em;
+    padding-top: 20px;
+}
+
+

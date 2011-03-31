@@ -5,6 +5,7 @@ gem 'maruku'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'simple_form'
 gem 'rest-client'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'nifty-generators' 

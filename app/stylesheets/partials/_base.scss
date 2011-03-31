@@ -1,0 +1,15 @@
+
+
+body {
+  background-color: #4B7399;
+  font-family: Verdana, Helvetica, Arial;
+  font-size: 14px;
+}
+
+a { 
+    color: #000;
+    &:hover { background-color: #cfc; }
+}
+table td {
+    padding: 0px 10px;
+}

@@ -1,7 +1,6 @@
 require 'epic/socket_client'
 class User < ActiveRecord::Base
   include Epic::SocketClient
-  has_many :messages
 
 
   ## race condition
