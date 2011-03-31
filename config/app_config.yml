@@ -1,0 +1,16 @@
+defaults: &defaults
+  admin: http://admin:admin@psi:5280/admin/server/psi
+  domain: psi
+  xmpp: true
+  url: http://localhost/epic/urls
+  bosh: http://localhost/xmpp-httpbind
+  port: 8081
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

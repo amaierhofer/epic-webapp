@@ -1,0 +1,4 @@
+%h1 Messages
+%ul
+  - @messages.each do |message|
+    %li= "#{message.from} -> #{message.to}: #{message.body}"

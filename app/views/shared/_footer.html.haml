@@ -1,0 +1,7 @@
+
+- if user_signed_in?
+  %div{'data-role' => 'footer', 'data-id' => 'footer', 'data-position' => 'fixed' }
+    %div{'data-role' => 'navbar', 'data-type' => 'horizontal'}
+      %ul
+        %li= link_to 'Home', :user_profile, 'data-icon' => 'back'
+        %li= link_to 'Devices', :root , 'data-icon' => 'grid'

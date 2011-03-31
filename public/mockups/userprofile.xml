@@ -1,0 +1,46 @@
+<mockup version="1.0" skin="sketch" measuredW="606" measuredH="513" mockupW="495" mockupH="439">
+  <controls>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::TitleWindow" x="101" y="64" w="495" h="439" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>User%20Profile%20Screen</text>
+      </controlProperties>
+    </control>
+    <control controlID="25" controlTypeID="com.balsamiq.mockups::Button" x="190" y="334" w="313" h="57" measuredW="113" measuredH="28" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Send%20Message</text>
+      </controlProperties>
+    </control>
+    <control controlID="26" controlTypeID="__group__" x="121" y="146" w="-1" h="-1" measuredW="452" measuredH="160" zOrder="1" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="__group__" x="0" y="0" w="-1" h="-1" measuredW="212" measuredH="159" zOrder="0" locked="false" isInGroup="26">
+          <groupChildrenDescriptors>
+            <control controlID="0" controlTypeID="com.balsamiq.mockups::FieldSet" x="0" y="0" w="212" h="159" measuredW="200" measuredH="170" zOrder="0" locked="false" isInGroup="0">
+              <controlProperties>
+                <text>Device%20List</text>
+              </controlProperties>
+            </control>
+            <control controlID="1" controlTypeID="com.balsamiq.mockups::List" x="15" y="26" w="158" h="126" measuredW="100" measuredH="126" zOrder="1" locked="false" isInGroup="0">
+              <controlProperties>
+                <text>You%3A%20Online%0APhone%3A%20Online%0AFridge%3A%20Online%0ATv%3A%20Offline</text>
+              </controlProperties>
+            </control>
+          </groupChildrenDescriptors>
+        </control>
+        <control controlID="1" controlTypeID="__group__" x="240" y="1" w="-1" h="-1" measuredW="212" measuredH="159" zOrder="1" locked="false" isInGroup="26">
+          <groupChildrenDescriptors>
+            <control controlID="0" controlTypeID="com.balsamiq.mockups::FieldSet" x="0" y="0" w="212" h="159" measuredW="200" measuredH="170" zOrder="0" locked="false" isInGroup="1">
+              <controlProperties>
+                <text>Device%20info%20for%20you</text>
+              </controlProperties>
+            </control>
+            <control controlID="1" controlTypeID="com.balsamiq.mockups::List" x="23" y="26" w="165" h="126" measuredW="100" measuredH="126" zOrder="1" locked="false" isInGroup="1">
+              <controlProperties>
+                <text>Online%20since%3A%20now%0AMessages%20recieved%3A%200%0APeers%20only%3A%202</text>
+              </controlProperties>
+            </control>
+          </groupChildrenDescriptors>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+  </controls>
+</mockup>

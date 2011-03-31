@@ -1,0 +1,14 @@
+%h1 Send message to user
+= form_tag :action => :send_message
+
+%p
+  %div= label_tag :user, "Select a User"
+  %div= collection_select(:user, :id, User.all.reverse, :id, :name) 
+
+%p
+  %div= label_tag :message, "Your Message"
+  %div= text_area_tag(:message)
+
+%p
+  = submit_tag "Send Message"
+

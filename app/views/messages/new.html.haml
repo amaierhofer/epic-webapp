@@ -1,0 +1,11 @@
+- title "#{sanitize(params[:jid])}"
+
+
+%div{'data-role' => 'content'}
+  = form_for ([current_user,current_user.messages.build]) do 
+    = hidden_field_tag(:peer, sanitize(params[:jid]))
+    %fieldset{'data-role' => 'controlgroup', 'data-type' => 'horizontal'}
+      %legend Message 
+      - message_types
+
+    = submit_tag 'Send'

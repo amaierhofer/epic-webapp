@@ -1,0 +1,27 @@
+#page_nav
+  - if user_signed_in?
+    - path = request.path
+
+    - if path != :root_path
+      = link_to 'Home', :root 
+    - if path != user_profile_path
+      = link_to 'Profile', :user_profile
+    - if path != :jasmine_index_path
+      = link_to 'Test', :jasmine_index, :rel => 'external'
+
+#user_nav
+  - if user_signed_in?
+    %span Signed in as #{current_user.email}. Not you 
+    = link_to 'Sign out', :destroy_user_session, :id => 'sign_out', :rel => 'external'
+  - else
+    %span 
+      = link_to 'Sign in', :new_user_session 
+      %span or
+      = link_to 'Sign up', :new_user_registration
+
+  - if js_enabled?
+    = link_to "noJS", { :js => 0 }, { :rel => "external" }
+  - else 
+    = link_to "JS", { :js => 1 }, { :rel => "external" }
+
+%br.clear

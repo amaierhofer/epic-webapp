@@ -1,0 +1,11 @@
+
+= javascript_include_tag 'jquery'
+= javascript_include_tag 'jquery.ui.widget'
+= javascript_include_tag 'reloader' if Rails.env == 'development'
+- if jqm_enabled? 
+  = javascript_include_tag '/jquery-mobile/jquery.mobile-1.0a3pre.js'
+-if xmpp_enabled? 
+  = javascript_include_tag 'strophe'
+  = javascript_include_tag 'xmpp/jquery.xmpp'
+  = javascript_include_tag 'jquery.app'
+  = javascript_include_tag 'app'

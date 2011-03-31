@@ -1,0 +1,52 @@
+!!!
+%html
+  %head
+    %title
+      = yield(:title) || "Untitled"
+    = stylesheet_link_tag '/jasmine/lib/jasmine-1.0.1/jasmine.css'
+    = javascript_include_tag '/jasmine/lib/jasmine-1.0.1/jasmine.js'
+    = javascript_include_tag '/jasmine/lib/jasmine-1.0.1/jasmine-html.js'
+
+    = javascript_include_tag 'strophe'
+    = javascript_include_tag 'jquery'
+    = javascript_include_tag 'jquery.ui.widget'
+    = javascript_include_tag 'reloader'
+    = yield(:head)
+
+    %style
+      :sass
+        ul.navi
+          margin: 0
+          padding: 0
+          list-style: none
+          border-bottom: 1px solid black
+          li 
+            display: inline
+            a 
+              color: #000
+              text-decoration: none
+              &:hover
+                background-color: #cf0
+              
+
+  %body
+    %ul.navi
+      %li
+        = link_to 'Base', :jasmine_index
+
+      %li
+        = link_to 'Disco', :jasmine_disco
+      %li
+        = link_to 'Docs', :jasmine_docs
+      %li
+        = link_to 'WebOs', :jasmine_webos
+    = yield
+    :javascript
+      (function($) { 
+        $(function() {
+          jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+          jasmine.getEnv().execute();
+          $(".jasmine_reporter").addClass("show-passed show-skipped");
+        });
+      })(jQuery);
+

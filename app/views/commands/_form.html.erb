@@ -1,0 +1,12 @@
+<%= form_for @command do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :string %><br />
+    <%= f.text_field :string %>
+  </p>
+  <p>
+    <%= f.label :user %><br />
+    <%= f.text_field :user %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

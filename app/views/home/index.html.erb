@@ -1,0 +1,7 @@
+<h2>Post your token here to create the link</h2>
+<%= form_tag(home_register_path) do %>
+  <%= label_tag(:q, 'Token') %>
+  <%= text_field_tag(:q) %>
+  <br/>
+  <%= submit_tag('Submit') %>
+<% end %>

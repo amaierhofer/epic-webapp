@@ -1,0 +1,15 @@
+<% title "Command" %>
+
+<p>
+  <strong>Url:</strong>
+  <%= @command.url %>
+</p>
+<p>
+  <strong>User:</strong>
+  <%= @command.user %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_user_command_path(@command) %> |
+  <%= link_to "View All", user_commands_path %>
+</p>

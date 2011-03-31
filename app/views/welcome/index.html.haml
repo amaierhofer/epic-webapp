@@ -1,0 +1,75 @@
+%style
+  :sass
+    .center 
+      text-align: center
+
+- title 'Home'
+
+.center
+  - if user_signed_in?
+    %p Welcome back, #{current_user.username}!
+    = render :partial => 'shared/status'
+  - else
+
+    %p Please use the following links to start using this service.
+    %div{'data-role' => 'controlgroup', 'data-type' => 'horizontal'} 
+      = link_to 'Sign In', :new_user_session, {'data-role' => 'button'}
+      = link_to 'Sign Up', :new_user_registration, {'data-role' => 'button'}
+
+    %p Please follow links for js test suite
+    %ul{'data-role' => 'content', 'style' => 'list-style: none' }
+      %li= link_to 'Jasmine', :jasmine_index, { :rel => 'external' }
+      %li= link_to 'Jasmine Docs', :jasmine_docs, { :rel => 'external' }
+      %li= link_to 'Jasmine webOS', :jasmine_webos, { :rel => 'external' }
+      %li= link_to 'Compass css ', :jasmine_compass, { :rel => 'external' }
+
+.other{'style' => 'display: none'}
+
+  %style
+    :sass
+      .profile
+        background-color: #ccc
+        padding: 20px
+
+      .grid
+        margin-top: 10px
+        fieldset
+          margin: auto 10px auto
+          border: 1px solid black
+
+        .ui-listview 
+          margin: 5px
+          .ui-li-aside
+            margin: 0
+
+      .buttons
+        margin-top: 20px
+        text-align: center
+
+
+
+  .profile
+    .grid.ui-grid-a
+      .ui-block-a
+        %fieldset
+          %legend List of devices
+
+          %ul{'data-role' => 'listview', 'data-inset' => 'true'}
+            - %w[one two three ].each do |w|
+              %li 
+                %div #{w}
+                .ui-li-aside #{w}
+
+
+      .ui-block-b
+        %fieldset
+          %legend Device Info
+          %ul{'data-role' => 'listview', 'data-inset' => 'true'}
+            - %w[one two three ].each do |w|
+              %li 
+                #{w}
+
+    .buttons
+      %div{'data-role' => 'controlgroup', 'data-type' => 'horizontal'}
+        / = link_to 'New Message', new_user_message_path(@user), 'data-role' => 'button'
+

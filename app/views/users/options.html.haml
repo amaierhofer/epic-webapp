@@ -1,0 +1,41 @@
+- title 'Options'
+
+%style
+  :sass
+    label
+      width: 50px
+
+%div{'data-role' => 'header', 'data-position' => 'inline'}
+  %h2 Options
+
+%div{'data-role' => 'content'}
+  %p 
+
+  %div{'data-role' => 'fieldcontain'}
+    = label_tag 'jqm', 'jQuery Mobile' 
+    = select_tag 'jqm', options_for_select(%w[off on], jqm_enabled? ? 'on' : 'off' ), 'data-role' => 'slider'
+
+  %div{'data-role' => 'fieldcontain'}
+    = label_tag 'xmpp', 'xmpp'
+    = select_tag 'xmpp', options_for_select(%w[off on], xmpp_enabled? ? 'on' : 'off' ), 'data-role' => 'slider'
+
+  :javascript
+    $(function() {
+      var opts = {};
+      $('select').change(function(ev) {
+        var parm = ev.target.name, val = $(ev.target).val() === 'on' ? 1 : 0;
+        if (opts.parm && opts.parm === val) {
+          return;
+        }
+        opts.parm = val;
+        //$.ajax({
+        //  data: parm + "=" + val,
+        //  complete: function() {
+        //    window.location.reload();
+        //  }
+        //});
+      });
+    });
+
+
+
