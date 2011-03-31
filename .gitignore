@@ -1,3 +1,6 @@
 log
 tmp
 nodemon-ignore
+db/development.sqlite3 db/migrate db/schema.rb db/seeds.rb db/test.sqlite3
+db/test.sqlite3
+Gemfile.lock

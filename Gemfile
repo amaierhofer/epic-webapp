@@ -1,16 +1,15 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.3'
+gem 'rails', '3.0.5'
+gem 'maruku'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'rest-client'
 gem 'sqlite3-ruby', :require => 'sqlite3'
-#gem 'nifty-generators' 
+gem 'nifty-generators' 
 #gem 'rails3-generators'
 gem 'haml-rails'
-#gem 'jquery-rails'
-#gem 'simple_form'
 gem 'devise'
 gem 'compass'
 #gem 'blather', :git => 'http://github.com/shingara/blather.git', :branch => 'without_active_support_inside'

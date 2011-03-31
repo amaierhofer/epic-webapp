@@ -1,6 +1,4 @@
 EpicWebapp::Application.routes.draw do
-  get "jasmine/disco"
-
   devise_for :users
 
   match 'test', :to => 'jasmine#index', :as => :jasmine_index
@@ -8,16 +6,13 @@ EpicWebapp::Application.routes.draw do
   match 'test/webos', :to => 'jasmine#webos', :as => :jasmine_webos
   match 'test/compass', :to => 'jasmine#compass', :as => :jasmine_compass
 
-  get 'welcome/xmpp'
   resources :users do
     get 'options', :on => :member
     post 'options', :on => :member
-    resources :messages
   end
 
   match 'profile', :to => 'users#show', :as => :user_profile
-  match 'urls', :to => 'home#urls', :as => :url_path
-  match 'msg', :to => 'home#msg'
+  match 'welcome/app'
   root :to => "welcome#index"
 
   # The priority is based upon order of creation:
