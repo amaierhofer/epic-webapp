@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %title
+      = yield(:title) || "Untitled"
+
+    %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
+    = csrf_meta_tag
+    = render 'shared/stylesheet_includes'
+    = render 'shared/javascript_includes'
+    = yield(:head)
+  
+  %body
+
+    %div{'data-role' => 'page'}
+      = render :partial => 'shared/header'
+      .container{'data-role' => 'content'}
+        = render :partial => 'shared/flash', :locals => { :flash => flash }
+        = yield
+      = render :partial => 'shared/footer'
+
+
+

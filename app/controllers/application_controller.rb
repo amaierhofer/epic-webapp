@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :prepare
+  before_filter :prepare_session
   after_filter :add_headers
+  layout :decide_layout
+
 
   def wants_xmpp?
     APP_CONFIG[:xmpp]
@@ -16,13 +18,14 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource_or_scope)
-#    return "/##{root_path}profile" if root_path == "/"
-#    return "#{root_path}##{root_path}profile"
      return current_user
   end
 
 
   protected
+    def decide_layout
+      jqm_enabled? ? 'jquerymobile' : 'application'
+    end
     ## also talks to epic, use errors of user to communicate problems?
     def epic
       Class.new { include Epic::SocketClient }.new  private  
@@ -36,7 +39,7 @@ class ApplicationController < ActionController::Base
       session[:jqm] ? session[:jqm] == "1" : true
     end  
 
-    def prepare
+    def prepare_session
       session[:jqm] = params[:jqm] if params[:jqm]  
       session[:xmpp] = params[:xmpp] if params[:xmpp]  
     end  

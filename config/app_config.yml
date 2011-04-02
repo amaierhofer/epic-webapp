@@ -1,10 +1,15 @@
+### Configuration
+# admin: is the url of the ejabberd admin interface
+# domain: the xmpp domain to use
+# bosh: the url of the bosh service
+# xmpp: disable xmpp 
+
+
 defaults: &defaults
   admin: http://admin:admin@psi:5280/admin/server/psi
+  bosh: http://psi/xmpp-httpbind
   domain: psi
   xmpp: true
-  url: http://localhost/epic/urls
-  bosh: http://localhost/xmpp-httpbind
-  port: 8081
 
 development:
   <<: *defaults
@@ -14,3 +19,6 @@ test:
 
 production:
   <<: *defaults
+  admin: http://admin:admin@box:5280/admin/server/box
+  bosh: http://www.mobilesynergies.org/xmpp-httpbind
+  domain: box

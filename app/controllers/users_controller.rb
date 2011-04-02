@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :create]
 
   def options
-    render :layout => 'page' if request.get?
+    render :layout => 'jqmpopup' if request.get?
   end
 
   def index
@@ -16,7 +16,6 @@ class UsersController < ApplicationController
   
   def show
     find_user
-    @content = read_bookmarklet
   end
   
   def new
