@@ -12,21 +12,6 @@
 
 ActiveRecord::Schema.define(:version => 20101022170856) do
 
-  create_table "commands", :force => true do |t|
-    t.string   "url"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "messages", :force => true do |t|
-    t.integer  "category"
-    t.text     "payload"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
     t.string   "encrypted_password",   :limit => 128, :default => "", :null => false

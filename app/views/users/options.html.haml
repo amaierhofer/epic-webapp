@@ -20,22 +20,22 @@
     = select_tag 'xmpp', options_for_select(%w[off on], xmpp_enabled? ? 'on' : 'off' ), 'data-role' => 'slider'
 
   :javascript
-    $(function() {
-      var opts = {};
-      $('select').change(function(ev) {
-        var parm = ev.target.name, val = $(ev.target).val() === 'on' ? 1 : 0;
-        if (opts.parm && opts.parm === val) {
-          return;
-        }
-        opts.parm = val;
-        //$.ajax({
-        //  data: parm + "=" + val,
-        //  complete: function() {
-        //    window.location.reload();
-        //  }
-        //});
+    (function($) {
+      $(function() {
+        alert('we need to get event of dialog close');
+        var url = window.location.href;
+        url = url.replace(/#.*/,'');
+        url = url.replace(/\?.*/,'');
+
+        $("body").delegate('[data-rel="back"', 'click', function() {
+          var query = [];
+          $('select').each(function() {
+            query.push(this.id + "=" + ($(this).val() == "on" ? "1" : "0"));
+          });
+          console.log(query);
+          });
       });
-    });
+    })(jQuery);
 
 
 

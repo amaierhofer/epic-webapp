@@ -1,12 +1,11 @@
 - title "Home"
-%h1 development startpage
 
 %p 
   Please use one of the following links
   %ul
     %li= link_to 'Todos', :welcome_todo
-    %li= link_to 'Mobile app', :welcome_app
-    %li= link_to 'Jasmine', :jasmine_index
+    %li= link_to 'Mobile app', :action => :app, :jqm => "1"
+    %li= link_to 'Jasmine', :jasmine_index    
     %li= link_to 'Jasmine Docs', :jasmine_docs
     %li= link_to 'Jasmine webOS', :jasmine_webos
     %li= link_to 'Compass css ', :jasmine_compass
