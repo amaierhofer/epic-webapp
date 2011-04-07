@@ -14,6 +14,8 @@ EpicWebapp::Application.routes.draw do
   match 'profile', :to => 'users#show', :as => :user_profile
   match 'welcome/app'
   root :to => "welcome#index"
+ 
+  match 'about/'  => 'about#index', :via => :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
