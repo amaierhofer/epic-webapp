@@ -1,22 +1,11 @@
-require 'epic/socket_client'
 class WelcomeController < ApplicationController
+#  before_filter :reset_jqm, :only => :index
   def index
-    render :layout => 'simple' 
-  end
-
-  ## jqm == jquery mobile
-  def jqm
-    render :layout => 'page'
+    session[:jqm] = "0"
   end
 
   def xmpp
     render :layout => 'jasmine'
-  end
-
-  private
-  def alive?
-    obj = Class.new { include Epic::SocketClient }.new
-    obj.alive?
   end
 
 end
