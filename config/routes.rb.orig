@@ -15,8 +15,13 @@ EpicWebapp::Application.routes.draw do
     post 'options', :on => :member
   end
   match 'profile', :to => 'users#show', :as => :user_profile
-
+<<<<<<< HEAD
+  match 'welcome/app'
+  root :to => "welcome#index"
+ 
   match 'about/'  => 'about#index', :via => :get
+=======
+>>>>>>> c2003d6ec1080729ff9eb7e9aad24ecfb0736d0e
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
