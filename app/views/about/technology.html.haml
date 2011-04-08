@@ -1,0 +1,56 @@
+:maruku
+
+  Introduction
+  -------------
+
+  XMPP is a near real time, established and extensible protocol for exchanging messages. It is best know for it's use in instant messaging but also offers functionality useful in machine to machine communication. The following describes how we leverage XMPP.
+
+
+  ## Identity
+  -------------
+
+  To connect to an XMPP network, you need to have a valid user name and password. You can use the following link to #{link_to 'sign up', :new_user_registration} to our network. Once registered you can send and receive messages. XMPP also allows you to connect several times using the same credentials if you provide distinct resource identifiers. This is the foundation of our (non existing) security model. 
+
+  _We only process message coming from the various resources associated with a single account._ We have not yet investigated into cross user device communication.
+
+
+  ## Discovering devices
+  -------------
+
+  Connecting all of the user's devices with the same credentials gives us a second benefit. All devices are informed whenever their connection status changes. This is how we discover devices. You simple reuse your user account on anything that you want to connect, and boom your are on the list. 
+
+  ## Discovering capabilities
+  -------------
+
+  To obtain more information about the different nodes we know about, we build on top of  [XMPP Service Discovery](http://#). This extension to the base XMPP protocol defines how nodes on the network obtain more information about each other and advertise the kinds of services they offer. 
+
+  ## Triggering actions
+  --------------
+
+  Within the variety of devices, there will be different modes of executing the aggregate of all capabilities that are offered on the network. Sometimes it is desirable to send a single message, sometimes an acknowledgement will be appropriate. Some interactions are better suited to a publish subscribe mechanism others again will require a 2 or 3 message consuming communication. XMPP offers something for all of them. 
+
+  We focused our work on leveraging [XMPP Ad-hoc Commands](http://#). Another XMPP protocol extension that defines the semantics of remote command execution, supports for multi stage processes, has rudimentary support for user interfaces and is deployed by most XMPP servers. 
+
+  ## Summary
+  --------------
+
+  We hope this overview gives you an idea about which direction we are going and encourages you to see some of this in action. 
+
+  
+  
+
+  =============
+  - identity and resources, e.g. user's devices
+  - security model 
+  - discoverability
+  - communication models (fire and forget, req / response, pubsub)
+
+
+  Discoverability
+  ===============
+
+
+
+
+
+

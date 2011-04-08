@@ -17,6 +17,8 @@ EpicWebapp::Application.routes.draw do
   match 'profile', :to => 'users#show', :as => :user_profile
 
   match 'about/'  => 'about#index', :via => :get
+  match 'about/technology'  => 'about#technology', :via => :get
+  match 'about/use_cases'  => 'about#use_cases', :via => :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
