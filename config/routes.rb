@@ -4,6 +4,12 @@ EpicWebapp::Application.routes.draw do
   root :to => "welcome#index"
   match 'welcome/app'
   match 'welcome/todo'
+  match 'welcome/design'
+
+  match 'about', :to => 'about#index'
+  match 'about/artifacts' 
+  match 'about/technology' 
+  match 'about/use_cases' 
 
   match 'test', :to => 'jasmine#index', :as => :jasmine_index
   match 'test/docs', :to => 'jasmine#docs', :as => :jasmine_docs
@@ -16,9 +22,6 @@ EpicWebapp::Application.routes.draw do
   end
   match 'profile', :to => 'users#show', :as => :user_profile
 
-  match 'about/'  => 'about#index', :via => :get
-  match 'about/technology'  => 'about#technology', :via => :get
-  match 'about/use_cases'  => 'about#use_cases', :via => :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
