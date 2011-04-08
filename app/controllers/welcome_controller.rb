@@ -4,8 +4,12 @@ class WelcomeController < ApplicationController
     session[:jqm] = "0"
   end
 
+
+  def design
+    render :index, :layout => 'design'
+  end
   def xmpp
     render :layout => 'jasmine'
   end
-
 end
+
