@@ -1,7 +1,12 @@
 %div
-  %label status, 
-  .xmpp-status 
+  %table
+    %tr
+      %td Status:
+      %td.xmpp-status
 
-%div
-  %label peers
-  %ul.xmpp-peers 
+  %table
+    %tr
+      %td Devices:
+      %td
+        #peerlistcontainer{"data-role" => "fieldcontain"}
+        %fieldset.xmpp-peer-list{"data-role" => "controlgroup"}

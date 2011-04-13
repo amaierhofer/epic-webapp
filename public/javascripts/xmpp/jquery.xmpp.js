@@ -11,6 +11,10 @@
         timeout: 2000
       }
     },
+
+//storing session keys
+_sessions : new Object(),
+
     _create: function() {
       Strophe.log = function(level, msg) { console.log(level + ": " + msg); };
       Strophe.debug = function(level, msg) { };
@@ -123,14 +127,24 @@
         $(e).html(state.name);
       });
       var linkHandler = this.options.linkHandler;
-      this.element.find('.xmpp-peers').each(function(i,e) {
-        $(e).find('li').remove();
+      
+      this.element.find('.xmpp-peer-list').each(function(i,e) {
+        $(e).find('.ui-radio').remove();
+
         $.each(state.peers, function(k,v) {
-          if (linkHandler) { k = linkHandler.call(this,k); }
-          var li = '<li class="' + v + '">' + k + '</li>';
-          $(e).append(li);
+          //if (linkHandler) { k = linkHandler.call(this,k); }
+	  var myid = i.toString();
+          var inputfield = '<input type="radio" checked="checked" name="radio-choice-1" id="radio-choice-'+myid+'" value="choice-'+myid+'" class="' + v + '"> </input>';
+	  
+	  var labelfield = '<label for="radio-choice-'+myid+'">' + k + '</label>';
+	  
+          $(e).append(inputfield);
+	  $(e).append(labelfield);
+
         });
+	
       });
+	
     },
     __bindListeners: function() {
       this.__bind('transition', this.__updateElements);
@@ -138,6 +152,17 @@
       this.__bind('connected', this.__addPresenceHandler);
       this.__bind('connected', this.__addMessageHandler);
     },
+
+	__generateSessionkey: function() {
+		var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+		var string_length = 16;
+		var randomstring = '';
+		for (var i=0; i<string_length; i++) {
+			var rnum = Math.floor(Math.random() * chars.length);
+			randomstring += chars.substring(rnum,rnum+1);
+		}
+		return randomstring; 
+	},
 
     /**
    * Public API
@@ -161,9 +186,14 @@
       this.__state.initialized = false;
     }, 
 
-    send: function(text) {
-      var msg = $msg({to: this.options.peer, type: 'chat'}).c('body').t(text);
+    send: function(text, recipient) {
+	if(! recipient){
+		recipient = this.options.peers;
+	}
+		
+      var msg = $msg({to: recipient, type: 'chat'}).c('body').t(text);
       this._connection.send(msg);
+
     },
 
     state: function() {
@@ -174,7 +204,18 @@
     },
     update: function() {
       this.__updateElements({}, this.__state);
-    }
+    },
+
+	sendEpicIntent : function(jid, intent, callback){
+		sessionkey = this.__generateSessionkey();
+		message = $msg({to: jid, type: "chat"}).c("application", {xmlns: "http://mobilesynergies.org/protocol/epic", sessionkey : sessionkey,  intent: intent});
+		this._connection.send(message);
+		this.__log(message.toString());
+			if(callback!=null){
+				this._sessions[sessionkey]=callback;
+			}
+		}
+	
   });
 
 })(jQuery);

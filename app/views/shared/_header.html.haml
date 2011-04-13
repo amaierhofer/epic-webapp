@@ -7,3 +7,12 @@
     .ui-btn-right
       = link_to 'Options', options_user_path(current_user), 'data-rel' => 'dialog', 'data-icon' => 'gears', 'data-transition' => 'pop'
 
+    %div{'data-role' => "navbar"}
+      %ul
+        %li 
+          = link_to 'Ring my Phone', :controller => "mobileapps", :action => "ringit"
+        %li 
+          %a{'href' => "b.html"} App Two
+        %li 
+          %a{'href' => "c.html"} App Three
+

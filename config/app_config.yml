@@ -6,9 +6,9 @@
 
 
 defaults: &defaults
-  admin: http://admin:admin@psi:5280/admin/server/psi
-  bosh: http://psi/xmpp-httpbind
-  domain: psi
+  admin: http://admin:admin@ubuntu:5280/admin/server/ubuntu
+  bosh: http://ubuntu:5280/http-bind
+  domain: ubuntu
   xmpp: true
 
 development:

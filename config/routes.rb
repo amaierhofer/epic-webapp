@@ -9,7 +9,9 @@ EpicWebapp::Application.routes.draw do
   match 'about', :to => 'about#index'
   match 'about/artifacts' 
   match 'about/technology' 
-  match 'about/use_cases' 
+  match 'about/use_cases'
+
+  match 'mobileapps/ringit'   
 
   match 'test', :to => 'jasmine#index', :as => :jasmine_index
   match 'test/docs', :to => 'jasmine#docs', :as => :jasmine_docs
