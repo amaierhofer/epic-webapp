@@ -15,6 +15,7 @@ EpicWebapp::Application.routes.draw do
 
   match 'test', :to => 'jasmine#index', :as => :jasmine_index
   match 'test/docs', :to => 'jasmine#docs', :as => :jasmine_docs
+  match 'test/disco', :to => 'jasmine#disco', :as => :jasmine_disco
   match 'test/webos', :to => 'jasmine#webos', :as => :jasmine_webos
   match 'test/compass', :to => 'jasmine#compass', :as => :jasmine_compass
 
