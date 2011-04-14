@@ -24,13 +24,18 @@ class ApplicationController < ActionController::Base
 
   protected
     def decide_layout
-      jqm_enabled? ? 'jquerymobile' : 'application'
+      return 'jquerymobile' if jqm_enabled?
+      return 'design' if design_enabled?
+      return 'application'
     end
     ## also talks to epic, use errors of user to communicate problems?
     def epic
       Class.new { include Epic::SocketClient }.new  private  
     end
 
+    def design_enabled?  
+      session[:design] ? session[:design] == "1" : false
+    end  
     def xmpp_enabled?
       session[:xmpp] ? session[:xmpp] == "1" : true
     end
@@ -42,8 +47,10 @@ class ApplicationController < ActionController::Base
     def prepare_session
       session[:jqm] = params[:jqm] if params[:jqm]  
       session[:xmpp] = params[:xmpp] if params[:xmpp]  
+      session[:design] = params[:design] if params[:design]  
     end  
 
-    helper_method :epic, :wants_xmpp?, :jqm_enabled? , :xmpp_enabled?
+    helper_method :epic, :wants_xmpp?, :jqm_enabled? , :xmpp_enabled?, 
+      :design_enabled?
 end
 

@@ -1,0 +1,71 @@
+
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/typography/lists/inline-block-list";
+@import "compass/layout/stretching"; 
+@import "blueprint/grid";
+
+$text: #eee;
+$blueprint_grid_columns: 8;
+$blueprint_grid_width: 40px;
+
+@mixin border($color: red) {
+    border: 1px dashed $color;
+}
+
+@mixin navi-link {
+    color: darken($text, 30%);
+    text-decoration: none;
+    &:hover { 
+        color: $text; 
+        background-color: darken($text, 75%);
+    }
+}
+html { height: 100%; }
+body {
+    height: 100%;
+    color: $text; 
+    font-family: Helvetica, Arial;
+    background: url('../images/wood2.jpg');
+    font-size: 2em;
+}
+#topbar {
+    background-color: rgba(0,0,0,0.4);
+    height: 100px;
+    #header {
+        @include container;
+        position: relative;
+        height: 100%;
+        #logo {
+            position: absolute;
+            left: 40px;
+            bottom: 10px;
+            font-size: 1.2em;
+        }
+        #navi { 
+            @include inline-block-list;
+            position: absolute;
+            right: 60px;
+            bottom: 10px;
+            overflow: visible;
+            a { @include navi-link; } 
+        }
+    } 
+    margin-bottom: 30px;
+}
+
+#main {
+    font-size: 0.8em;
+    color: darken($text, 75%);
+    padding: 20px;
+    @include container;
+    @include box-shadow;
+    @include border-radius(10px);
+    background-color: rgba(250,250,250,0.5);
+    h1, h2, h3 { font-size: 1.2em; font-weight: bold;  }
+    p, ul { margin: 20px 10px 20px 10px; }
+    a  { 
+        @include navi-link; 
+        color: darken($text, 60%);
+    }
+}
