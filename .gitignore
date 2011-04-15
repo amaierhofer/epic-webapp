@@ -7,3 +7,4 @@ Gemfile.lock
 db/development.sqlite3
 Gemfile.lock
 public/stylesheets
+.idea
