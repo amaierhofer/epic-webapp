@@ -196,6 +196,28 @@ _sessions : new Object(),
 
     },
 
+    	getJid: function() {
+		return this.options.jid;
+	},
+
+	getUsername: function() {
+		theJid = this.options.jid;
+		return theJid.split('@')[0];
+	},
+
+	getBareJid: function() {
+		theJid = this.options.jid;
+		return theJid.split('/')[0];
+	},
+
+	getPassword: function() {
+		return this.options.pw;
+	},
+
+	getServer: function() {
+		return this.getBareJid().split('@')[1];
+	},
+
     state: function() {
       return this.__state;
     },
