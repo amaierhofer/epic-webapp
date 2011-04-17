@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   after_filter :add_headers
   layout :decide_layout
 
-
   def wants_xmpp?
     APP_CONFIG[:xmpp]
   end

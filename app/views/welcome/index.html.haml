@@ -1,12 +1,27 @@
 - title "Home"
 
+#showcase
+  - (1..3).each do |index| 
+    %div
+      = image_tag "lolcats/lol#{index}.jpg", :size => "500x500"
+
+= javascript_include_tag "jquery.cycle.min.js"
+:javascript
+  jQuery(function() {
+    var opts = {
+      fx: 'fade',
+      pause: 1,
+      next: '#showcase',
+    };
+    jQuery('#showcase').cycle(opts);
+  });
+
 %p 
   Please use one of the following links
   %ul
     %li= link_to 'Introduction', :about
     %li= link_to 'Technology', :about_technology
     %li= link_to 'Artifacts', :about_artifacts
-
     %li= link_to 'Todos', :welcome_todo
     %li= link_to 'Mobile app', :action => :app, :jqm => "1"
     %li= link_to 'Ringit app', :mobileapps_ringit
