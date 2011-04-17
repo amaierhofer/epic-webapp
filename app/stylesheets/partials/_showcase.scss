@@ -1,0 +1,18 @@
+
+#showcase {
+    height: 550px;
+    width: 550px;
+    img {
+        background-color: #000;
+        padding: 25px;
+        @include border-radius(25px);
+        @include box-shadow;
+    }
+}
+
+/* give each slide the same dimensions */
+#slideshow div { width: 300px; height: 300px;  }
+ 
+/* make sure each slide image is centered */
+#slideshow div img { margin: auto; display: block }
+
