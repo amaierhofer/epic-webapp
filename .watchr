@@ -17,7 +17,8 @@ watch "app" do
   start_compass_if_not_running
 end
 
-watch "views" do 
+
+watch "public/javascript" do 
   client.send "reload" unless client.nil?
 end
 
