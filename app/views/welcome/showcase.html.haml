@@ -1,0 +1,20 @@
+- title "Showcase"
+
+Welcome to the epic adventer. See some lolcats for now
+
+#showcase
+  - (1..3).each do |index| 
+    %div
+      = image_tag "lolcats/lol#{index}.jpg", :size => "500x500"
+
+= javascript_include_tag "jquery.cycle.min.js"
+
+:javascript
+  jQuery(function() {
+    var opts = {
+      fx: 'fade',
+      pause: 1,
+      next: '#showcase',
+    };
+    jQuery('#showcase').cycle(opts);
+  });
