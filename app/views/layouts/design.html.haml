@@ -20,8 +20,8 @@
   #topbar 
     #header
       #logo
-        %img{:src => '/images/cab_view.png'}
-        %span Epic Services
+        = image_tag "cab_view.png"
+        %span= link_to 'Epic Services', :root
 
       %ul#navi
         %li= link_to 'intro', :about

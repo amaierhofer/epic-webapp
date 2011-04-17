@@ -4,6 +4,8 @@
     width: 550px;
     margin: 100px;
     img {
+
+        text-align: center;
         background-color: #000;
         padding: 25px;
         @include border-radius(25px);

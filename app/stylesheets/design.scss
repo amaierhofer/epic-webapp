@@ -12,6 +12,8 @@ $blueprint_grid_width: 40px;
     border: 1px dashed $color;
 }
 
+
+
 @mixin navi-link {
     color: darken($text, 30%);
     text-decoration: none;
@@ -47,8 +49,9 @@ body {
             right: 60px;
             bottom: 10px;
             overflow: visible;
-            a { @include navi-link; } 
         }
+
+        a { @include navi-link; } 
     } 
     margin-bottom: 30px;
 }
