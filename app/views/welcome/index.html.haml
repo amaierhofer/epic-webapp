@@ -1,17 +1,22 @@
 - title "Home"
 
-
 %p 
-  Please use one of the following links
+  Content (all content delivered by about controller)
   %ul
-    %li= link_to 'Introduction', :about
-    %li= link_to 'Technology', :about_technology
-    %li= link_to 'Artifacts', :about_artifacts
-    %li= link_to 'Todos', :welcome_todo
+    %li= link_to 'intro', :about
+    %li= link_to 'technology', :about_technology
+    %li= link_to 'use cases', :about_artifacts
+    %li= link_to 'downloads', :about_artifacts
+
+%p
+  App (move away from welcome, maybe single controller?)
+  %ul
     %li= link_to 'Mobile app', :action => :app, :jqm => "1"
     %li= link_to 'Ringit app', :mobileapps_ringit
+
+%p 
+  Testing 
+  %ul
+    %li= link_to 'Mockups', :action => :mockups
     %li= link_to 'Jasmine', :jasmine_index    
-    %li= link_to 'Jasmine Docs', :jasmine_docs
-    %li= link_to 'Jasmine webOS', :jasmine_webos
-    %li= link_to 'Compass css ', :jasmine_compass
 
