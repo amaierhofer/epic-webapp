@@ -1,5 +1,7 @@
 @import "mixins"; 
 
+
+
 #main {
     font-size: 1.2em;
     color: darken($text, 75%);
@@ -10,9 +12,30 @@
 
 
     #title, #content { 
+        @include prepend-top;
         @include append(1);
         @include prepend(1);
-        @include column(20);  
+        @include column(22);  
+    }
+    #title { 
+    }
+    #content {
+        @include append-bottom;
+        @include showgrid;
+        #top { 
+            @include column(22); 
+            @include append-bottom;
+        } 
+        #left {
+            @include column(12); 
+        }
+        #right {
+            @include prepend(2);
+            @include column(8,true); 
+            #details {
+                @include append-bottom;
+            }
+        }
     }
 
     a { @include navi-link; }
