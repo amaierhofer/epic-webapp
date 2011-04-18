@@ -1,0 +1,9 @@
+#footer {
+    font-size: 0.8em;
+    @include container;
+    @include prepend-top;
+    @include append-bottom;
+    @include prepend(1);
+
+    a { @include navi-link; }
+} 

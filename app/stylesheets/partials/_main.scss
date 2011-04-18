@@ -1,0 +1,19 @@
+@import "mixins"; 
+
+#main {
+    font-size: 1.2em;
+    color: darken($text, 75%);
+    background-color: rgba(250,250,250,0.5);
+    @include container;
+    @include box-shadow(#000, 3px, 3px, 20px);
+    @include border-radius(20px);
+
+
+    #title, #content { 
+        @include append(1);
+        @include prepend(1);
+        @include column(20);  
+    }
+
+    a { @include navi-link; }
+}

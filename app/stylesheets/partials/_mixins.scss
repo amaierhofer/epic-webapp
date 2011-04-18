@@ -1,0 +1,12 @@
+@mixin border($color: red) {
+    border: 1px dashed $color;
+}
+
+@mixin navi-link {
+    color: darken($text, 30%);
+    text-decoration: none;
+    &:hover { 
+        color: $text; 
+        background-color: darken($text, 75%);
+    }
+}

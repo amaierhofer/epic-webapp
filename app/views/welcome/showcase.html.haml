@@ -1,20 +1,26 @@
-- title "Showcase"
 
-Welcome to the epic adventure. See some lolcats for now. What's the _correct_ way to center a box inside another box? Text-align works for the railscasts but not for the image we are using.
+#top
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
 
-#showcase
-  - (1..6).each do |index| 
-    %div
-      = image_tag "lolcats/lol#{index}.jpg", :size => "500x500"
+#left
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
 
-= javascript_include_tag "jquery.cycle.min.js"
+#right
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
 
-:javascript
-  jQuery(function() {
-    var opts = {
-      fx: 'fade',
-      pause: 1,
-      next: '#showcase',
-    };
-    jQuery('#showcase').cycle(opts);
-  });
+/ #showcase
+/  - (1..6).each do |index| 
+/    %div
+/      = image_tag "lolcats/lol#{index}.jpg", :size => "500x500"
+/
+/= javascript_include_tag "jquery.cycle.min.js"
+/
+/:javascript
+/  jQuery(function() {
+/    var opts = {
+/      fx: 'fade',
+/      pause: 1,
+/      next: '#showcase',
+/    };
+/    jQuery('#showcase').cycle(opts);
+/  });

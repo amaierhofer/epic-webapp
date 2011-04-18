@@ -17,21 +17,27 @@
   
   %body
 
-  #topbar 
-    #header
-      #logo
-        = image_tag "cab_view.png"
-        %span= link_to 'Epic Services', :root
+    .blackbar 
+      #header
+        #logo
+          = image_tag "cab_view.png"
+          %span= link_to 'Epic Services', :root
 
-      %ul#navi
-        %li= link_to 'intro', :about
-        %li= link_to 'use case', :about_use_cases
-        %li= link_to 'technology', :about_technology
-        %li= link_to 'artifacts', :about_artifacts
-  #main 
-    #container
-      = content_tag :h1, yield(:title) if show_title?
-      - flash.each do |name,msg|
-        = content_tag :div, msg, :id => "flash_#{name}"
-      = yield
+        %ul#navi
+          %li= link_to 'intro', :about
+          %li= link_to 'use case', :about_use_cases
+          %li= link_to 'technology', :about_technology
+          %li= link_to 'artifacts', :about_artifacts
+
+    #main
+      #title 
+        = content_tag :h1, yield(:title) if show_title?
+      #content
+        = yield
+
+    .blackbar
+      #footer
+        me and you production 2011
+
+
 

@@ -10,9 +10,10 @@ gem 'rest-client'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'nifty-generators' 
 #gem 'rails3-generators'
+gem "haml", ">= 3.1.alpha.50"
 gem 'haml-rails'
 gem 'devise'
-gem 'compass'
+gem 'compass', '0.11.beta.7'
 #gem 'blather', :git => 'http://github.com/shingara/blather.git', :branch => 'without_active_support_inside'
 
 

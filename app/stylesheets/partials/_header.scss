@@ -1,0 +1,22 @@
+@import "compass/typography/lists/horizontal-list";
+@import "compass/typography/lists/inline-block-list";
+@import "mixins";
+
+#header {
+    font-size: 1.7em;
+
+    @include container;
+    @include prepend-top;
+    @include append-bottom;
+
+    #logo { 
+        @include column(10);  
+    }
+
+    #navi {
+        @include inline-block-list;
+        @include column(14,true);
+    }
+
+    a { @include navi-link; }
+} 
