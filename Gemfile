@@ -14,6 +14,7 @@ gem "haml", ">= 3.1.alpha.50"
 gem 'haml-rails'
 gem 'devise'
 gem 'compass', '0.11.beta.7'
+gem 'fancy-buttons', '1.1.0.alpha.1'
 #gem 'blather', :git => 'http://github.com/shingara/blather.git', :branch => 'without_active_support_inside'
 
 

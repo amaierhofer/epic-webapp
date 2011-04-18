@@ -1,4 +1,5 @@
 @import "mixins"; 
+@import "fancy-buttons";
 
 
 
@@ -10,18 +11,19 @@
     @include box-shadow(#000, 3px, 3px, 20px);
     @include border-radius(20px);
 
-
     #title, #content { 
         @include prepend-top;
         @include append(1);
         @include prepend(1);
         @include column(22);  
     }
+    
     #title { 
+        //styling for h1 missing
+        //ensure margins dont get to big to surrounding text
     }
     #content {
         @include append-bottom;
-        @include showgrid;
         #top { 
             @include column(22); 
             @include append-bottom;
@@ -35,8 +37,16 @@
             #details {
                 @include append-bottom;
             }
+            #button {
+                //decide if we want left right or center
+                //identify propery way of positioning single 
+                //cell within grid, must be documented
+                @include prepend(3);
+                a {
+                    @include fancy-button(#2966a8);
+                }
+            }
         }
     }
-
     a { @include navi-link; }
 }
