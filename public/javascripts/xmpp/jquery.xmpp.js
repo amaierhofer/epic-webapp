@@ -229,12 +229,12 @@ _sessions : new Object(),
     },
 
 	sendEpicIntent : function(jid, intent, callback){
-		sessionkey = this.__generateSessionkey();
-		message = $msg({to: jid, type: "chat"}).c("application", {xmlns: "http://mobilesynergies.org/protocol/epic", sessionkey : sessionkey,  intent: intent});
+		vsessionkey = this.__generateSessionkey();
+		message = $msg({to: jid, type: "chat"}).c("application", {xmlns: "http://mobilesynergies.org/protocol/epic", sessionkey : vsessionkey,  action: intent});
 		this._connection.send(message);
 		this.__log(message.toString());
 			if(callback!=null){
-				this._sessions[sessionkey]=callback;
+				this._sessions[vsessionkey]=callback;
 			}
 		}
 	
