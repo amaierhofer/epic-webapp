@@ -1,7 +1,20 @@
 = javascript_include_tag 'mobileapps/browserhistory.js'
 %h1 Have you recently accessed some interesting webpage on your phone?
 %p Retrieve browser history!
-%input{:id => "browserhistorybutton", :type => "submit", :value => "Retrieve!"}
+%input{:id => "browserhistorybutton", :type => "submit", :value => "Retrieve most recent!"}
+%h3 TODO
+%p at web page
+%ul 
+  %li add most visited button
+  %li add paging mechanism
+%p at android app
+%ul
+  %li replace asc with dec
+  %li add api for most visited
+  %li finish()
+  %li add image
+  %li add api for paging
+
 %ul{:id => "page-list"}
 
 
