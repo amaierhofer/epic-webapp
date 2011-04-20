@@ -12,8 +12,8 @@
       }
     },
 
-//storing session keys
-_sessions : new Object(),
+    //storing session keys
+    _sessions : {},
 
     _create: function() {
       Strophe.log = function(level, msg) { console.log(level + ": " + msg); };
@@ -172,6 +172,15 @@ _sessions : new Object(),
       var connectionCallback = $.proxy(this.__connectionCallback, this);
 
       this._connection = new Strophe.Connection(opts.url);
+
+      this._connection.xmlInput = $.proxy(function (body) {
+        this.__trigger('incoming', body);
+      },this);
+
+      this._connection.xmlOutput = $.proxy(function (body) {
+        this.__trigger('outgoing', body);
+      },this);
+
       this.__bind('connected', this.__sendPresence);
       this.__log('connecting to ' + opts.url);
       this.__log('connecting as ' + opts.jid + ' with ' + opts.pw);
@@ -195,8 +204,7 @@ _sessions : new Object(),
       this._connection.send(msg);
 
     },
-
-    	getJid: function() {
+    getJid: function() {
 		return this.options.jid;
 	},
 
@@ -233,11 +241,10 @@ _sessions : new Object(),
 		message = $msg({to: jid, type: "chat"}).c("application", {xmlns: "http://mobilesynergies.org/protocol/epic", sessionkey : sessionkey,  intent: intent});
 		this._connection.send(message);
 		this.__log(message.toString());
-			if(callback!=null){
-				this._sessions[sessionkey]=callback;
-			}
-		}
-	
+        if(callback){
+          this._sessions[sessionkey]=callback;
+        }
+    }
   });
 
 })(jQuery);
