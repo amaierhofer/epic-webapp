@@ -11,9 +11,6 @@ class WelcomeController < ApplicationController
     render :index, :layout => 'design'
   end
 
-  def xmpp
-    render :layout => 'jasmine'
-  end
 
 end
 
