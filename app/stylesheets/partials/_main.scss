@@ -1,0 +1,52 @@
+@import "mixins"; 
+@import "fancy-buttons";
+
+
+
+#main {
+    font-size: 1.2em;
+    color: darken($text, 75%);
+    background-color: rgba(250,250,250,0.5);
+    @include container;
+    @include box-shadow(#000, 3px, 3px, 20px);
+    @include border-radius(20px);
+
+    #title, #content { 
+        @include prepend-top;
+        @include append(1);
+        @include prepend(1);
+        @include column(22);  
+    }
+    
+    #title { 
+        //styling for h1 missing
+        //ensure margins dont get to big to surrounding text
+    }
+    #content {
+        @include append-bottom;
+        #top { 
+            @include column(22); 
+            @include append-bottom;
+        } 
+        #left {
+            @include column(12); 
+        }
+        #right {
+            @include prepend(2);
+            @include column(8,true); 
+            #details {
+                @include append-bottom;
+            }
+            #button {
+                //decide if we want left right or center
+                //identify propery way of positioning single 
+                //cell within grid, must be documented
+                @include prepend(3);
+                a {
+                    @include fancy-button(#2966a8);
+                }
+            }
+        }
+    }
+    a { @include navi-link; }
+}

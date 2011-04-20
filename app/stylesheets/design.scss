@@ -2,72 +2,35 @@
 @import "compass/reset";
 @import "compass/css3";
 @import "blueprint/grid";
-@import "partials/showcase";
+@import "blueprint/debug";
+@import "partials/mixins";
 
 $text: #eee;
-$blueprint_grid_columns: 8;
-$blueprint_grid_width: 40px;
-
-@mixin border($color: red) {
-    border: 1px dashed $color;
-}
 
 
-
-@mixin navi-link {
-    color: darken($text, 30%);
-    text-decoration: none;
-    &:hover { 
-        color: $text; 
-        background-color: darken($text, 75%);
-    }
-}
-html { height: 100%; }
 body {
-    height: 100%;
     color: $text; 
     font-family: Helvetica, Arial;
     background: url('../images/wood2.jpg');
-    font-size: 2em;
-}
-#topbar {
-    background-color: rgba(0,0,0,0.4);
-    height: 100px;
-    #header {
-        @include container;
-        position: relative;
-        height: 100%;
-        #logo {
-            position: absolute;
-            left: 40px;
-            bottom: 10px;
-            font-size: 1.2em;
-        }
-        #navi { 
-            li { display: inline; }
-            position: absolute;
-            right: 60px;
-            bottom: 10px;
-            overflow: visible;
-        }
-
-        a { @include navi-link; } 
-    } 
-    margin-bottom: 30px;
 }
 
-#main {
-    font-size: 0.8em;
-    color: darken($text, 75%);
-    padding: 20px;
+//do we want the black bar or not??
+div.blackbar {
+//    background-color: rgba(0,0,0,0.3);
+}
+
+#container {
     @include container;
-    @include box-shadow(#000, 3px, 3px, 20px);
-    @include border-radius(20px);
-    background-color: rgba(250,250,250,0.5);
-    h1, h2, h3 { font-size: 1.2em; font-weight: bold;  }
-    p, ul { margin: 20px 10px 20px 10px; }
-    a  { 
-        @include navi-link; 
-        color: darken($text, 60%);
-    }
+    @include showgrid;
 }
+
+#header, #footer {
+    
+} 
+
+@import "partials/header";
+@import "partials/main";
+@import "partials/footer";
+@import "partials/showcase";
+
+

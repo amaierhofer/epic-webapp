@@ -3,6 +3,7 @@ EpicWebapp::Application.routes.draw do
 
   root :to => "welcome#index"
   match 'welcome/app'
+  match 'welcome/xmpp'
   match 'welcome/mockups'
 
   match 'about', :to => 'about#index'
