@@ -14,7 +14,6 @@
 
     //storing session keys
     _sessions : {},
-
     _create: function() {
       Strophe.log = function(level, msg) { console.log(level + ": " + msg); };
       Strophe.debug = function(level, msg) { };
@@ -86,6 +85,11 @@
     },
     __onMessageReceived: function(ev,stanza) {
       var from = $(stanza).attr('from'), type = $(stanza).attr('type') || "undefined";
+      var sessionkey = jQuery(stanza).children().filter('application').attr('session');
+      if(sessionkey){
+        sessioncallbackfunction = this._sessions[sessionkey.trim()];
+        sessioncallbackfunction(jQuery(stanza).children().filter('application'));
+      }
       this.__log('onMessageReceived: ' + from + ' => ' + type);
       this.__log(stanza);
     }, 
@@ -237,14 +241,19 @@
     },
 
 	sendEpicIntent : function(jid, intent, callback){
-		sessionkey = this.__generateSessionkey();
-		message = $msg({to: jid, type: "chat"}).c("application", {xmlns: "http://mobilesynergies.org/protocol/epic", sessionkey : sessionkey,  intent: intent});
+		vsessionkey = this.__generateSessionkey();
+		message = $msg({to: jid, type: "chat"}).c("application", {xmlns: "http://mobilesynergies.org/protocol/epic", session : vsessionkey,  action: intent});
 		this._connection.send(message);
 		this.__log(message.toString());
         if(callback){
           this._sessions[sessionkey]=callback;
         }
+	},
+
+    getSessions : function(){
+        return this._sessions;
     }
+	
   });
 
 })(jQuery);
