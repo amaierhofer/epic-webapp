@@ -43,12 +43,23 @@
       this.x = $(this.element).xmpp({
         linkHandler: this._linkHandler
       });
+
+      // bind Peek to events to populate console
+      this.x.bind('xmpp.outgoing',function(ev,body) {
+        Peek.show_traffic(body,'outgoing');
+      });
+      this.x.bind('xmpp.incoming',function(ev,body) {
+        Peek.show_traffic(body,'incoming');
+      });
+
+      // connect if we have a user
       if (!this.x.xmpp('option').initialized && session.getUser()) { 
         this.x.xmpp('option', session.getUser()); 
         this.x.xmpp('connect');
       }
       window.x = this.x;
     },
+
     // if we sign out, we remove our local user
     _bindLogoutListener: function() {
       $("#sign_out").live('click', $.proxy(function() {
@@ -56,6 +67,7 @@
         session.delUser();
       }, this));
     },
+
     _bindLoginListener: function() {
       $("#user_new").live('submit',$.proxy(function() {
         var domain = $("#xmpp_info").attr('data-domain');

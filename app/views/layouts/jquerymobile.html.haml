@@ -8,6 +8,7 @@
     = csrf_meta_tag
     = render 'shared/stylesheet_includes'
     = render 'shared/javascript_includes'
+    = stylesheet_link_tag 'peek.css'
     = yield(:head)
   
   %body
@@ -17,7 +18,10 @@
       .container{'data-role' => 'content'}
         = render :partial => 'shared/flash', :locals => { :flash => flash }
         = yield
-      = render :partial => 'shared/footer'
+
+    #peek{'data-role' => 'page'}
+      = render :partial => 'shared/header'
+      #console{'data-role' => 'content'}
 
 
 
