@@ -233,11 +233,19 @@
       this.__updateElements({}, this.__state);
     },
 
-	sendEpicIntent : function(jid, intent, callback){
+	sendEpicIntent : function(jid, action, data, callback){
 		vsessionkey = this.__generateSessionkey();
-		message = $msg({to: jid, type: "chat"}).c("application", {xmlns: "http://mobilesynergies.org/protocol/epic", session : vsessionkey,  action: intent});
-		this._connection.send(message);
-		this.__log(message.toString());
+        //applicationelement = jQuery('<application>').attr('xmlns', 'http://mobilesynergies.org/protocol/epic').attr('session', vsessionkey).attr('action', intent);
+        //if(data){
+            //applicationelement.append(data);
+        //}
+		//message = jQuery('<msg>').attr('to', jid).attr('type', 'chat').append(applicationelement);
+        var msg = $msg({to: jid, type: 'chat'}).c('application', {xmlns: 'http://mobilesynergies.org/protocol/epic', action: action, session: vsessionkey});
+        if(data)
+            msg.cnode(data[0]);
+		this._connection.send(msg);
+
+		this.__log(msg);
 		if(callback!=null){
 			this._sessions[vsessionkey]=callback;
 		}
