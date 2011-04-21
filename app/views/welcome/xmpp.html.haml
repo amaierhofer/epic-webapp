@@ -1,0 +1,25 @@
+= javascript_include_tag 'jquery.ui.widget.js'
+= javascript_include_tag 'strophe.js'
+= javascript_include_tag 'xmpp/peek.js'
+= javascript_include_tag 'xmpp/jquery.xmpp.js'
+
+#console
+
+:javascript
+  var options = {
+    url: 'http://vmware:5280/http-bind',
+      jid: 'asdf@vmware/browser',
+      pw: 'asdf'
+   }, j = jQuery.noConflict();
+
+
+   var x = j('body').xmpp(options);
+   x.bind('xmpp.outgoing',function(ev,body) {
+    Peek.show_traffic(body,'outgoing');
+   });
+
+   x.bind('xmpp.incoming',function(ev,body) {
+    Peek.show_traffic(body,'incoming');
+   });
+   x.xmpp('connect');
+

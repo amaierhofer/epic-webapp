@@ -13,8 +13,7 @@
     },
 
     //storing session keys
-    _sessions : new Object(),
-
+    _sessions : {},
     _create: function() {
       Strophe.log = function(level, msg) { console.log(level + ": " + msg); };
       Strophe.debug = function(level, msg) { };
@@ -177,6 +176,15 @@
       var connectionCallback = $.proxy(this.__connectionCallback, this);
 
       this._connection = new Strophe.Connection(opts.url);
+
+      this._connection.xmlInput = $.proxy(function (body) {
+        this.__trigger('incoming', body);
+      },this);
+
+      this._connection.xmlOutput = $.proxy(function (body) {
+        this.__trigger('outgoing', body);
+      },this);
+
       this.__bind('connected', this.__sendPresence);
       this.__log('connecting to ' + opts.url);
       this.__log('connecting as ' + opts.jid + ' with ' + opts.pw);
@@ -200,8 +208,7 @@
       this._connection.send(msg);
 
     },
-
-    	getJid: function() {
+    getJid: function() {
 		return this.options.jid;
 	},
 
@@ -235,18 +242,14 @@
 
 	sendEpicIntent : function(jid, action, data, callback){
 		vsessionkey = this.__generateSessionkey();
-        //applicationelement = jQuery('<application>').attr('xmlns', 'http://mobilesynergies.org/protocol/epic').attr('session', vsessionkey).attr('action', intent);
-        //if(data){
-            //applicationelement.append(data);
-        //}
-		//message = jQuery('<msg>').attr('to', jid).attr('type', 'chat').append(applicationelement);
+
         var msg = $msg({to: jid, type: 'chat'}).c('application', {xmlns: 'http://mobilesynergies.org/protocol/epic', action: action, session: vsessionkey});
         if(data)
             msg.cnode(data[0]);
 		this._connection.send(msg);
 
 		this.__log(msg);
-		if(callback!=null){
+		if(callback){
 			this._sessions[vsessionkey]=callback;
 		}
 	},
