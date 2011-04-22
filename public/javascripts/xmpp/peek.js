@@ -4,17 +4,19 @@
       var id = '#console';
       if (body.childNodes.length > 0) {
         var console = $(id).get(0);
-        var at_bottom = console.scrollTop >= console.scrollHeight - 
-          console.clientHeight;
+        if (console) {
+          var at_bottom = console.scrollTop >= console.scrollHeight - 
+            console.clientHeight;
 
-        $.each(body.childNodes, function () {
-          $(id).append("<div class='" + type + "'>" + 
-                        Peek.pretty_xml(this) +
-                          "</div>");
-        });
+          $.each(body.childNodes, function () {
+            $(id).append("<div class='" + type + "'>" + 
+                          Peek.pretty_xml(this) +
+                            "</div>");
+          });
 
-        if (at_bottom) {
-          console.scrollTop = console.scrollHeight;
+          if (at_bottom) {
+            console.scrollTop = console.scrollHeight;
+          }
         }
       }
     },

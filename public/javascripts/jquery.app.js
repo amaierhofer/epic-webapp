@@ -2,10 +2,14 @@
 
   // userSession abstraction
   var session = (function() {
-    var s = sessionStorage;
+    var s = sessionStorage, ls = localStorage;
+    function getUser() {
+      if(window.creds) { return creds; }
+      if(s.user) { return JSON.parse(s.user); }
+    }
     return {
+      getUser: getUser,
       setUser: function(user)  { s.user = JSON.stringify(user); },
-      getUser: function() { return s.user && JSON.parse(s.user); },
       delUser: function() { delete s.user; }
     };
   })();
@@ -18,7 +22,6 @@
     }
   }
 
-  $.nmk.session = session;
 
 
   $.widget("nmk.app", {
@@ -30,7 +33,6 @@
       this._state = {};
       this._createClient();
       this._bindLogoutListener();
-      this._bindLoginListener();
       this._bindShowPageListener();
       this._bindMessageListener();
     },
@@ -68,23 +70,16 @@
       }, this));
     },
 
-    _bindLoginListener: function() {
-      $("#user_new").live('submit',$.proxy(function() {
-        var domain = $("#xmpp_info").attr('data-domain');
-        var user = {
-          url: $("#xmpp_info").attr('data-url'),
-          jid: $("#user_username").val() + "@" + domain + "/browser",
-          pw: $("#user_password").val()
-        };
-        session.setUser(user);
-        this._createClient();
-      },this));
-    },
     _bindShowPageListener: function() {
       var x = this.x;
       $("body").delegate('.ui-page', 'pageshow', function() {
         if (x.xmpp('state').initialized) {
           x.xmpp('update');
+        } else { 
+            if (x && !x.xmpp('option').initialized && session.getUser()) { 
+              x.xmpp('option', session.getUser()); 
+              x.xmpp('connect');
+            }
         }
       });
     },
@@ -108,5 +103,6 @@
       return '<a href="' + link + '?jid=' + jid + '">' + jid + '</a>';
     }
   });
+  $.nmk.session = session;
 })(jQuery);
 

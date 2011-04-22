@@ -6,14 +6,22 @@
 
     %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
     = csrf_meta_tag
-    = render 'shared/stylesheet_includes'
-    = render 'shared/javascript_includes'
+    - if jqm_enabled? 
+      = stylesheet_link_tag "/jquery.mobile-1.0a4/jquery.mobile-1.0a4.css"
     = stylesheet_link_tag 'peek.css'
+
+
+    = javascript_include_tag :xmpp
+    = javascript_include_tag 'reloader' if Rails.env == 'development'
+    - if jqm_enabled? 
+      = javascript_include_tag '/jquery.mobile-1.0a4/jquery.mobile-1.0a4.js'
+
     = yield(:head)
   
   %body
 
     %div{'data-role' => 'page'}
+
       = render :partial => 'shared/header'
       .container{'data-role' => 'content'}
         = render :partial => 'shared/flash', :locals => { :flash => flash }

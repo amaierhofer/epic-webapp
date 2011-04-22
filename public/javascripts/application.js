@@ -8,13 +8,17 @@ function log(msg) {
 (function($) {
   $(function() {
 
+    
+    log('credentials are set in appliction.js and overridden by session creds');
+    var opts = $.nmk.session.getUser() || {
+      url: 'http://ubuntu:5280/http-bind', 
+      jid:'asdf@ubuntu/browser', 
+      pw:'asdf'
+    };
 
-    var opts = {url: 'http://ubuntu:5280/http-bind', jid:'asdf@ubuntu/browser', pw:'asdf'} ;
     log(opts);
     var app = $("body").xmpp(opts);
-
     app.xmpp('connect');
-
     window.app = app;
     log(window.app);
   });

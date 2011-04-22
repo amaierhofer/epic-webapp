@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 
     if @user.available? and @user.register
+      session[:current_user] = @user
       redirect_to :welcome_app
     else
       render :new
