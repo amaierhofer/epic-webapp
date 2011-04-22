@@ -38,16 +38,12 @@ class ApplicationController < ActionController::Base
       session[:design] = params[:design] if params[:design]  
     end  
 
-    helper_method :epic, :wants_xmpp?, :jqm_enabled? , :xmpp_enabled?, 
-      :design_enabled?
-
-    helper_method :user_signed_in?, :current_user
 
     def current_user
+      session[:current_user]  
     end
 
-    def user_signed_in?
-      false
-    end
+    helper_method :epic, :wants_xmpp?, :jqm_enabled? , :xmpp_enabled?, 
+      :design_enabled?, :current_user
 end
 

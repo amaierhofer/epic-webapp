@@ -22,7 +22,7 @@ EpicWebapp::Application.routes.draw do
   match 'test/compass', :to => 'jasmine#compass', :as => :jasmine_compass
 
   resources :users, :sessions
-
+  get "logout" => "sessions#destroy", :as => "log_out"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

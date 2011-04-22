@@ -6,8 +6,8 @@
 - title 'Home'
 
 .center
-  - if user_signed_in?
-    %p Welcome back, #{current_user.username}!
+  - if current_user
+    %p Welcome back, #{current_user.name}!
     = render :partial => 'shared/status'
   - else
 

@@ -24,7 +24,6 @@ class User
     req[:pw] and req[:pw].attributes['value'] == pw ? true : false
   end
 
-
   def initialize(hash = {})
     hash.each do |name, value|
       send "#{name}=", value

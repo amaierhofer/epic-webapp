@@ -1,10 +1,10 @@
 %div{'data-role' => 'header', 'data-id' => 'header','data-nobackbtn' => 'true', 'data-position' => 'fixed'}
 
 
-  - if user_signed_in?
-    = link_to 'Sign Out', :destroy_user_session, :id => 'sign_out', :rel => 'external'
+  - if current_user
+    = link_to 'Sign Out', :log_out, :id => 'sign_out', :rel => 'external'
   %h1= yield(:title)
-  - if user_signed_in?
+  - if current_user
     = link_to 'under tha hoodz', '#peek'
 //  - if user_signed_in?
 //    .ui-btn-left
