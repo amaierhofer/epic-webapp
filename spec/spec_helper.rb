@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'spork'
+require 'webmock/rspec'
 
 Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'

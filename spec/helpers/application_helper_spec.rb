@@ -22,7 +22,7 @@ describe ApplicationHelper do
   it "#xmpp_info from config" do
     domain = APP_CONFIG[:domain]
     bosh = APP_CONFIG[:bosh]
-    expected = "<span data-domain=\"psi\" data-url=\"http://localhost/xmpp-httpbind\" id=\"xmpp_info\" />" 
+    expected = "<span data-domain=\"#{domain}\" data-url=\"#{bosh}\" id=\"xmpp_info\" />" 
     helper.xmpp_info(nil).should == expected
   end
 

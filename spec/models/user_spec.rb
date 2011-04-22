@@ -1,5 +1,8 @@
 require 'spec_helper'
 require 'webmock/rspec'
+
+
+
 describe User do
 
   def mock_user(stubs={})
@@ -30,18 +33,21 @@ describe User do
 
     it "issues a get to admin/user" do
       stub_request(:get, @url)
-      @user.available?
+      @user.available?.should == false
+      @user.errors.should_not be_empty
       WebMock.should have_requested(:get, @url)
     end
 
-    it "returns false for 200" do
+    it "returns false for 200 and populates errors" do
       stub_request(:get, @url).to_return(:status => 200)
-      @user.available? == false
+      @user.available?.should == false
+      @user.errors.should_not be_empty
     end
 
-    it "returns true for 404" do
+    it "returns true for 404 and empty errors" do
       stub_request(:get, @url).to_return(:status => 404)
-      @user.available? == true
+      @user.available?.should == true
+      @user.errors.should be_empty
     end
   end
 
@@ -52,18 +58,37 @@ describe User do
     end
 
     it "returns true for 200" do
-      stub_request(:get, @url)
-      @user.register == true
+      stub_request(:post, @url)
+      @user.register.should == true
       WebMock.should have_requested(:post, @url)
     end
 
     it "returns false for not 200" do
-      stub_request(:get, @url).to_return(:status => 500)
-      @user.register == false
+      stub_request(:post, @url).to_return(:status => 500)
+      @user.register.should == false
 
       body = "newusername=foo&newuserpassword=bar"
       body += "&addnewuser=Add%20User"
       WebMock.should have_requested(:post, @url).with(:body => body)
+    end
+  end
+
+  context ".authenticate" do
+    before do 
+      @url = APP_CONFIG[:admin] + "/users/admin"
+      @body = IO.readlines(File.dirname(__FILE__) + "/user.html").join('')
+    end
+
+    it "returns true for matching password" do
+      stub_request(:get, @url).to_return(:status => 200, :body => @body)
+      User.authenticate('admin','admin').should == true
+      WebMock.should have_requested(:get, @url)
+    end
+
+    it "returns false for wrong password" do
+      stub_request(:get, @url).to_return(:status => 200, :body => @body)
+      User.authenticate('admin','lala').should == false
+      WebMock.should have_requested(:get, @url)
     end
   end
 

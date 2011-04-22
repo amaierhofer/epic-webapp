@@ -12,14 +12,6 @@ class ApplicationController < ActionController::Base
     headers['Access-Control-Allow-Origin'] = '*'
   end
 
-  def is_ajax_request?
-    request.headers['x-requested-with'] == 'XMLHttpRequest'
-  end
-
-  def after_sign_in_path_for(resource_or_scope)
-     return current_user
-  end
-
 
   protected
     def decide_layout
@@ -27,14 +19,11 @@ class ApplicationController < ActionController::Base
       return 'design' if design_enabled?
       return 'application'
     end
-    ## also talks to epic, use errors of user to communicate problems?
-    def epic
-      Class.new { include Epic::SocketClient }.new  private  
-    end
 
     def design_enabled?  
       session[:design] ? session[:design] == "1" : false
     end  
+
     def xmpp_enabled?
       session[:xmpp] ? session[:xmpp] == "1" : true
     end
