@@ -1,0 +1,9 @@
+- title "Sign up"
+= xmpp_info
+
+= simple_form_for(@user) do |f| 
+  = f.error_messages
+  = f.input :name, :required => false
+  = f.input :password, :required => false
+  = f.submit "Sign up"
+

@@ -1,6 +1,6 @@
 require 'rest_client'
 require 'open-uri'
-gem 'hpricot'
+require 'hpricot'
 
 class User 
   include ActiveModel::Validations
@@ -20,16 +20,8 @@ class User
   end
 
   def self.authenticate(name,pw)
-    success = false
-    url = User.url.gsub /(\w+:\w+)@/, ''
-    user, password = $1.split(":")
-    open("#{url}/users/#{name}", :http_basic_authentication => [user,password]) do |f| 
-
-      pw_elem = Hpricot(f.read).at "//input[@type='password']"
-      pw_value = pw_elem.attributes['value']
-      success = true if pw_value == pw
-    end
-    success
+    req = User.inspect(name)
+    req[:pw] and req[:pw].attributes['value'] == pw ? true : false
   end
 
 
@@ -44,9 +36,10 @@ class User
   end
 
   def available? 
-    available = ! User.request { RestClient.get "#{User.url}/users/#{name}"  }
-    errors.add :name, "Username not available" unless available
-    available
+    nf = User.inspect(name)[:nf]
+    return true if nf.nil? or nf.inner_html == "Not Found"
+    errors.add :name, "not available" 
+    false
   end
 
   def register
@@ -54,11 +47,22 @@ class User
       RestClient.post "#{User.url}/users", :newusername => name, 
         :newuserpassword => password, :addnewuser => 'Add User'
     end
-    errors.add :name, "Username could not be registered" unless registered
+    errors.add :name, "could not be registered" unless registered
     registered
   end
 
   protected
+  def self.inspect(username)
+    hash = {}
+    url = User.url.gsub /(\w+:\w+)@/, ''
+    user, password = $1.split(":")
+    open("#{url}/user/#{username}", :http_basic_authentication => [user,password]) do |f| 
+      doc =  Hpricot(f.read)
+      hash[:nf] = doc.at "#content h1"
+      hash[:pw] = doc.at "//input[@type='password']"
+    end
+    hash
+  end
   def self.request
     success = true
     begin

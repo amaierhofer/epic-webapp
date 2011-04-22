@@ -8,3 +8,4 @@ db/development.sqlite3
 Gemfile.lock
 public/stylesheets
 .idea
+config/app_config.yml

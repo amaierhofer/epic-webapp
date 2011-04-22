@@ -2,9 +2,6 @@ require 'epic/socket_client'
 
 class UsersController < ApplicationController
   
-  def show
-    find_user
-  end
   
   def new
     @user = User.new

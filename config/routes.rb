@@ -21,7 +21,7 @@ EpicWebapp::Application.routes.draw do
   match 'test/webos', :to => 'jasmine#webos', :as => :jasmine_webos
   match 'test/compass', :to => 'jasmine#compass', :as => :jasmine_compass
 
-  resources :users
+  resources :users, :sessions
 
 
   # The priority is based upon order of creation:

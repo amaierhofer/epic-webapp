@@ -1,8 +1,6 @@
 require 'spec_helper'
 require 'webmock/rspec'
 
-
-
 describe User do
 
   def mock_user(stubs={})
@@ -28,26 +26,22 @@ describe User do
   context "#available?" do
     before do 
       @user = User.new  :name => "foo"
-      @url = APP_CONFIG[:admin] + "/users/foo"
+      @url = APP_CONFIG[:admin] + "/user/foo"
+      @body = IO.readlines(File.dirname(__FILE__) + "/user_not_found.html").join('')
     end
 
-    it "issues a get to admin/user" do
-      stub_request(:get, @url)
-      @user.available?.should == false
-      @user.errors.should_not be_empty
-      WebMock.should have_requested(:get, @url)
-    end
 
-    it "returns false for 200 and populates errors" do
-      stub_request(:get, @url).to_return(:status => 200)
-      @user.available?.should == false
-      @user.errors.should_not be_empty
-    end
-
-    it "returns true for 404 and empty errors" do
-      stub_request(:get, @url).to_return(:status => 404)
+    it "returns false and populates errors" do
+      stub_request(:get, @url).to_return(:body => @body)
       @user.available?.should == true
       @user.errors.should be_empty
+    end
+
+    it "returns true and empty errors" do
+      @body.gsub! 'Not Found', ''
+      stub_request(:get, @url).to_return(:body => @body)
+      @user.available?.should == false
+      @user.errors.should_not be_empty
     end
   end
 
@@ -75,7 +69,7 @@ describe User do
 
   context ".authenticate" do
     before do 
-      @url = APP_CONFIG[:admin] + "/users/admin"
+      @url = APP_CONFIG[:admin] + "/user/admin"
       @body = IO.readlines(File.dirname(__FILE__) + "/user.html").join('')
     end
 
