@@ -4,33 +4,24 @@
 @import "blueprint/grid";
 @import "blueprint/debug";
 @import "partials/mixins";
+@import "compass/typography/vertical_rhythm";
 
 $text: #eee;
+$base-font-size: 20px;
+$base-line-height: 30px;
 
-
+html  {
+    @include establish-baseline;
+    text-align: justify;
+}
 body {
     color: $text; 
     font-family: Helvetica, Arial;
     background: url('../images/wood2.jpg');
 }
 
-//do we want the black bar or not??
-div.blackbar {
-//    background-color: rgba(0,0,0,0.3);
-}
-
-#container {
-    @include container;
-    @include showgrid;
-}
-
-#header, #footer {
-    
-} 
-
 @import "partials/header";
 @import "partials/main";
 @import "partials/footer";
-@import "partials/showcase";
 
 

@@ -1,21 +1,40 @@
-#top { @include column(8); }
-#left { @include column(5); }
-#right { @include column(3,true); }
-#apps { 
-    @include column(8);  
-}
-
-
-#showcase {
-    height: 550px;
-    width: 550px;
-    margin: 100px;
-    @include column(5);
-    img {
-        text-align: center;
-        background-color: #000;
-        padding: 25px;
-        @include border-radius(25px);
-        @include box-shadow;
+#top { 
+    @include column(22); 
+    @include append-bottom;
+    } 
+    #apps {
+        @include prepend(1);
+        @include column(20);
+        @include prepend-top;
+        @include append-bottom;
+        #feature_list {
+            @include box-shadow;
+        }
+    } 
+    #left {
+        @include column(12); 
     }
+    #right {
+        @include prepend(2);
+        @include column(8,true); 
+        #details {
+            @include append-bottom;
+        }
+        #button {
+            //decide if we want left right or center
+            //identify propery way of positioning single 
+            //cell within grid, must be documented
+            @include prepend(3);
+            a {
+                @include fancy-button(#2966a8);
+            }
+        }
+    }
+    #top { @include column(8); }
+    #left { @include column(5); }
+    #right { @include column(3,true); }
+    #apps { 
+        @include column(8);  
 }
+
+
