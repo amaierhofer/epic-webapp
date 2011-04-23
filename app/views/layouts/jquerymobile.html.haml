@@ -28,7 +28,8 @@
         = yield
 
     #peek{'data-role' => 'page'}
-      = render :partial => 'shared/header'
+      %div{'data-role' => 'header', 'data-id' => 'header','data-nobackbtn' => 'true', 'data-position' => 'fixed'}
+        %h1= "XMPP Stream"
       #console{'data-role' => 'content'}
 
 

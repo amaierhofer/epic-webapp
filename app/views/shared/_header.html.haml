@@ -1,14 +1,15 @@
 %div{'data-role' => 'header', 'data-id' => 'header','data-nobackbtn' => 'true', 'data-position' => 'fixed'}
 
-
   - if current_user
     = link_to 'Sign Out', :log_out, :id => 'sign_out', :rel => 'external'
+
   %h1= yield(:title)
+
   - if current_user
-    = link_to 'under tha hoodz', '#peek'
-//  - if user_signed_in?
-//    .ui-btn-left
-//      = link_to 'Sign Out', :destroy_user_session, :id => 'sign_out', :rel => 'external'
-//    .ui-btn-right
-//      = link_to 'Options', options_user_path(current_user), 'data-rel' => 'dialog', 'data-icon' => 'gears', 'data-transition' => 'pop'
-//
+    = link_to 'Behind the Scenes', '#peek'
+/  - if user_signed_in?
+/    .ui-btn-left
+/      = link_to 'Sign Out', :destroy_user_session, :id => 'sign_out', :rel => 'external'
+/    .ui-btn-right
+/      = link_to 'Options', options_user_path(current_user), 'data-rel' => 'dialog', 'data-icon' => 'gears', 'data-transition' => 'pop'
+/

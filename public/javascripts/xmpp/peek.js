@@ -9,7 +9,7 @@
             console.clientHeight;
 
           $.each(body.childNodes, function () {
-            $(id).append("<div class='" + type + "'>" + 
+            $(id).prepend("<div class='" + type + "'>" + 
                           Peek.pretty_xml(this) +
                             "</div>");
           });

@@ -1,19 +1,16 @@
 #console {
 
-    border: solid 1px #aaa;
     background-color: #000;
     padding: 10px;
-    height: 300px;
-
-    color: #eee;
     font-family: monospace;
 
-    overflow: auto;
+    overflow: hidden;
+    text-shadow: none;
 
 }
 
 .incoming {
-    background-color: #111;
+    background-color: #222;
 }
 
 .xml_punc { color: #888; }
