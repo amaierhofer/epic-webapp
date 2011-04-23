@@ -1,6 +1,10 @@
 #top { @include column(8); }
 #left { @include column(5); }
 #right { @include column(3,true); }
+#apps { 
+    @include column(8);  
+}
+
 
 #showcase {
     height: 550px;
