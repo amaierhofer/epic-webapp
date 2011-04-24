@@ -1,0 +1,10 @@
+
+@import "compass/reset";
+$text: #eee;
+$base-font-size: 20px;
+$base-line-height: 28px;
+html {
+    @include establish-baseline;
+}
+h1 { font-size: 1.8em; }
+h2 { font-size: 1.4em; }

@@ -1,16 +1,16 @@
 #top { 
     @include column(22); 
     @include append-bottom;
-    } 
-    #apps {
-        @include prepend(1);
-        @include column(20);
-        @include prepend-top;
-        @include append-bottom;
-        #feature_list {
-            @include box-shadow;
-        }
-    } 
+} 
+#apps {
+    @include prepend(1);
+    @include column(20);
+    @include append-bottom;
+    #feature_list {
+        @include box-shadow;
+    }
+} 
+/*
     #left {
         @include column(12); 
     }
@@ -36,5 +36,6 @@
     #apps { 
         @include column(8);  
 }
+    */
 
 

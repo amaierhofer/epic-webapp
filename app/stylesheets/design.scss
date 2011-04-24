@@ -1,17 +1,13 @@
 
-@import "compass/reset";
 @import "compass/css3";
 @import "blueprint/grid";
 @import "blueprint/debug";
 @import "partials/mixins";
 @import "compass/typography/vertical_rhythm";
+@import "partials/vertical-rhythm";
 
-$text: #eee;
-$base-font-size: 20px;
-$base-line-height: 30px;
 
 html  {
-    @include establish-baseline;
     text-align: justify;
 }
 body {
@@ -20,8 +16,11 @@ body {
     background: url('../images/wood2.jpg');
 }
 
+
 @import "partials/header";
 @import "partials/main";
+
 @import "partials/footer";
+@import "partials/showcase";
 
 
