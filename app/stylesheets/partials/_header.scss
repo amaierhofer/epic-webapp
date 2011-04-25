@@ -2,15 +2,9 @@
 @import "compass/typography/lists/inline-block-list";
 @import "mixins";
 
-//find out how to left/right align in grid
-//logo ---------------- link | link | link
-
 #header {
-    font-size: 1.7em;
-
     @include container;
     @include prepend-top;
-    @include append-bottom;
 
     #logo { 
         @include column(10);  

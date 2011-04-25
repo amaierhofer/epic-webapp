@@ -11,12 +11,12 @@
     @include border-radius(20px);
 
     #title, #content { 
-        @include prepend-top;
         @include append(1);
         @include prepend(1);
         @include column(22);  
     }
-    
+
+    #title { @include prepend-top; }
     #content {
         @include append-bottom;
     }
