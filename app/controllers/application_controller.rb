@@ -38,7 +38,6 @@ class ApplicationController < ActionController::Base
       session[:design] = params[:design] if params[:design]  
     end  
 
-
     def current_user
       session[:current_user]  
     end

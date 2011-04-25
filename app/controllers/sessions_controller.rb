@@ -5,7 +5,11 @@ class SessionsController < ApplicationController
 
     if User.authenticate(name, password)
       session[:current_user] = User.new(:name => name, :password => password)
-      redirect_to :welcome_app
+      if session[:action_name] 
+        redirect_to :controller => "mobileapps", :action => session[:action_name]
+      else
+        redirect_to :welcome_app
+      end
     else 
       flash.now.alert = "Invalid username or password"
       render "new"
