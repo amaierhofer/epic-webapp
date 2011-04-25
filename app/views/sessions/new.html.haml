@@ -1,5 +1,21 @@
 - title 'Login'
 
+:javascript 
+  $(function() {
+    var url = "#{APP_CONFIG[:bosh]}";
+    var domain = "#{APP_CONFIG[:domain]}";
+
+    $("form").submit(function(e) {
+      var creds = {
+        jid: $("#user_name").val() + "@" + domain,
+        pw: $("#user_password").val(),
+        url: url
+      };
+      console.log(creds);
+      $.nmk.session.setUser(creds);
+    });
+  });
+
 = simple_form_for :user, :url => sessions_path do |f|
   = f.input :name, :input_html => { :size => 30 }, :required => false
   = f.input :password, :input_html => { :size => 30 }, :required => false
