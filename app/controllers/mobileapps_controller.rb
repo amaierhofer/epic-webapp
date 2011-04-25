@@ -5,5 +5,4 @@ class MobileappsController < ApplicationController
 
   def browserhistory
   end
-
 end

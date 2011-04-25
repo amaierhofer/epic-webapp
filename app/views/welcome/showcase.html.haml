@@ -27,14 +27,13 @@
     %ul#output
       %li
         %img{:src => "/jquery.featureList-1.0.0/sample1.jpg"}/
-        %a{:href => "#"} See project details
+        = link_to 'See project details', :controller => "mobileapps", :action => :ringit, :jqm => 1
       %li
         %img{:src => "/jquery.featureList-1.0.0/sample2.jpg"}/
         %a{:href => "#"} See project details
       %li
         %img{:src => "/jquery.featureList-1.0.0/sample3.jpg"}/
-        %a{:href => "#"} See project details
-
+        = link_to 'See project details', :controller => "mobileapps", :action => :browserhistory, :jqm => 1
 
 :javascript 
   $(function() {
