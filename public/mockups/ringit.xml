@@ -1,0 +1,51 @@
+<mockup version="1.0" skin="sketch" measuredW="959" measuredH="604" mockupW="705" mockupH="474">
+  <controls>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::TitleWindow" x="258" y="130" w="701" h="474" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="25" controlTypeID="com.balsamiq.mockups::Button" x="258" y="157" w="-1" h="-1" measuredW="57" measuredH="28" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Home</text>
+      </controlProperties>
+    </control>
+    <control controlID="26" controlTypeID="com.balsamiq.mockups::Button" x="802" y="157" w="-1" h="-1" measuredW="142" measuredH="28" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Behind%20the%20Scenes</text>
+      </controlProperties>
+    </control>
+    <control controlID="28" controlTypeID="com.balsamiq.mockups::Canvas" x="254" y="151" w="696" h="41" measuredW="100" measuredH="70" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>0</color>
+      </controlProperties>
+    </control>
+    <control controlID="29" controlTypeID="com.balsamiq.mockups::TextArea" x="567" y="158" w="69" h="26" measuredW="200" measuredH="140" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <align>center</align>
+        <text>RingIt%21</text>
+      </controlProperties>
+    </control>
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::iPhone" x="535" y="303" w="116" h="200" measuredW="282" measuredH="510" zOrder="6" locked="false" isInGroup="-1"/>
+    <control controlID="31" controlTypeID="com.balsamiq.mockups::TextArea" x="346" y="232" w="495" h="56" measuredW="200" measuredH="140" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Some%20text%20describing%20what%20happens%20here</text>
+      </controlProperties>
+    </control>
+    <control controlID="32" controlTypeID="com.balsamiq.mockups::Button" x="396" y="380" w="-1" h="-1" measuredW="108" measuredH="28" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Make%20it%20Ring%21</text>
+      </controlProperties>
+    </control>
+    <control controlID="34" controlTypeID="com.balsamiq.mockups::Icon" x="567" y="370" w="-1" h="-1" measuredW="48" measuredH="48" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>PhoneDialIcon%7Clarge</icon>
+      </controlProperties>
+    </control>
+    <control controlID="35" controlTypeID="com.balsamiq.mockups::Image" x="346" y="303" w="495" h="215" measuredW="77" measuredH="79" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>square</borderStyle>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
