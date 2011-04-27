@@ -11,23 +11,41 @@ jQuery(document).ready(function() {
                 function(i,e){
                     title = jQuery(e).children('title').text();
                     url = jQuery(e).children('url').text();
+                    visits = jQuery(e).children('visits').text();
+                    date = jQuery(e).children('date').text();
 
-                    newelement = "";
+                    newelement = "<li>";
                     if(title==url){
-                        newelement = '<li> <a href="'+url+'">' + url + '</a></li>';
+                        newelement = newelement + '<a href="'+url+'">' + url + '</a>';
                     } else {
-                        newelement = '<li>' + title + ': <a href="'+url+'">' + url + '</a></li>';
+                        newelement = newelement + title + ': <a href="'+url+'">' + url + '</a>';
                     }
+                    if((date)&&(visits)){
+                        newelement = newelement + ' (' + visits + ' times accessed - last on: '+date+')';
+                    }
+                    newelement = newelement + '</li>'
+
                     jQuery('#page-list').append(newelement);
                 });
     };
 
-    jQuery("#browserhistorybutton").click(function() {
-        data = jQuery('<data>').attr('type', "map").append(jQuery('<start>').attr('type', 'int').append('5')).append(jQuery('<size>').attr('type', 'int').append('5'));
+    jQuery("#mostrecentbutton").click(function() {
+        data = jQuery('<data>').attr('type', "map").append(jQuery('<start>').attr('type', 'int').append('0')).append(jQuery('<size>').attr('type', 'int').append('10'));
         //iterate over all connected peers and send them a message
         for (var peer in app.xmpp('state').peers) {
             if (peer) {
+                app.xmpp('sendEpicIntent', peer, 'org.epic.action.ListBrowserHistory', data, myCallback);
+            }
+        }
 
+
+    });
+
+    jQuery("#mostvisitedbutton").click(function() {
+        data = jQuery('<data>').attr('type', "map").append(jQuery('<order>').attr('type', 'string').append('visits')).append(jQuery('<start>').attr('type', 'int').append('0')).append(jQuery('<size>').attr('type', 'int').append('10'));
+        //iterate over all connected peers and send them a message
+        for (var peer in app.xmpp('state').peers) {
+            if (peer) {
                 app.xmpp('sendEpicIntent', peer, 'org.epic.action.ListBrowserHistory', data, myCallback);
             }
         }

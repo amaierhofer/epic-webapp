@@ -1,0 +1,18 @@
+
+= javascript_include_tag 'mobileapps/makeit.js'
+
+.ui-grid-a
+  %ul.ui-block-a
+    %p Here is a list of epic actions that are currently supported by your phone!
+    %ul{:id => "action-list"}
+
+    %input{:id => "epicactionsbutton", :type => "submit", :value => "Retrieve epic actions!"}
+
+  = render :partial => 'block_b'
+
+
+  - %w[foo bar bla blubb].each do |link|
+    %li= link_to link, :apps_home
+
+
+

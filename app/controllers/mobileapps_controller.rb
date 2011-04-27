@@ -23,6 +23,9 @@ class MobileappsController < ApplicationController
   def browserhistory
   end
 
+  def makeit
+  end
+
   protected
   def authorize
     session[:action_name] = action_name unless session[:action_name]

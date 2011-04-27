@@ -16,6 +16,7 @@ EpicWebapp::Application.routes.draw do
   match 'mobileapps/qrcode'
   match 'mobileapps/ringit'
   match 'mobileapps/browserhistory'
+  match 'mobileapps/makeit'
 
   match 'test', :to => 'jasmine#index', :as => :jasmine_index
   match 'test/docs', :to => 'jasmine#docs', :as => :jasmine_docs

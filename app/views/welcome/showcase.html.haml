@@ -14,20 +14,27 @@
           = image_tag 'showcase/box-button-ri-link.png'
       %li
         %a{:href => "javascript:;"}
-          = image_tag 'showcase/box-button-mi-link.png'
+          = image_tag 'showcase/box-button-brhi-link.png'
       %li
         %a{:href => "javascript:;"}
-          = image_tag 'showcase/box-button-brhi-link.png'
+          = image_tag 'showcase/box-button-make-link.png'
+      %li
+        %a{:href => "javascript:;"}
+          = image_tag 'showcase/box-button-mi-link.png'
     %ul#output
       %li
         = image_tag 'showcase/box-screen-ri.png'
         = link_to 'try it now', :mobileapps_ringit
       %li
-        = image_tag 'showcase/box-screen-mi.png'
-        %a{:href => "#"} coming soon
-      %li
         = image_tag 'showcase/box-screen-bi.png'
         = link_to 'try it now', :mobileapps_browserhistory
+      %li
+        = image_tag 'showcase/box-screen-mi.png'
+        = link_to 'try it now', :mobileapps_makeit
+      %li
+        = image_tag 'showcase/box-screen-map.png'
+        %a{:href => "#"} coming soon
+
 
 :javascript 
   $(function() {

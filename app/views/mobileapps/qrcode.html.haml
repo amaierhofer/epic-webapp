@@ -1,8 +1,10 @@
-- title 'Code' 
+- title 'Connect your Phone'
 
 :javascript
   $(function() {
     var user = $.nmk.session.getUser();
+    //TODO fix url!!! should be
+    // username_without_anything (e.g., 'andi', 'peter', 'sepp') + ':' + password + '@' + xmppservicename (e.g., 'box', 'psi', 'ubuntu')
     var url = user.jid + ":" + user.pw + "@" + user.url;
     var img = '<img src="http://qrcode.kaywa.com/img.php?s=5&d=' + url + '"></img>';
     $.nmk.log('url: ' + url);
@@ -12,7 +14,7 @@
 
 %p A user has been created with the supplied credentials. This user will be used when exchanging messages between this website and your mobile phone. 
 
-%p The easiest way to get these credentials onto your phone is to take a picture of the qrcode displayed below
+%p The easiest way to get these credentials onto your phone is to start the EpicService. At the Login screen take a picture of the qrcode displayed below
 
 
 .ui-grid-a
