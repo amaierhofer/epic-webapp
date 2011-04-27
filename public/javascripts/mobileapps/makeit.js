@@ -18,7 +18,7 @@ jQuery(document).ready(function() {
                         newelement = newelement + " implemented by class " + class + " in package "+ package;
                     }
                     newelement = newelement + "</li>";
-                    jQuery('#page-list').append(newelement);
+                    jQuery('#action-list').append(newelement);
                 });
     };
 
@@ -33,4 +33,6 @@ jQuery(document).ready(function() {
 
 
     });
+
+
 });

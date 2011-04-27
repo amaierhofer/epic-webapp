@@ -3,7 +3,7 @@ module MobileappsHelper
   def app_link(sym)
     case sym
       when :ri then link_to (ri_icon), :action => :ringit 
-      when :mi then link_to (mi_icon), :action => :index
+      when :mi then link_to (mi_icon), :action => :makeit
       when :brhi then link_to (brhi_icon), :action => :browserhistory
     end
   end
@@ -13,10 +13,11 @@ module MobileappsHelper
   end
 
   def mi_icon
-    image_tag 'showcase/box-button-mi-link.png'
+    image_tag 'showcase/box-button-make-link.png'
   end
 
   def brhi_icon
     image_tag 'showcase/box-button-brhi-link.png'
   end
-end 
+
+end
