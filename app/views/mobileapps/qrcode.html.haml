@@ -1,0 +1,33 @@
+- title 'Code' 
+
+:javascript
+  $(function() {
+    var user = $.nmk.session.getUser();
+    var url = user.jid + ":" + user.pw + "@" + user.url;
+    var img = '<img src="http://qrcode.kaywa.com/img.php?s=5&d=' + url + '"></img>';
+    $.nmk.log('url: ' + url);
+    $("ul.debug").append("<li>" + url + "</li>");
+    $("#qrcode").append(img);
+  });
+
+%p A user has been created with the supplied credentials. This user will be used when exchanging messages between this website and your mobile phone. 
+
+%p The easiest way to get these credentials onto your phone is to take a picture of the qrcode displayed below
+
+%p some debug info
+%ul.debug
+  %li url: #{APP_CONFIG[:bosh]}
+  %li domain: #{APP_CONFIG[:domain]}
+  %li username: #{current_user.name}
+  %li password: #{current_user.password}
+
+- if session[:action_name] != "qrcode" 
+  = link_to 'Proceed to application', :action => session[:action_name]
+
+#qrcode
+
+
+
+
+
+

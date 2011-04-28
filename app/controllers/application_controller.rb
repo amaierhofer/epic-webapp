@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :prepare_session
   after_filter :add_headers
-  layout :decide_layout
+#  layout :decide_layout
 
   def wants_xmpp?
     APP_CONFIG[:xmpp]

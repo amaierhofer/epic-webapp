@@ -1,15 +1,16 @@
 (function($) {
+  function log(msg) {
+    if (window.console) {
+      console.log(msg);
+    }
+  }
 
   // userSession abstraction
   var session = (function() {
-    var s = sessionStorage, ls = localStorage;
-    function getUser() {
-      if(window.creds) { return creds; }
-      if(s.user) { return JSON.parse(s.user); }
-    }
+    var s = {};
     return {
-      getUser: getUser,
       setUser: function(user)  { s.user = JSON.stringify(user); },
+      getUser: function() { if(s.user) { return JSON.parse(s.user); } },
       delUser: function() { delete s.user; }
     };
   })();
@@ -22,8 +23,6 @@
     }
   }
 
-
-
   $.widget("nmk.app", {
     // default options 
     options: {
@@ -32,9 +31,9 @@
     _create: function() {
       this._state = {};
       this._createClient();
-      this._bindLogoutListener();
       this._bindShowPageListener();
       this._bindMessageListener();
+      this._bindLogoutListener();
     },
 
     _createClient: function() {
@@ -89,7 +88,7 @@
         var peer = $(this).find('#peer').val(), msg = 'ping';
         var arr = $(this).serializeArray();
         if (arr.length === 4) { msg = arr[3].value; }
-        console.log(peer + " " + msg);
+        log(peer + " " + msg);
         var stanza = $msg({to: peer, type: 'chat'}).c('body').t(msg);
         connection.send(stanza);
         return false;
@@ -104,5 +103,6 @@
     }
   });
   $.nmk.session = session;
+  $.nmk.log = log;
 })(jQuery);
 

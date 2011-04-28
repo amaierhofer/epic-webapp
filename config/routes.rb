@@ -1,9 +1,7 @@
 EpicWebapp::Application.routes.draw do
-
   get "session/new"
 
-  root :to => "welcome#index"
-  match 'welcome/app'
+  root :to => "welcome#showcase"
   match 'welcome/xmpp'
   match 'welcome/mockups'
 
@@ -12,6 +10,8 @@ EpicWebapp::Application.routes.draw do
   match 'about/technology' 
   match 'about/use_cases'
 
+  match 'mobileapps', :to => "mobileapps#index", :as => :welcome_app
+  match 'mobileapps/qrcode'
   match 'mobileapps/ringit'
   match 'mobileapps/browserhistory'
 
@@ -21,7 +21,10 @@ EpicWebapp::Application.routes.draw do
   match 'test/webos', :to => 'jasmine#webos', :as => :jasmine_webos
   match 'test/compass', :to => 'jasmine#compass', :as => :jasmine_compass
 
-  resources :users, :sessions
+  resources :users do
+      get 'appstore', :on => :collection
+  end
+  resources :sessions
   get "logout" => "sessions#destroy", :as => "log_out"
 
   # The priority is based upon order of creation:

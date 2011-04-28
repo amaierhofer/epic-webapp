@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  layout 'jquerymobile'
 
   def create
     name, password = params[:user][:name], params[:user][:password]

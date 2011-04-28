@@ -16,4 +16,10 @@ Run the application
 
 User creation depends on an local ejabberd server 
 
+Javascript 
+============== 
+    
+
+
+
 

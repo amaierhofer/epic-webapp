@@ -6,9 +6,9 @@
 
 
 defaults: &defaults
-  admin: http://admin:admin@vmware:5280/admin/server/vmware
-  bosh: http://vmware:5280/http-bind
-  domain: vmware
+  admin: http://admin:admin@psi:5280/admin/server/psi
+  bosh: http://localhost:5280/http-bind
+  domain: psi
   xmpp: true
 
 development:

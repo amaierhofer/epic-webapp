@@ -10,10 +10,12 @@
         pw: $("#user_password").val(),
         url: url
       };
-      console.log(creds);
+      $.nmk.log(creds);
       $.nmk.session.setUser(creds);
     });
   });
+
+%p Youe need a username and password to use this service. Read more at the #{link_to 'details', :about_technology, 'rel' => 'external' } .
 
 = simple_form_for(@user) do |f| 
   = f.error_messages

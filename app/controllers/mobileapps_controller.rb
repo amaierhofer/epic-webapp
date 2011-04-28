@@ -1,5 +1,12 @@
 class MobileappsController < ApplicationController
-  before_filter :authorize
+  before_filter :authorize, :except => [:index]
+  layout 'jquerymobile'
+
+  def index
+  end
+
+  def qrcode
+  end
 
   def ringit
   end
