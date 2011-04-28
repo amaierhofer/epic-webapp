@@ -6,6 +6,8 @@ class MobileappsController < ApplicationController
   end
 
   def qrcode
+    @action = session[:action_name] 
+    session.delete :action_name
   end
 
   def ringit
@@ -19,7 +21,7 @@ class MobileappsController < ApplicationController
 
   protected
   def authorize
-    session[:action_name] = action_name
+    session[:action_name] = action_name unless session[:action_name]
     redirect_to :welcome_app unless session[:current_user]
   end
 

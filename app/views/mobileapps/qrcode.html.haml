@@ -20,9 +20,10 @@
   %li domain: #{APP_CONFIG[:domain]}
   %li username: #{current_user.name}
   %li password: #{current_user.password}
+  %li= @action
 
-- if session[:action_name] != "qrcode" 
-  = link_to 'Proceed to application', :action => session[:action_name]
+- if @action
+  = link_to 'Proceed to application', :action => @action
 
 #qrcode
 

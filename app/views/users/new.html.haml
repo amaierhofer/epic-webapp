@@ -6,7 +6,7 @@
 
     $("form").submit(function(e) {
       var creds = {
-        jid: $("#user_name").val() + "@" + domain,
+        jid: $("#user_name").val() + "@" + domain + "/strophe",
         pw: $("#user_password").val(),
         url: url
       };
