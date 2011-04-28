@@ -1,10 +1,21 @@
-- title "showcase" 
+- title ""
 = javascript_include_tag "/jquery.featureList-1.0.0/jquery.featureList-1.0.0.js"
+%h1 TODO:
+%ol
+  %li - Format text (Andi)
+  %li - make font size of ul navi smaller to fit 'login' also on the same line (Andi)
+  %li - make netidee logo smaller! (Andi)
+  %li - change images in the apps feature list (Andi)
 
-:maruku 
-  Your phone and the internet will move closer together. But we don't want big companies to do this for us, we want to be in control. Therefore we cooked up a little something that hooks your phone to the net and should server as a foundation to support more challenging use cases. 
+//:maruku
+#leadtext
+  %p
+  This is the home of EPIC - the Easy Protocol for Item Control.
+  EPIC makes your mobile phone remotely accessible and turns it into a remote control!
+  %p EPIC is free, open, extensible, and ready to use! Give it a try  and drop us a line if you like it or not!
 
-  If you have any comments, ideas or would like to contribute please drop us a line. Meanwhile checkout the demos below.
+
+
 
 #apps
   #feature_list
@@ -36,10 +47,45 @@
         %a{:href => "#"} coming soon
 
 
-:javascript 
+:javascript
   $(function() {
     $('#tabs li a').featureList({
       output:'#output li',
-      start_item: 0 
+      start_item: 0
     });
   });
+
+
+%h1 What?
+%p Epic focuses on mobile devices (such as Android and webOS smartphones) and connects them with each other and with web-applications running in standard browsers.
+It is a easy protocol that shall grow to an open standard that drives the internet-of-things.
+We believe that the internet-of-things will be developed by individuals (rather than big companies)
+and want to enable people to participate. Because we want to help you to build the internet-of-things application you always dreamed of EVERYTHING ON THIS PAGE IS FREE, OPEN SOURCE, AND LICENCED UNDER CREATIVE COMMONS.
+
+%h1 Why?
+%p People use an ever increasing number of devices to connect to the internet (desktop, phone, tv).
+Rarely are those devices aware of each others existence or activities.
+We believe many benefits could be gained from making these devices talk to each other.
+On our web-page we collect information about the required technologies, showcase potential applications, and want to feature tutorials
+about how to set up such systems.
+
+%h1 How?
+%p We use a bunch of technologies to connect mobile devices to each other as well as to web-pages.
+The Epic architecture enables close-to-realtime peer-to-peer communication. The Android application starts a background service on the mobile phone.
+Other applications can connect to this service and use it to send messages to other peers. The service itself listens for messages and distributes
+them to the appropriate applications on the mobile device. A more in depth description of the
+= link_to 'Epic Service for Android', :about
+gives an overview of the general architecture.
+= link_to 'XMPP is the core technology', :about_technology
+that enables peer-to-peer in the Epic architecture.
+
+
+%h1 Who?
+%p Andreas Maierhofer and Peter Rautek are internet-of-things enthusiasts.
+If you share their passion make sure to join the projects of
+%a{:href=>"https://github.com/amaierhofer"} Andreas
+and
+%a{:href=>"https://github.com/peterrautek"} Peter
+on github!
+
+

@@ -1,20 +1,20 @@
-- title "intro"
+- title "Epic Architecture"
+
+%h1 TODO:
+%ol
+  %li - Finalize text (Peter)
+  %li - Add architecture overview images (Peter)
+
 :maruku
-  Connecting internet enabled devices for close-to-realtime interaction. We focus on mobile devices (such as android and webOS smartphones) and connections with web-applications running in standard browsers. 
+  The EPIC Architecture consists of the EPIC service that runs on an internet connected device, and an XMPP server that handles the message exchange of multiple connected devices.
 
-  Have a look at the #{link_to "Use Cases", :about_use_cases} we could think of. Do you have anything to #{link_to "Add", '/add'} 
+  ##Epic Service
+  The EPIC Service allows other applications to connect to it. It abstracts from the complexities involved in the underlying message oriented middle-ware (i.e., XMPP) and the operating system.
+  With the EPIC Architecture messages are exchanged between application nodes that are part of the same application.
+  The application decides which type of messages are sent between different application nodes.
+  After initialization of the application (i.e., binding of the application to the service and initialization of all application nodes) messages are sent between the different peers.
 
-  ##Why
-  People use an ever inreasing number of devices to connect to the internet (desktop, phone, tv). Rarely are those devices aware of each other's existance or activities. We believe many benifits could be gained from making these devices talk to each other. On our web-page we collect information about the required technologies, showcase potential applications, and write tutorials on how to set up such systems. 
+  ##Message Exchange
 
-  Although this is an important step towards the internet of things, it is still quite hard to set up a system that supports communication of diverse devices. We believe that the internet of things will be developed by individuals rather than big companies and want to enable people to participate. 
 
-  EVERYTHING ON THIS PAGE IS FREE, OPEN SOURCE, AND LICENCED UNDER CREATIVE COMMONS.
-
-  ##How
-  We use a bunch of technologies to connect mobile devices to each other as well as to web-pages. The #{link_to "core technology", :about_technology} is XMPP that enables peer-to-peer communication (using an XMPP server sitting in the middle). 
-
-  ##Who
-  - Andreas Maierhofer
-  - Peter Rautek
 
