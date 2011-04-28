@@ -1,49 +1,85 @@
-- title "Epic Architecture"
+- title "Introduction"
 
-%p To get a quick overview of EPIC and the ideas behind it, you might want to watch the following presentation!
+:maruku
+  Epic focuses on internet connected devices and connects them and web-applications running in standard browsers.
+  It is a easy protocol that shall grow to an open standard that drives the internet-of-things.
+  We believe that the internet-of-things will be developed by individuals (rather than big companies) and want to enable people (makers and tinkers) to participate.
+  Because we want to help you to build the internet-of-things application you always dreamed of
+  EVERYTHING ON THIS PAGE IS FREE, OPEN SOURCE, AND LICENCED UNDER CREATIVE COMMONS.
+
+  ____
+  #Overview
+  Watch the following presentation to get a quick overview:
 
 <div class="prezi-player"><style type="text/css" media="screen">.prezi-player { width: 800px; } .prezi-player-links { text-align: center; }</style><object id="prezi_xr2gtlyatqe6" name="prezi_xr2gtlyatqe6" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="800" height="400"><param name="movie" value="http://prezi.com/bin/preziloader.swf"/><param name="allowfullscreen" value="true"/><param name="allowscriptaccess" value="always"/><param name="bgcolor" value="#ffffff"/><param name="flashvars" value="prezi_id=xr2gtlyatqe6&amp;lock_to_path=0&amp;color=ffffff&amp;autoplay=no&amp;autohide_ctrls=0"/><embed id="preziEmbed_xr2gtlyatqe6" name="preziEmbed_xr2gtlyatqe6" src="http://prezi.com/bin/preziloader.swf" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="800" height="400" bgcolor="#ffffff" flashvars="prezi_id=xr2gtlyatqe6&amp;lock_to_path=0&amp;color=ffffff&amp;autoplay=no&amp;autohide_ctrls=0"></embed></object><div class="prezi-player-links"><p><a title="This presentation is about EPIC - the easy protocol for item control. It describes EPIC, and how to extend it!" href="http://prezi.com/xr2gtlyatqe6/epic-easy-protocol-for-item-control/">EPIC - Easy Protocol for Item Control</a> on <a href="http://prezi.com">Prezi</a></p></div></div>
 
 :maruku
-  ##Epic Service
+  ----
 
-  The EPIC Architecture consists of the EPIC service that runs on an internet connected device, and an XMPP server that handles the message exchange of multiple connected devices.
+  #Architecture
+  The EPIC Architecture consists of the EPIC service that runs on an internet connected device, and an XMPP server that handles the message exchange of multiple connected devices.   With the EPIC Architecture messages are exchanged between application nodes that are part of the same application.
+  The application decides which type of messages are sent between different application nodes and how the protocol of the application looks like.
 
+  ----
+
+  #EPIC Service for Android
   The EPIC Service allows other applications to connect to it. It abstracts from the complexities involved in the underlying message oriented middle-ware (i.e., XMPP) and the operating system.
-  With the EPIC Architecture messages are exchanged between application nodes that are part of the same application.
-  The application decides which type of messages are sent between different application nodes.
   After initialization of the application (i.e., binding of the application to the service and initialization of all application nodes) messages are sent between the different peers.
 
-  The EPIC architecture consists of a service that is running on a device, managing the communication with the EPIC network, and an XMPP server. The EPIC acts as a middleman between applications and the XMPP server. We found a couple of good reasons why the EPIC architecture is beneficial for application developers, and users:
+  We found a couple of good reasons why the EPIC architecture is beneficial for application developers, and users:
+   * Limited resources: The EPIC architecture is built to run on very different devices. Each EPIC service (respectively XMPP client) requires one long lived TCP connection. While it is probably okay for a desktop computer to run one XMPP connection for each application, it is unacceptable for devices with limited resources (e.g., smartphones, embeded systems, etc.). So there is clearly a need for one component running on the device, that handles this stuff.
+   * Decentralization: If there is only one component running on the device that enables several internet-of-things applications - this component must not be controlled by one big company, but rather by a community of developers working on an open source project. If it was controlled by one company, this company would be in control of all internet-of-things applications that are based on this service.
+   * Trust: The EPIC architecture enables applications to perform actions relevant to the users security and privacy. A sensible user will not allow every application to access her EPIC network since this allows full control over all connected devices. To allow an application access to the network the user needs to trust the company that deploys the application. For small (and therefore unknown) companies this is infeasible. A sensible user can however trust a implementation of a EPIC service that is open source software and supported by a large community. Third party applications are only granted temporary access to the service which lets them still perform all actions on the behalf of the user but gives the user better control over the permissions of each applications.
 
-    *  Limited resources: The EPIC architecture is built to run on very different devices. Each EPIC service (respectively XMPP client) requires one long lived TCP connection. While it is probably okay for a desktop computer to run one XMPP connection for each application, it is unacceptable for devices with limited resources (e.g., smartphones, embeded systems, etc.). So there is clearly a need for one component running on the smartphone, that handles this stuff.
+  ----
 
-    *  Decentralization: If there is only one component running on the device that enables several internet-of-things applications - this component must not be controlled by one big company, but rather by a community of developers working on an open source project. If it was controlled by one company, this company would be in control of the whole internet-of-things.
+  #Implementation
+  As we said its easy and based on XMPP. That means you can use any XMPP library to implement your own EPIC service.
+  Basically your service needs to filter for XMPP messages that contain an application element of namespace 'http://mobilesynergies.org/protocol/epic'.
+  The *application* element must have two attributes, called *action* and *session*. The action attribute names the EPIC action that is to be performed.
+  The *session* attribute contains a session id that is to be provided by the caller. If the receiver decides to send back data to the caller it must use the same id.
+  A valid application element looks something like this:
 
-    *  Trust: The EPIC architecture enables applications to perform actions relevant to the users security and privacy. A sensible user will not allow every application to access her EPIC network since this allows full control over all connected devices. To allow an application access to the network the user needs to trust the company that deploys the application. For small (and therefore unknown) companies this is infeasible. A sensible user can however trust a implementation of a EPIC service that is open source software and supported by a large community. Third party applications are only granted temporary access to the service which lets them still perform all actions on the behalf of the user but gives the user better control over the permissions of each applications.
+     `<application xmlns='http://mobilesynergies.org/protocol/epic'`
+     `action='org.epic.action.RingPhone' session='H6tH2m6Kw8Jr27tT'>`
+     `</application>`
 
+  Implementing your own EPIC service boils down to filtering for XMPP messages that contain an application element and parsing the data contained in the application element.
+  The service must try to start an appropriate application for each action, or prompt the user if there are multiple applications that can perform this action.
+  The service must also parse the data contained in the application element and provide the application with this data, and the unique session id. The service must not provide the address of the sender or any data related to the user (such as username or password) to the application!
+  If the application decides to respond, the service has to try to send a message to the initial caller including the original action attribute, the given session id and the data.
 
-  ##Implementation
+  The data must start with a data element that has the attribute 'type' with value 'map'. Inside the data element any number of parameters might follow.
+  A parameter is an XML element with an attribute 'type' , and MUST contains text or other XML elements. The name of the parameter is equal to the name of the element.
+  The type MUST be one of 'int', 'boolean', 'string', 'float', or 'map'. Each of the parameters must contain text that is the value of the parameter.
+  Only the parameters of type 'map' must contain other parameters, each with a unique name. A valid data element might look like this:
 
-  As we said its easy and based on XMPP. That means you can use any XMPP library to implement your own EPIC service. Basically your service needs to filter for messages that contain an application element of namespace:
-  TODO
+     `<data type='map'>`
+     `    <start type='int'>0</start>`
+     `    <size type='int'>10</size>`
+     `</data>`
 
-  Implementing your own EPIC service boils down to parsing the data contained in the application element and start the execution of the appropriate action.
+  Note that there is currently no parameter of type 'array'.
+  If you need an array for your application you might simply use a map and name the parameters contained in it 'entry0', 'entry1', 'entry2', etc.
+  Having no arrays means less implementation effort achieving the same result. That's what the 'E' in EPIC stands for.
 
-  The application element has the attributes:
-  TODO
-  The application element MUST contain a session id that
-  The application element MAY contain several children, that describe the data that shall be passed to the application.
-  The children must all be of the form
-  TODO
+  ----
 
+  # Why we need EPIC?
+  People use an ever increasing number of devices to connect to the internet (desktop, phone, tv).
+  Rarely are those devices aware of each others existence or activities.
+  We believe many benefits could be gained from making these devices talk to each other.
+  We think that an open source project is required to involve a larger community that builds the internet-of-things.
+  Therefore we collect information about the required technologies, showcase potential applications, and want to start discussions on how we can implement the internet-of-things.
 
-  The service starts TODO
+  ----
 
+  # How does it work?
+  We use a bunch of technologies to connect mobile devices to each other as well as to web-pages. The Epic architecture enables close-to-realtime peer-to-peer communication. . #{link_to 'XMPP is the core technology', :about_technology} that enables the Epic architecture.
 
-  ##Message Exchange
+  ----
 
-  Messages are exchanged TODO
-
+  # Who?
+  Andreas Maierhofer and Peter Rautek are internet-of-things enthusiasts. If you share their passion make sure to join the projects of #{link_to 'Andreas', 'https://github.com/amaierhofer'} and  #{link_to 'Peter', 'https://github.com/peterrautek'} at github!
 
 
