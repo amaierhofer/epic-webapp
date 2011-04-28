@@ -1,4 +1,9 @@
-= javascript_include_tag 'mobileapps/ringit.js'
+:javascript
+  $(function() {
+    $("#ring").click(function() {
+      epic.app('send', 'org.epic.action.RingPhone');
+    });
+  });
 
 
 %h1.center Make your phone ring!

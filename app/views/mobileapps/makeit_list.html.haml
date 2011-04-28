@@ -1,32 +1,48 @@
+
+%script#mi-query{:type => "text/x-jquery-tmpl"}
+  %data{type: 'map'}
+    %start{type: 'int'} ${start}
+    %size{type: 'int'} ${size}
+
+%script#mi-entry{:type => "text/x-jquery-tmpl"}
+  %li
+    %a{href: '${path}'} ${action}
+
 :javascript 
   $(function() {
-    $.get('/mockups/data/makeit_phone2browser_sample01.txt', function(text) {
-      var path = "#{url_for :makeit_execute}";
-      var data = $(text);
-      $.nmk.log(data);
-      var res = $('.results');
+    function parseEntry(node) {
+      var entry = $(node);
+      return {
+        action: entry.find('action').text(),
+        clazz: entry.find('class').text(),
+        pkg: entry.find('package').text(),
+        path: url + "?epic_action=" + entry.find('action').text()
+      }
+    }
+
+    function updateList(data) {
       res.find('li').remove();
-      data.find('data').children().each(function() {
-        var entry = $(this);
-        var action = entry.find('action').text();
-        var clazz = entry.find('class').text();
-        var pkg = entry.find('package').text();
-        var path_with_param = path + "?epic_action=" + action;
-        $.nmk.log(action);
-        var link = '<a href="' + path_with_param +'" rel="external">' + action + '</a>';
-        var li = '<li>' + link + '</li>';
-        res.append(li);
+      $(data).find('data').children().each(function() {
+        var entry = parseEntry(this);
+        res.append($("#mi-entry").tmpl(entry));
       });
       res.listview('refresh');
-    });
+    }
+
+    var url = "#{url_for :makeit_execute}", res = $('.results');
+    var data = $( "#mi-query" ).tmpl( { start: 0, size: 10 } );
+
+    if(epic.xmpp('state').name === 'CONNECTED') {
+      epic.app('send', 'org.epic.action.ListActions', data, updateList);
+    } else {
+      epic.bind('xmpp.connected', function() {
+        setTimeout(function() {
+          epic.app('send', 'org.epic.action.ListActions', data, updateList);
+        },1000);
+      });
+    }
   });
 
-
-
-
 %h1.center We found following epic services
-
 %ul.results{'data-role' => 'listview', 'data-inset' => 'true', 'data-theme' => 'a'}
-  %li a
-  %li b
 

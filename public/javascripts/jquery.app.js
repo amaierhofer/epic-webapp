@@ -58,7 +58,6 @@
         this.x.xmpp('option', session.getUser()); 
         this.x.xmpp('connect');
       }
-      window.x = this.x;
     },
 
     // if we sign out, we remove our local user
@@ -100,6 +99,19 @@
     _linkHandler: function(jid) {
       var link = $('[data-epic_msg]:first').attr('data-epic_msg');
       return '<a href="' + link + '?jid=' + jid + '">' + jid + '</a>';
+    },
+    send: function(intent,data,callback) {
+      var peers = this.x.xmpp('state').peers;
+      var jids = _.keys(peers);
+      if(_.isEmpty(peers)) { $.nmk.log('no peers'); }
+      _.each(jids, function(jid) {
+        $.nmk.log('sending "' + jid + '" request for "' + intent + "'");
+        if(peers[jid] === 'unavailable') {
+          $.nmk.log('skipping unavailable peer "' + jid + '" request for "' + intent + "'");
+        } else  {
+          this.x.xmpp('sendEpicIntent', jid, intent, data, callback);
+        }
+      },this);
     }
   });
   $.nmk.session = session;

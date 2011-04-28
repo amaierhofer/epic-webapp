@@ -1,1 +1,8 @@
-<message to='laslo@box/android-device' type='chat' xmlns='jabber:client'><application xmlns='http://mobilesynergies.org/protocol/epic' action='org.epic.action.ListActions' session='ydh5G7e1fcvTCzp1'><data type='map'><start type='int'>0</start><size type='int'>10</size></data></application></message>
+<message to='laslo@box/android-device' type='chat' xmlns='jabber:client'>
+    <application xmlns='http://mobilesynergies.org/protocol/epic' action='org.epic.action.ListActions' session='ydh5G7e1fcvTCzp1'>
+        <data type='map'>
+            <start type='int'>0</start>
+            <size type='int'>10</size>
+        </data>
+    </application>
+</message>
