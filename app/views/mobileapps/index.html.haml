@@ -4,8 +4,8 @@
   .ui-grid-a
 
     %ul.ui-block-a
-    - [:ri, :mi, :brhi].each do |app|
-      %li= app_link(app)
+      - [:ri, :mi, :brhi].each do |app|
+        %li= app_link(app)
 
     .ui-block-b
       = render :partial => 'block_b'
