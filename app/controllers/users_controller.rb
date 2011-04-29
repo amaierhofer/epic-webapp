@@ -4,6 +4,14 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
+  def checkname
+    @user = User.new(params[:user])
+    begin 
+      render :json => { available: @user.available? }
+    rescue
+      render :json => { available:  false }
+    end
+  end
 
   def create
     @user = User.new(params[:user])

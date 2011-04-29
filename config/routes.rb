@@ -23,6 +23,7 @@ EpicWebapp::Application.routes.draw do
 
   resources :users do
       get 'appstore', :on => :collection
+      get 'checkname', :on => :collection
   end
   resources :sessions
   get "logout" => "sessions#destroy", :as => "log_out"
