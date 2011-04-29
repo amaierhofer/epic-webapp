@@ -20,19 +20,19 @@
     %ul#output
       %li
         = image_tag 'showcase/box-screen-ri.png'
-        = link_to 'See project details', :controller => "mobileapps", :action => :ringit, :jqm => 1
+        = link_to 'See project details', :controller => "mobileapps", :action => :ringit
       %li
 
         = image_tag 'showcase/box-screen-mi.png'
         %a{:href => "#"} See project details
       %li
         = image_tag 'showcase/box-screen-bi.png'
-        = link_to 'See project details', :controller => "mobileapps", :action => :browserhistory, :jqm => 1
+        = link_to 'See project details', :controller => "mobileapps", :action => :browserhistory
 
 :javascript 
   $(function() {
     $('#tabs li a').featureList({
       output:'#output li',
-      start_item:1
+      start_item: 0 
     });
   });

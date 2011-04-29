@@ -18,9 +18,12 @@
     = javascript_include_tag 'reloader' if Rails.env == 'development'
     :javascript
       $(document).bind('mobileinit', function() {
-        //$.fn.buttonMarkup = function() {
-        //  return this.each(function() {});
-        //};
+
+        // workaround first link having focus
+        $('div').live('pagebeforeshow',function(event, ui){
+            $('a:first').hide();
+        });
+
         $.extend($.mobile, {
           defaultTransition: 'none',
           loadingMessage: 'loading .. ',
@@ -34,7 +37,10 @@
     = yield(:head)
   
   %body
+
     .ui-page{'data-role' => 'page', 'data-theme' => 'c'}
+      = link_to '', ''
+
       .blackbar 
         #header
           = link_to '', :root, :id => "logo", :alt => 'epic services', :rel => 'external' 
