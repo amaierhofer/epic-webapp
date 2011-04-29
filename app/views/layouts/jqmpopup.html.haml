@@ -5,9 +5,10 @@
       = yield(:title) || "Untitled"
     %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
     = csrf_meta_tag
-    = render 'shared/stylesheet_includes'
-    = render 'shared/javascript_includes'
-    = yield(:head)
+
+    = stylesheet_link_tag "/jquery.mobile/jquery.mobile-1.0a4.1.css"
+    = stylesheet_link_tag "peek"
+    = javascript_include_tag '/jquery.mobile/jquery.mobile-1.0a4.1.js'
   
   %body
     %div{'data-role' => 'page'}

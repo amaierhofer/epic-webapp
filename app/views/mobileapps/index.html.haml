@@ -1,17 +1,21 @@
 - title 'Welcome'
 
-.center
-  - if current_user
-
-    %p Welcome back, #{current_user.name}!
-    = link_to 'Logout', :log_out, :rel => 'external'
-    = render :partial => 'shared/status'
-    = render :partial => 'shared/set_js_credentials_from_session'
+- if current_user
+  %p Welcome back, #{current_user.name}!
+  = render :partial => 'shared/status'
+  = render :partial => 'shared/set_js_credentials_from_session'
 
 
-  - else
+  = link_to (ri_icon), :action => :ringit
+  = link_to (mi_icon), :action => :index
+  = link_to (brhi_icon), :action => :browserhistory
 
-    %p Please use the following links to start using this service!
+
+
+- else
+  %p Please use the following links to start using this service!
+
+  .center{:style => 'text-align: center;' }
     %div{'data-role' => 'controlgroup', 'data-type' => 'horizontal'}
       = link_to 'Sign In', :new_session, 'data-role' => 'button'
       = link_to 'Sign Up', :appstore_users, 'data-role' => 'button'

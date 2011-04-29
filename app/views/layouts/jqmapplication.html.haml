@@ -31,6 +31,7 @@
       });
 
     = stylesheet_link_tag "/jquery.mobile/jquery.mobile-1.0a4.1.css"
+    = stylesheet_link_tag "peek"
     = javascript_include_tag '/jquery.mobile/jquery.mobile-1.0a4.1.js'
     /- ['jquery.ui.widget.js', 'jquery.mobile.widget.js', 'jquery.mobile.media.js','jquery.mobile.support.js', 'jquery.mobile.vmouse.js', 'jquery.mobile.event.js', 'jquery.mobile.hashchange.js', 'jquery.mobile.page.js', 'jquery.mobile.core.js', 'jquery.mobile.navigation.js', 'jquery.mobile.transition.js',  'jquery.mobile.fixHeaderFooter.js', 'jquery.mobile.forms.checkboxradio.js', 'jquery.mobile.forms.textinput.js', 'jquery.mobile.forms.select.js', 'jquery.mobile.buttonMarkup.js', 'jquery.mobile.forms.button.js', 'jquery.mobile.forms.slider.js', 'jquery.mobile.collapsible.js', 'jquery.mobile.controlGroup.js', 'jquery.mobile.fieldContain.js', 'jquery.mobile.listview.js', 'jquery.mobile.listview.filter.js', 'jquery.mobile.dialog.js', 'jquery.mobile.navbar.js', 'jquery.mobile.grid.js', 'jquery.mobile.init.js'].each do |file| 
     /  = javascript_include_tag "http://localhost/jquery-mobile/js/#{file}"
@@ -51,14 +52,20 @@
             %li= link_to 'technology', :about_technology, :rel => 'external'
             %li= link_to 'downloads', :about_artifacts, :rel => 'external'
       #main
+
         #title 
           = content_tag :h1, yield(:title) if show_title?
+
         #content
+
           = yield
 
       .blackbar
         #footer
           me and you production 2011
+
+    .ui-page{'data-role' => 'page', 'data-theme' => 'c'}
+      #console
 
 
 

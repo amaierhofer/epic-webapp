@@ -5,6 +5,10 @@ class MobileappsController < ApplicationController
   def index
   end
 
+  def dialog
+    render :layout => "jqmpopup"
+  end
+
   def qrcode
     @action = session[:action_name] 
     session.delete :action_name

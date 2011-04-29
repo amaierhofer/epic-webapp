@@ -185,6 +185,11 @@
         this.__trigger('outgoing', body);
       },this);
 
+      // add /strophe resource identifier if non was specified
+      if (!/\//.test(opts.jid)) {
+        opts.jid += "/strophe";
+      }
+
       this.__bind('connected', this.__sendPresence);
       this.__log('connecting to ' + opts.url);
       this.__log('connecting as ' + opts.jid + ' with ' + opts.pw);

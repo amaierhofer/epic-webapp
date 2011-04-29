@@ -1,12 +1,13 @@
-%div
-  %table
-    %tr
-      %td Status:
-      %td.xmpp-status
+= link_to 'Logout', :log_out, :rel => 'external'
+= link_to 'Behind the scenes', :dialog, 'data-rel' => 'dialog'
 
-  %table
-    %tr
-      %td Devices:
-      %td
-        #peerlistcontainer{"data-role" => "fieldcontain"}
-        %fieldset.xmpp-peer-list{"data-role" => "controlgroup"}
+%fieldset
+  %label Status
+  %div.xmpp-status
+
+
+%fieldset
+  %label Devices
+  %div.xmpp-peer-list
+
+
