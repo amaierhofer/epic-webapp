@@ -5,7 +5,7 @@
 function log(msg) {
   if (window.console) { window.console.log(msg); }
 }
-$(function() {
+(function() {
   if(!$.nmk) { return; } 
 
   log('credentials are set in appliction.js and overridden by session creds');
