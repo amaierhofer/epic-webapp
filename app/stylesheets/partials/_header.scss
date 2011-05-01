@@ -8,6 +8,8 @@
 
     #logo { 
         @include column(10);  
+        height: 70px;
+        background: url('/images/logo.png') no-repeat;
     }
 
     #navi {
