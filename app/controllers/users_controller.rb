@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  layout 'jquerymobile'
+  layout 'jqmapplication'
   
   def new
     @user = User.new

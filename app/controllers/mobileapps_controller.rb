@@ -1,6 +1,6 @@
 class MobileappsController < ApplicationController
   before_filter :authorize, :except => [:index]
-  layout 'jquerymobile'
+  layout 'jqmapplication'
 
   def index
   end

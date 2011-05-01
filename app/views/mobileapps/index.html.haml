@@ -2,19 +2,11 @@
 
 .center
   - if current_user
-    :javascript
-      var creds = {
-        jid: "#{current_user.name}@#{APP_CONFIG[:domain]}",
-        pw: "#{current_user.password}",
-        url: "#{APP_CONFIG[:bosh]}"
-      }
-
-      console.log('js in page');
-      $.nmk.session.setUser(creds);
-
 
     %p Welcome back, #{current_user.name}!
+    = link_to 'Logout', :log_out, :rel => 'external'
     = render :partial => 'shared/status'
+    = render :partial => 'shared/set_js_credentials_from_session'
 
 
   - else

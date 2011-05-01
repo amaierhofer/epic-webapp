@@ -19,16 +19,15 @@
     = yield(:head)
   
   %body
-
     %div{'data-role' => 'page'}
-
       = render :partial => 'shared/header'
       .container{'data-role' => 'content'}
         = render :partial => 'shared/flash', :locals => { :flash => flash }
         = yield
 
     #peek{'data-role' => 'page'}
-      %div{'data-role' => 'header', 'data-id' => 'header','data-nobackbtn' => 'true', 'data-position' => 'fixed'}
+      %div{'data-role' => 'header', 'data-id' => 'header',
+        'data-nobackbtn' => 'true', 'data-position' => 'fixed'}
         %h1= "XMPP Stream"
       #console{'data-role' => 'content'}
 
