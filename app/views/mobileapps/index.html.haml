@@ -12,9 +12,9 @@
   - else
 
     %p Please use the following links to start using this service!
-    %div{'data-role' => 'controlgroup', 'data-type' => 'horizontal'} 
-      = link_to 'Sign In', :new_session, {'data-role' => 'button'}
-      = link_to 'Sign Up', :appstore_users, {'data-role' => 'button'}
+    %div{'data-role' => 'controlgroup', 'data-type' => 'horizontal'}
+      = link_to 'Sign In', :new_session, 'data-role' => 'button'
+      = link_to 'Sign Up', :appstore_users, 'data-role' => 'button'
 
     /%p Please follow links for js test suite
     /%ul{'data-role' => 'content', 'style' => 'list-style: none' }

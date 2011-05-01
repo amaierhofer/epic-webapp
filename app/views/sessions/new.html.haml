@@ -3,6 +3,6 @@
 = render :partial => 'shared/credentials_formlistener'
 
 = simple_form_for :user, :url => sessions_path do |f|
-  = f.input :name, :input_html => { :size => 30 }, :required => false
+  = f.input :name, :input_html => { :size => 30 }, :required => false 
   = f.input :password, :input_html => { :size => 30 }, :required => false
-  = f.button :submit, :value => "Login" 
+  = f.button :submit, :value => "Login"

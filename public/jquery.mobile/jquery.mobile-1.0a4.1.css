@@ -281,6 +281,7 @@
 .ui-bar-c button {
 	font-family: Helvetica, Arial, sans-serif;
 }
+/*
 .ui-body-c {
 	border: 1px solid 		#B3B3B3;
 	color: 					#333333;
@@ -294,6 +295,7 @@
 		color-stop(1, 		#dddddd));
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#eeeeee', EndColorStr='#dddddd')";
 }
+  */
 .ui-body-c,
 .ui-body-c input,
 .ui-body-c select,
@@ -301,12 +303,12 @@
 .ui-body-c button {
 	font-family: Helvetica, Arial, sans-serif;
 }
+
 .ui-body-c .ui-link-inherit {
 	color: 					#333333;
 }
 .ui-body-c .ui-link {
 	color: 					#2489CE;
-	font-weight: bold;
 }
 
 .ui-btn-up-c {

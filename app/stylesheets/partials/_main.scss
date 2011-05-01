@@ -20,5 +20,5 @@
     #content {
         @include append-bottom;
     }
-    a { @include link; }
+    //a { @include link; }
 }

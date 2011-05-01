@@ -14,25 +14,27 @@
 
     = javascript_include_tag :defaults
 
-    // = stylesheet_link_tag "/jquery.mobile-1.0a4/jquery.mobile-1.0a4.css"
     = javascript_include_tag :xmpp
-    /= javascript_include_tag '/jquery.mobile-1.0a4/jquery.mobile-1.0a4.js'
     = javascript_include_tag 'reloader' if Rails.env == 'development'
     :javascript
       $(document).bind('mobileinit', function() {
+        //$.fn.buttonMarkup = function() {
+        //  return this.each(function() {});
+        //};
         $.extend($.mobile, {
           defaultTransition: 'none',
-          loadingMessage: 'loading .. '
+          loadingMessage: 'loading .. ',
         });
       });
 
-    = javascript_include_tag '/jquery.mobile/jquery.mobile-1.0a4.1.min.js'
+    = stylesheet_link_tag "/jquery.mobile/jquery.mobile-1.0a4.1.css"
+    = javascript_include_tag '/jquery.mobile/jquery.mobile-1.0a4.1.js'
     /- ['jquery.ui.widget.js', 'jquery.mobile.widget.js', 'jquery.mobile.media.js','jquery.mobile.support.js', 'jquery.mobile.vmouse.js', 'jquery.mobile.event.js', 'jquery.mobile.hashchange.js', 'jquery.mobile.page.js', 'jquery.mobile.core.js', 'jquery.mobile.navigation.js', 'jquery.mobile.transition.js',  'jquery.mobile.fixHeaderFooter.js', 'jquery.mobile.forms.checkboxradio.js', 'jquery.mobile.forms.textinput.js', 'jquery.mobile.forms.select.js', 'jquery.mobile.buttonMarkup.js', 'jquery.mobile.forms.button.js', 'jquery.mobile.forms.slider.js', 'jquery.mobile.collapsible.js', 'jquery.mobile.controlGroup.js', 'jquery.mobile.fieldContain.js', 'jquery.mobile.listview.js', 'jquery.mobile.listview.filter.js', 'jquery.mobile.dialog.js', 'jquery.mobile.navbar.js', 'jquery.mobile.grid.js', 'jquery.mobile.init.js'].each do |file| 
     /  = javascript_include_tag "http://localhost/jquery-mobile/js/#{file}"
     = yield(:head)
   
   %body
-    .ui-page{'data-role' => 'page'}
+    .ui-page{'data-role' => 'page', 'data-theme' => 'c'}
       .blackbar 
         #header
           = link_to '', :root, :id => "logo", :alt => 'epic services', :rel => 'external' 
