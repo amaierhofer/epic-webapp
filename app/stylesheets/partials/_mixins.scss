@@ -2,11 +2,21 @@
     border: 1px dashed $color;
 }
 
+@mixin link {
+    color: darken($text, 10%);
+    text-decoration: none;
+    &:hover { 
+        color: $text; 
+        background-color: darken($text, 75%);
+    }
+}
+
 @mixin navi-link {
     color: darken($text, 30%);
     text-decoration: none;
     &:hover { 
         color: $text; 
-        background-color: darken($text, 75%);
+        // background-color: darken($text, 75%);
+        border-bottom: 3px solid #d54097;
     }
 }

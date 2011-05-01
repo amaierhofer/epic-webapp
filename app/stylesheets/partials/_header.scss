@@ -16,7 +16,7 @@
         @include inline-block-list;
         @include column(14,true);
         text-align: right;
+        a { @include navi-link; }
     }
 
-    a { @include navi-link; }
 } 

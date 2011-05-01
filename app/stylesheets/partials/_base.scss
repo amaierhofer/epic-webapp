@@ -8,7 +8,9 @@ body {
 
 a { 
     color: #000;
-    &:hover { background-color: #cfc; }
+    &:hover { 
+        background-color: #cfc; 
+    }
 }
 table td {
     padding: 0px 10px;
