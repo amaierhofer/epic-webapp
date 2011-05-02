@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
+gem 'rails'
 gem 'maruku'
 
 # Bundle edge Rails instead:
@@ -9,10 +9,10 @@ gem 'simple_form'
 gem 'rest-client'
 gem 'nifty-generators' 
 #gem 'rails3-generators'
-gem "haml", ">= 3.1.alpha.50"
+gem "haml"
 gem 'haml-rails'
-gem 'compass', '0.11.beta.7'
-gem 'fancy-buttons', '1.1.0.alpha.1'
+gem 'compass'
+gem 'fancy-buttons'
 gem 'hpricot'
 #gem 'blather', :git => 'http://github.com/shingara/blather.git', :branch => 'without_active_support_inside'
 

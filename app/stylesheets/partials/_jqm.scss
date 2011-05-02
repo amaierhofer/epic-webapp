@@ -1,3 +1,5 @@
+@import "fancy-buttons";
+
 .ui-page { display: none; } 
 .ui-page-active { display: block; } 
 .ui-loader { 
@@ -5,7 +7,12 @@
     top: 300px !important;
 } 
 
+.jqm-center {
+    text-align: center;
+}
 .ui-block-b {
     text-align: right;
 }
-//.ui-btn-inner { display: none} 
+.jqm-footer {
+    @include prepend-top;
+}

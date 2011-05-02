@@ -1,26 +1,17 @@
-
 - if current_user
-  = render :partial => 'shared/set_js_credentials_from_session'
-  .ui-grid-a
-    %h1{style: 'text-align: center;'} Welcome back, #{current_user.name}!
-    %ul.ui-block-a
-      - [:ri, :mi, :brhi].each do |app|
-        %li= app_link(app)
-    = render :partial => 'block_b'
+  %h1.jqm-center Welcome back, #{current_user.name}!
 
+  .ui-grid-a
+
+    %ul.ui-block-a
+    - [:ri, :mi, :brhi].each do |app|
+      %li= app_link(app)
+
+    .ui-block-b
+      = render :partial => 'block_b'
 
 - else
   %p Please use the following links to start using this service!
-
-  .center{:style => 'text-align: center;' }
-    %div{'data-role' => 'controlgroup', 'data-type' => 'horizontal'}
-      = link_to 'Sign In', :new_session, 'data-role' => 'button'
-      = link_to 'Sign Up', :appstore_users, 'data-role' => 'button'
-
-    /%p Please follow links for js test suite
-    /%ul{'data-role' => 'content', 'style' => 'list-style: none' }
-    /  %li= link_to 'Jasmine', :jasmine_index, { :rel => 'external' }
-    /  %li= link_to 'Jasmine Docs', :jasmine_docs, { :rel => 'external' }
-    /  %li= link_to 'Jasmine webOS', :jasmine_webos, { :rel => 'external' }
-    /  %li= link_to 'Compass css ', :jasmine_compass, { :rel => 'external' }
-
+  .jqm-center{'data-role' => 'controlgroup', 'data-type' => 'horizontal'}
+    = link_to 'Sign In', :new_session, 'data-role' => 'button'
+    = link_to 'Sign Up', :appstore_users, 'data-role' => 'button'
