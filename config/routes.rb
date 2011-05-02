@@ -10,7 +10,7 @@ EpicWebapp::Application.routes.draw do
   match 'about/technology' 
   match 'about/use_cases'
 
-  match 'mobileapps', :to => "mobileapps#index", :as => :welcome_app
+  match 'mobileapps', :to => "mobileapps#index", :as => :apps_home
   match 'mobileapps/design'
   match 'mobileapps/dialog', :as => :dialog
   match 'mobileapps/qrcode'

@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       if session[:action_name] 
         redirect_to :controller => "mobileapps", :action => session[:action_name]
       else
-        redirect_to :welcome_app
+        redirect_to :apps_home
       end
     else 
       flash.now.alert = "Invalid username or password"

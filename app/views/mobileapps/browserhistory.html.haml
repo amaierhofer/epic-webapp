@@ -11,6 +11,8 @@
   = render :partial => 'block_b'
 
 %ul{:id => "page-list"}
+  - %w[foo bar bla blubb].each do |link|
+    %li= link_to link, :apps_home
 
 
 
