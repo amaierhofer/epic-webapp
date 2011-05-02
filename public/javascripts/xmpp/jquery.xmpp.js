@@ -128,7 +128,18 @@
     __updateElements: function(ev,state) {
       this.__log('updateElements: ' + this.element.find('.xmpp-status').size());
       this.element.find('.xmpp-status').each(function(i,e) {
-        $(e).html(state.name);
+        $(e).html(state.name.toLowerCase());
+      });
+      this.element.find('.xmpp-status-phone').each(function(i,e) {
+        var peers = _.select(_.keys(state.peers), function(jid) {
+          if(/strophe|android|psi/.test(jid)) { return true; }
+        }), str = [];
+        $.nmk.log('peers: ' + peers);
+        _.each(peers, function(peer) {
+          str.push(peer.split('/')[1] + " " + state.peers[peer]);
+        });
+        $(e).html(str.join(' '));
+
       });
       var linkHandler = this.options.linkHandler;
       

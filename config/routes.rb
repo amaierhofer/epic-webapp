@@ -11,6 +11,7 @@ EpicWebapp::Application.routes.draw do
   match 'about/use_cases'
 
   match 'mobileapps', :to => "mobileapps#index", :as => :welcome_app
+  match 'mobileapps/design'
   match 'mobileapps/dialog', :as => :dialog
   match 'mobileapps/qrcode'
   match 'mobileapps/ringit'

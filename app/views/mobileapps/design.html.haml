@@ -1,0 +1,14 @@
+= render :partial => 'shared/set_js_credentials_from_session'
+
+.ui-grid-a
+  %ul.ui-block-a
+    - [:ri, :mi, :brhi].each do |app|
+      %li
+        = app_link(app)
+  = render :partial => 'block_b'
+
+
+%div
+%div
+  = link_to 'Home', :controller => :mobileapps, :action => :index
+  = link_to 'Logout', :log_out, :rel => 'external'

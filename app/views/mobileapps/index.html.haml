@@ -1,15 +1,12 @@
-- title 'Welcome'
 
 - if current_user
-  %p Welcome back, #{current_user.name}!
-  = render :partial => 'shared/status'
   = render :partial => 'shared/set_js_credentials_from_session'
-
-
-  = link_to (ri_icon), :action => :ringit
-  = link_to (mi_icon), :action => :index
-  = link_to (brhi_icon), :action => :browserhistory
-
+  .ui-grid-a
+    %h1{style: 'text-align: center;'} Welcome back, #{current_user.name}!
+    %ul.ui-block-a
+      - [:ri, :mi, :brhi].each do |app|
+        %li= app_link(app)
+    = render :partial => 'block_b'
 
 
 - else

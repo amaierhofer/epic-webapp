@@ -1,7 +1,14 @@
-- title 'Ring it'
+//- title 'Ring it'
 
 = javascript_include_tag 'mobileapps/ringit.js'
 
-%p Searching for your device? You can simply make it ring. 
-%input{:id => "ringitbutton", :type => "submit", :value => "Ring It!"}
+.ui-grid-a
+  %ul.ui-block-a
+    %p Searching for your device? You can simply make it ring. 
+    %input{:id => "ringitbutton", :type => "submit", :value => "Ring It!"}
 
+  = render :partial => 'block_b'
+
+/%div 
+/  - [:ri, :mi, :brhi].each do |app|
+/    = app_link(app)
