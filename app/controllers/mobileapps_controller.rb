@@ -26,7 +26,7 @@ class MobileappsController < ApplicationController
   protected
   def authorize
     session[:action_name] = action_name unless session[:action_name]
-    redirect_to :welcome_app unless session[:current_user]
+    redirect_to :apps_home unless session[:current_user]
   end
 
 end
