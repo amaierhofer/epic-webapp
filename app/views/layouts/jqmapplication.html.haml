@@ -57,6 +57,7 @@
         #content
           = yield
           - if current_user
+            = render :partial => 'shared/set_js_credentials_from_session'
             = render :partial => 'footer'
 
       .blackbar
