@@ -1,6 +1,14 @@
 @import "compass/typography/lists/horizontal-list";
 @import "compass/typography/lists/inline-block-list";
-@import "mixins";
+
+@mixin navi-link {
+    color: darken($text, 30%);
+    text-decoration: none;
+    &:hover { 
+        color: $text; 
+        border-bottom: 3px solid #d54097;
+    }
+}
 
 #header {
     @include container;

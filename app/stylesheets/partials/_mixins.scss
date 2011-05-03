@@ -3,7 +3,7 @@
 }
 
 @mixin link {
-    color: darken($text, 10%);
+    color: darken($text, 20%);
     text-decoration: none;
     &:hover { 
         color: $text; 
@@ -11,12 +11,3 @@
     }
 }
 
-@mixin navi-link {
-    color: darken($text, 30%);
-    text-decoration: none;
-    &:hover { 
-        color: $text; 
-        // background-color: darken($text, 75%);
-        border-bottom: 3px solid #d54097;
-    }
-}

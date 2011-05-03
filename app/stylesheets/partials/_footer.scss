@@ -1,5 +1,6 @@
 #footer {
     font-size: 0.8em;
+    color: darken($text, 30%);
     @include container;
     @include prepend-top;
     @include append-bottom;

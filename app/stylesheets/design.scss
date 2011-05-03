@@ -6,13 +6,7 @@
 @import "compass/typography/vertical_rhythm";
 @import "partials/vertical-rhythm";
 
-
-html  {
-    text-align: justify;
-}
 body {
-    color: $text; 
-//    font-family: Trebuchet MS;
     font-family: Helvetica, Arial;
     background: url('../images/wood2.jpg');
 }

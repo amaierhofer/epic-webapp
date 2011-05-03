@@ -6,6 +6,9 @@
     display: none;
     top: 300px !important;
 } 
+a.ui-btn span {
+    color: #000;
+}
 
 .jqm-center {
     text-align: center;
@@ -16,3 +19,4 @@
 .jqm-footer {
     @include prepend-top;
 }
+
