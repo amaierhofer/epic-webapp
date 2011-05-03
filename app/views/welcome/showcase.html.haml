@@ -2,8 +2,9 @@
 = javascript_include_tag "/jquery.featureList-1.0.0/jquery.featureList-1.0.0.js"
 
 :maruku 
-  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
+  Your phone and the internet will move closer together. But we don't want big companies to do this for us, we want to be in control. Therefore we cooked up a little something that hooks your phone to the net and should server as a foundation to support more challenging use cases. 
 
+  If you have any comments, ideas or would like to contribute please drop us a line. Meanwhile checkout the demos below.
 
 #apps
   #feature_list
@@ -20,14 +21,13 @@
     %ul#output
       %li
         = image_tag 'showcase/box-screen-ri.png'
-        = link_to 'See project details', :controller => "mobileapps", :action => :ringit
+        = link_to 'try it now', :mobileapps_ringit
       %li
-
         = image_tag 'showcase/box-screen-mi.png'
-        %a{:href => "#"} See project details
+        %a{:href => "#"} coming soon
       %li
         = image_tag 'showcase/box-screen-bi.png'
-        = link_to 'See project details', :controller => "mobileapps", :action => :browserhistory
+        = link_to 'try it now', :mobileapps_browserhistory
 
 :javascript 
   $(function() {
