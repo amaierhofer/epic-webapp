@@ -14,6 +14,7 @@ class User
 
   attr_accessor :name, :password
   validates_presence_of :name, :password
+  validates_format_of :name, :password, :with => /^[\w|\d]+$/, :message => 'only letters and digits allowed'
 
   def self.url 
     APP_CONFIG[:admin] 

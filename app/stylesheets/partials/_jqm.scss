@@ -9,7 +9,9 @@
 a.ui-btn span {
     color: #000;
 }
-
+.ui-block-a a  {
+    &:hover { background-color: transparent !important; }  
+}
 .jqm-center {
     text-align: center;
 }

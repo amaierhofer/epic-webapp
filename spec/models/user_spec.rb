@@ -7,6 +7,15 @@ describe User do
     @mock_user ||= mock_model(User, stubs).as_null_object
   end
 
+  context "active record validations" do
+    it { should validate_presence_of :name }
+    it { should validate_presence_of :password }
+    it { should allow_value("foobar123").for(:name) }
+    it { should_not allow_value("!2:Asd").for(:name) }
+    it { should allow_value("foobar123").for(:password) }
+    it { should_not allow_value("!2:Asd").for(:password) }
+  end
+
   context "attributes" do
     its(:name) { should be_nil }
     its(:password) { should be_nil }
@@ -16,11 +25,6 @@ describe User do
     subject { User.new(:name => "foo", :password => "bar") }
     its(:name) { should == "foo" }
     its(:password) { should == "bar" }
-  end
-
-  pending "active model validations" do
-    it { should validate_presence_of :name }
-    it { should validate_presence_of :password }
   end
 
   context "#available?" do

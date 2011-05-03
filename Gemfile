@@ -18,11 +18,11 @@ gem 'hpricot'
 
 
 group :test do
+	gem 'spork'
 	gem 'rspec'
   gem 'webmock'
-  gem "shoulda-matchers"
+  gem 'shoulda-matchers'
 	gem 'rspec-rails'
-	gem 'spork'
 end
 #group :development, :test do
 #	gem 'hpricot'

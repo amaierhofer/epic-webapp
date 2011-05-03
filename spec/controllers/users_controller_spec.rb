@@ -17,13 +17,18 @@ describe UsersController do
 
   describe "POST create" do
 
+    it "flashes if validation fails" do
+      post :create, :user => {name: 'foo', password: '!@3'}
+      response.should render_template "new"
+    end
+
     it "flashes if username unavailable" do
       User.stub(:new) { mock_user(:available? => false) }
       post :create, :user => {name: 'foo', password: 'foo'}
       response.should render_template "new"
     end
 
-    pending "assigns user" do
+    it "assigns user" do
       User.stub(:new) { mock_user(:available? => true, :register => false) }
       post :create, :user => {name: 'foo', password: 'foo'}
       response.should render_template "new"
