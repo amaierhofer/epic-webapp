@@ -14,18 +14,18 @@
 
 %p The easiest way to get these credentials onto your phone is to take a picture of the qrcode displayed below
 
-%p some debug info
-%ul.debug
-  %li url: #{APP_CONFIG[:bosh]}
-  %li domain: #{APP_CONFIG[:domain]}
-  %li username: #{current_user.name}
-  %li password: #{current_user.password}
-  %li= @action
 
-- if @action
-  = link_to 'Proceed to application', :action => @action
+.ui-grid-a
+  %ul.ui-block-a
+    %li url: #{APP_CONFIG[:bosh]}
+    %li domain: #{APP_CONFIG[:domain]}
+    %li username: #{current_user.name}
+    %li password: #{current_user.password}
+    %li= @action
+    - if @action
+      = link_to 'Proceed to application', :action => @action
 
-#qrcode
+  #qrcode.ui-block-b.jqm-center
 
 
 

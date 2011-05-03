@@ -12,12 +12,8 @@ a.ui-btn span {
 .ui-block-a a  {
     &:hover { background-color: transparent !important; }  
 }
-.jqm-center {
-    text-align: center;
-}
-.ui-block-b {
-    text-align: right;
-}
+.jqm-center { text-align: center; }
+.jqm-right { text-align: right; }
 .jqm-footer {
     @include prepend-top;
 }
