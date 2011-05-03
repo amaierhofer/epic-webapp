@@ -20,6 +20,7 @@
         @include append-bottom;
     }
     a { @include link; }
+    .error { display: none; } 
     .error_messages {
         padding: 10px 20px;
         border: 3px solid red;
