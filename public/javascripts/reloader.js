@@ -1,14 +1,21 @@
 (function() {
 
-	console.log('ready');
+  function log(msg) {
+    if (window.console) { window.console.log(msg); }
+  }
+
+  if (window.WebSocket) {
+	log('ready');
 	ws = new WebSocket('ws://localhost:4567');
 	ws.onopen = function() {
-		console.log('connected');
+		log('connected');
 	};
 	ws.onmessage = function(msg) {
-		console.log('msg: ' + msg.data);
+		log('msg: ' + msg.data);
 		if(/reload/.test(msg.data)) {
 			window.location.reload();
 		}
 	};
+  }
+
 })();

@@ -2,6 +2,7 @@
 
 :javascript
   $(function() {
+    if (!$.nmk) { return; }
     var user = $.nmk.session.getUser();
     var url = Strophe.getNodeFromJid(user.jid) + ":" + user.pw + "@#{APP_CONFIG[:domain]}";
 
@@ -19,21 +20,4 @@
 
   .m-left-small
     #qrcode.center
-
-/.ui-grid-a
-/  %ul.ui-block-a
-/    %li url: #{APP_CONFIG[:bosh]}
-/    %li domain: #{APP_CONFIG[:domain]}
-/    %li username: #{current_user.name}
-/    %li password: #{current_user.password}
-/    %li= @action
-/    - if @action != "qrcode"
-/      = link_to 'Proceed to application', :action => @action
-/
-/  #qrcode.ui-block-b.jqm-center
-
-
-
-
-
 
