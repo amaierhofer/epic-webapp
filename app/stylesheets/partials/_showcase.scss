@@ -1,3 +1,4 @@
+$height: 320px;
 #top { 
     @include column(22); 
     @include append-bottom;
@@ -9,7 +10,7 @@
 
     #feature_list {
         width: 750px;
-        height: 240px;
+        height: $height;
         overflow: hidden;
         position: relative;
         @include box-shadow;
@@ -46,12 +47,12 @@
         ul#output {
             right: 0;
             width: 463px;
-            height: 240px;
+            height: $height;
 
             li {
                 position: absolute;
                 width: 463px;
-                height: 240px;
+                height: $height;
                 a {
                     position: absolute;
                     bottom: 10px;
@@ -69,7 +70,7 @@
             }
             img { 
                 width: 463px;
-                height: 240px;
+                height: $height;
             } 
         }
     }
