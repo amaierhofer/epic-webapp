@@ -3,9 +3,8 @@
 :javascript
   $(function() {
     var user = $.nmk.session.getUser();
-    //TODO fix url!!! should be
-    // username_without_anything (e.g., 'andi', 'peter', 'sepp') + ':' + password + '@' + xmppservicename (e.g., 'box', 'psi', 'ubuntu')
-    var url = user.jid + ":" + user.pw + "@" + user.url;
+    var url = Strophe.getNodeFromJid(user.jid) + ":" + user.pw + "@#{APP_CONFIG[:domain]}";
+
     var img = '<img src="http://qrcode.kaywa.com/img.php?s=5&d=' + url + '"></img>';
     $.nmk.log('url: ' + url);
     $("ul.debug").append("<li>" + url + "</li>");
