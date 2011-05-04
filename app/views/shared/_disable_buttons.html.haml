@@ -1,0 +1,9 @@
+:javascript
+  $(function() {
+    if (!$.nmk) { return; }
+    var state = _.first(_.values(epic.xmpp('state').peers));
+    if (state == 'available') { return; }
+    $('a[data-role]="button"').each(function() {
+      $(this).button().button('disable');
+    });
+  });

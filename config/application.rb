@@ -48,11 +48,10 @@ module EpicWebapp
     # config.i18n.default_locale = :de
 
     # JavaScript files you want as :defaults (application.js is always included).
-    config.action_view.javascript_expansions[:defaults] = %w(jquery-1.5.2.min rails)
+    config.action_view.javascript_expansions[:defaults] = %w(jquery-1.5.2.min underscore jquery.tmpl.min)
 
-
-
-    config.action_view.javascript_expansions[:xmpp] = %w(strophe underscore jquery-1.5.2.min jquery.tmpl.min jquery.ui.widget xmpp/jquery.xmpp xmpp/peek jquery.app app)
+    config.action_view.javascript_expansions[:jqm] = %w(jquery.ui.widget /jquery.mobile/jquery.mobile-1.0a4.1.js jqm.customizations)
+    config.action_view.javascript_expansions[:xmpp] = %w(strophe jquery.tmpl.min jquery.ui.widget xmpp/jquery.xmpp xmpp/peek jquery.app app)
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
