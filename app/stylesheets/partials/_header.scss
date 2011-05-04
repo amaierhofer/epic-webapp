@@ -2,10 +2,10 @@
 @import "compass/typography/lists/inline-block-list";
 
 @mixin navi-link {
-    color: darken($text, 30%);
+    color: darken($text, 25%);
     text-decoration: none;
     &:hover { 
-        color: $text; 
+        color: lighten($text, 30%);
         border-bottom: 3px solid #d54097;
     }
 }

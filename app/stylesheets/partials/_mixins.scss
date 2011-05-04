@@ -1,13 +1,8 @@
-///@mixin border($color: #d54097) {
-///    border: 1px dashed $color;
-///}
 
 @mixin link {
-
-    color: darken($text,35%);
+    color: lighten($text,25%);
     text-decoration: none;
     &:hover { 
-
         color: $text;
         background-color: darken($text, 45%);
     }
