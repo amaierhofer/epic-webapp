@@ -47,10 +47,10 @@
 
       // bind Peek to events to populate console
       this.x.bind('xmpp.outgoing',function(ev,body) {
-        Peek.show_traffic(body,'outgoing');
+        Peek.show_traffic(body,'outgoing', '.xmpp-console');
       });
       this.x.bind('xmpp.incoming',function(ev,body) {
-        Peek.show_traffic(body,'incoming');
+        Peek.show_traffic(body,'incoming','.xmpp-console');
       });
 
       // connect if we have a user

@@ -5,6 +5,7 @@ EpicWebapp::Application.routes.draw do
   match 'welcome/mockups'
 
   match 'about', :to => 'about#index'
+  match 'about/protocol'
   match 'about/artifacts' 
   match 'about/technology' 
   match 'about/use_cases'
