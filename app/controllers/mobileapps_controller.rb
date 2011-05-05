@@ -3,6 +3,7 @@ class MobileappsController < ApplicationController
   layout 'jqmapplication'
 
   def index
+    render current_user ? "index" : "not_logged_in"
   end
 
   def dialog
