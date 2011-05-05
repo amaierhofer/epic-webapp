@@ -1,19 +1,18 @@
 %h1.center Welcome back, #{current_user.name}!
 
-.m-home
-  %ul.m-app-list
-    - [:ri, :mi, :brhi].each do |app|
-      %li= app_link(app)
+%ul.m-app-list
+  - [:ri, :mi, :brhi].each do |app|
+    %li= app_link(app)
 
-  .m-xmpp-status
-    %h2 Connection status
+.m-xmpp-status
+  %h2 Connection status
 
-    .m-xmpp-status-browser
-      %span Browser
-      %span.xmpp-status offline
+  .m-xmpp-status-browser
+    %span Browser
+    %span.xmpp-status offline
 
-    .m-xmpp-status-phone
-      %span Phone
-      %span.xmpp-phone-status offline
+  .m-xmpp-status-phone
+    %span Phone
+    %span.xmpp-phone-status offline
 
 

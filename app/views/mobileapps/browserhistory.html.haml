@@ -1,16 +1,16 @@
-
 = javascript_include_tag 'mobileapps/browserhistory.js'
+%h1.center Retrieve your browser history!
 
-%p Have you recently accessed some interesting webpage on your phone?
-%p Retrieve browser history!
+.m-app-brhi
+  .description Load up the urls from your phones browser. some more text blablalba blubb lala:w maybe we even get a linebreak yooowow
 
-%input{:id => "mostrecentbutton", :type => "submit", :value => "Retrieve most recent!"}
-%input{:id => "mostvisitedbutton", :type => "submit", :value => "Retrieve most visited!"}
+  .buttons{'data-role' => 'controlgroup', 'data-type' => 'horizontal'}
+    %input{:id => "mostrecentbutton", :type => "submit", :value => "most recent"}
+    %input{:id => "mostvisitedbutton", :type => "submit", :value => "most visited"}
 
 
-%ul{:id => "page-list"}
-  - %w[foo bar bla blubb].each do |link|
-    %li= link_to link, :apps_home
+  .results
+    %ul{:id => "page-list", 'data-role' => 'listview', 'data-inset' => 'true', 'data-theme' => 'a'}
 
 
 

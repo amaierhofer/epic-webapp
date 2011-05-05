@@ -14,17 +14,17 @@
         @include prepend(1);
         @include column(22);  
     }
-
     #title { @include prepend-top; }
-    #content {
-        @include append-bottom;
-    }
-    a { @include link; }
+    #content { @include append-bottom; }
+    .showgrid { @include showgrid; }
     .error { display: none; } 
     .error_messages {
         padding: 10px 20px;
         border: 3px solid red;
         margin-bottom: 20px;
         background-color: rgba(255,0,0,0.1);
+    }
+    p {
+        a { @include link; }
     }
 }

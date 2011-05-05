@@ -1,15 +1,29 @@
-.center {  text-align: center; } 
-.m-home {
-    @include column(22);
+.center { text-align: center; } 
+.m-app-brhi {
+    .description { 
+        @include column(12);
+        @include append(1);
+    }
+    .buttons {
+        @include column(9,true);
+    }
+    .results {
+        @include prepend-top;
+        @include column(22);
+    }
+
+
 }
-.m-app-list {
-    @include column(11);
+.m-app-list, .m-app-split {
+    @include column(9);
+    @include prepend(1);
+    @include append(1);
 }
 .m-xmpp-status {
     @include column(8,true);
     @include border-radius;
     padding: 5px 10px;
-    border: 3px solid #d54097;
+    border: 1px solid #d54097;
     span { @include column(3); } 
 } 
 
