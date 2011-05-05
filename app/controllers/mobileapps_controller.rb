@@ -15,17 +15,6 @@ class MobileappsController < ApplicationController
     session.delete :action_name
   end
 
-  def ringit
-  end
-
-  def mapit
-  end
-
-  def browserhistory
-  end
-
-  def makeit
-  end
 
   protected
   def authorize
