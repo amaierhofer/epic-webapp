@@ -1,5 +1,4 @@
 EpicWebapp::Application.routes.draw do
-  get "session/new"
 
   root :to => "welcome#showcase"
   match 'welcome/xmpp'

@@ -1,5 +1,5 @@
-
 @import "compass/reset";
+
 $text: #eee;
 $base-font-size: 20px;
 $base-line-height: 28px;
@@ -10,8 +10,10 @@ html {
     h2 { @include adjust-font-size-to(25px); }
 
     #header { 
-        @include adjust-font-size-to(40px); 
-        #navi { @include adjust-font-size-to(16px); }
+        #navi { 
+            // line height plays into this as well
+            @include adjust-font-size-to(26px,2.3); 
+        }
     }
 }
 
