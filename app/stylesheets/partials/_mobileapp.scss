@@ -1,0 +1,15 @@
+.center {  text-align: center; } 
+.m-home {
+    @include column(22);
+}
+.m-app-list {
+    @include column(11);
+}
+.m-xmpp-status {
+    @include column(8,true);
+    @include border-radius;
+    padding: 5px 10px;
+    border: 3px solid #d54097;
+    span { @include column(3); } 
+} 
+

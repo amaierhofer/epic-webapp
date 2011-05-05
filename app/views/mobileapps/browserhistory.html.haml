@@ -1,15 +1,12 @@
 
 = javascript_include_tag 'mobileapps/browserhistory.js'
 
-.ui-grid-a
-  %ul.ui-block-a
-    %p Have you recently accessed some interesting webpage on your phone?
-    %p Retrieve browser history!
+%p Have you recently accessed some interesting webpage on your phone?
+%p Retrieve browser history!
 
-    %input{:id => "mostrecentbutton", :type => "submit", :value => "Retrieve most recent!"}
-    %input{:id => "mostvisitedbutton", :type => "submit", :value => "Retrieve most visited!"}
+%input{:id => "mostrecentbutton", :type => "submit", :value => "Retrieve most recent!"}
+%input{:id => "mostvisitedbutton", :type => "submit", :value => "Retrieve most visited!"}
 
-  = render :partial => 'block_b'
 
 %ul{:id => "page-list"}
   - %w[foo bar bla blubb].each do |link|

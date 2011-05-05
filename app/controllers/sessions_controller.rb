@@ -19,6 +19,7 @@ class SessionsController < ApplicationController
 
 
   def new
+    redirect_to :apps_home if current_user
   end
 
   def destroy

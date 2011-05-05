@@ -19,20 +19,12 @@ module LayoutHelper
   def javascript(*args)
     content_for(:head) { javascript_include_tag(*args) }
   end
-
-  def js_link
-    if jqm_enabled?
-      link_to "noJS", { :jqm => 0 }, { :rel => "external" }
-    else 
-      link_to "JS", { :jqm => 1 }, { :rel => "external" }
+  def link_to_root
+    if current_user
+      link_to '', :apps_home, :id => "logo", :alt => 'epic services', :rel => 'external' 
+    else
+      link_to '', :root, :id => "logo", :alt => 'epic services', :rel => 'external' 
     end
   end
 
-  def xmpp_link
-    if xmpp_enabled?
-      link_to "noXMPP", { :xmpp => 0 }, { :rel => "external" }
-    else 
-      link_to "XMPP", { :xmpp => 1 }, { :rel => "external" }
-    end
-  end
 end

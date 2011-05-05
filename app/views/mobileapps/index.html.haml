@@ -1,16 +1,19 @@
-- if current_user
-  %h1.jqm-center Welcome back, #{current_user.name}!
+%h1.center Welcome back, #{current_user.name}!
 
-  .ui-grid-a
-    %ul.ui-block-a
-      - [:ri, :mi, :brhi].each do |app|
-        %li= app_link(app)
+.m-home
+  %ul.m-app-list
+    - [:ri, :mi, :brhi].each do |app|
+      %li= app_link(app)
 
-    = render :partial => 'block_b'
+  .m-xmpp-status
+    %h2 Connection status
 
-- else
-  %p Our service is build on top of #{link_to "xmpp", "http://www.xmpp.org"}. You have to register with our xmpp server before you can access the applications. If you already have an account, proceed straight to login.
+    .m-xmpp-status-browser
+      %span Browser
+      %span.xmpp-status offline
 
-  .jqm-center{'data-role' => 'controlgroup', 'data-type' => 'horizontal'}
-    = link_to 'Sign In', :new_session, 'data-role' => 'button'
-    = link_to 'Sign Up', :appstore_users, 'data-role' => 'button'
+    .m-xmpp-status-phone
+      %span Phone
+      %span.xmpp-phone-status offline
+
+
