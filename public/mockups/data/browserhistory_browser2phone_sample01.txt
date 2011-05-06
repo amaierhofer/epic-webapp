@@ -1,0 +1,1 @@
+<message to='laslo@box/android-device' type='chat' xmlns='jabber:client'><application xmlns='http://mobilesynergies.org/protocol/epic' action='org.epic.action.ListBrowserHistory' session='qLQVHVAJo35ykJgO'><data type='map'><start type='int'>0</start><size type='int'>10</size></data></application></message>

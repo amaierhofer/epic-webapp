@@ -1,0 +1,1 @@
+<message to='laslo@box/android-device' type='chat' xmlns='jabber:client'><application xmlns='http://mobilesynergies.org/protocol/epic' action='org.epic.action.RingPhone' session='H6tH2m6Kw8Jr27tT'/></message>
