@@ -1,16 +1,40 @@
-= javascript_include_tag 'mobileapps/browserhistory.js'
+/ = javascript_include_tag 'mobileapps/browserhistory.js'
+:javascript 
+  $(function() {
+    $('.m-right a').click(function() {
+
+      $.get('/mockups/data/browserhistory_phone2browser_sample01.txt', function(text) {
+        var data = $(text);
+        $.nmk.log(data);
+        var res = $('.results');
+        res.find('li').remove();
+        data.find('data').children().each(function() {
+          var entry = $(this);
+          var url = entry.find('url').text();
+          var title = entry.find('title').text();
+          $.nmk.log(url);
+          var li = '<li>' + url + '</li>';
+          res.append(li);
+        });
+        res.listview('refresh');
+      });
+    });
+  });
+
 %h1.center Retrieve your browser history!
 
-.m-app-brhi
-  .description Load up the urls from your phones browser. some more text blablalba blubb lala:w maybe we even get a linebreak yooowow
+.m-twocol
+  .m-left 
+    %p Load up the urls from your phones browser. some more text blablalba blubb lala:w maybe we even get a linebreak yooowow
 
-  .buttons{'data-role' => 'controlgroup', 'data-type' => 'horizontal'}
-    %input{:id => "mostrecentbutton", :type => "submit", :value => "most recent"}
-    %input{:id => "mostvisitedbutton", :type => "submit", :value => "most visited"}
+  .m-right
+    %div{'data-role' => 'controlgroup', 'data-type' => 'horizontal'}
+      = link_to  'most recent', '#', :id => 'most-recent', 'data-role' => 'button'
+      = link_to  'most recent', '#', :id => 'most-visisted', 'data-role' => 'button'
 
-
-  .results
-    %ul{:id => "page-list", 'data-role' => 'listview', 'data-inset' => 'true', 'data-theme' => 'a'}
-
+%ul.results{'data-role' => 'listview', 'data-inset' => 'true', 'data-theme' => 'a'}
+  %li a
+  %li b
+    
 
 
