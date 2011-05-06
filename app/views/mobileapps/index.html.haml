@@ -1,6 +1,6 @@
 %h1.center Welcome back, #{current_user.name}!
 
-%ul.m-app-list
+%ul.m-app-list.border
   - [:ri, :mi, :brhi].each do |app|
     %li= app_link(app)
 

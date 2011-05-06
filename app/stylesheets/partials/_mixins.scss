@@ -1,4 +1,4 @@
-@mixin border($color: red) {
+@mixin border($color: #d54097) {
     border: 1px dashed $color;
 }
 
@@ -10,4 +10,6 @@
         background-color: darken($text, 75%);
     }
 }
+.border { @include border; }
+.center { text-align: center; } 
 

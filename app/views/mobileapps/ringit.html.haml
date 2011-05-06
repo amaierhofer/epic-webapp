@@ -1,9 +1,13 @@
 = javascript_include_tag 'mobileapps/ringit.js'
 
-.ui-grid-a
-  %ul.ui-block-a
-    %p Searching for your device? You can simply make it ring. 
-    %input{:id => "ringitbutton", :type => "submit", :value => "Ring It!"}
 
-  = render :partial => 'block_b'
+%h1.center Make your phone ring!
+.m-twocol
+  .m-left
+    %p Searching for your device? You can simply make it ring. 
+    %p can we get a jqm activity indicator onto the button?
+  .m-right
+    = link_to 'Ring it!', '#', :id => 'ring', 'data-role' => 'button'
+
+
 
