@@ -1,0 +1,32 @@
+:javascript 
+  $(function() {
+    $.get('/mockups/data/makeit_phone2browser_sample01.txt', function(text) {
+      var path = "#{url_for :makeit_execute}";
+      var data = $(text);
+      $.nmk.log(data);
+      var res = $('.results');
+      res.find('li').remove();
+      data.find('data').children().each(function() {
+        var entry = $(this);
+        var action = entry.find('action').text();
+        var clazz = entry.find('class').text();
+        var pkg = entry.find('package').text();
+        var path_with_param = path + "?epic_action=" + action;
+        $.nmk.log(action);
+        var link = '<a href="' + path_with_param +'" rel="external">' + action + '</a>';
+        var li = '<li>' + link + '</li>';
+        res.append(li);
+      });
+      res.listview('refresh');
+    });
+  });
+
+
+
+
+%h1.center We found following epic services
+
+%ul.results{'data-role' => 'listview', 'data-inset' => 'true', 'data-theme' => 'a'}
+  %li a
+  %li b
+

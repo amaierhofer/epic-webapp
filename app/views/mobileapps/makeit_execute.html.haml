@@ -1,0 +1,34 @@
+%h1.center Execute "#{params[:epic_action]}"
+
+:javascript
+  $(function() {
+    var action = "${params[:epic_action]}";
+    $('a').click(function() {
+      alert('executing' + action);
+    });
+  });
+
+
+
+
+%h2 Adding parameters to call
+
+%form{:action => '#', :method => 'get'}
+  %div{'data-role' => 'fieldcontain'}
+    %label{:for => 'param_name'} Parameter name
+    %input{:type => 'text', :name => 'param_name', :value => ''}
+
+
+  %div{'data-role' => 'fieldcontain'}
+    %fieldset{'data-role' => 'controlgroup', 'data-type' => 'horizontal'}
+      %legend Parameter type
+      - %w[string boolean integer].each_with_index do |type|
+        %input{:id => type, :name => 'type', :type => 'radio', :value => type}/
+        %label{:for => type}= type
+
+
+  %div{'data-role' => 'fieldcontain'}
+    %label{:for => 'param_value'} Parameter value
+    %input{:type => 'text', :name => 'param_value', :value => ''}
+= link_to 'Execute Action', '#' 
+

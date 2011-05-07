@@ -16,6 +16,8 @@ EpicWebapp::Application.routes.draw do
   match 'mobileapps/ringit'
   match 'mobileapps/browserhistory'
   match 'mobileapps/makeit'
+  match 'mobileapps/makeit_list', :as => :makeit_list
+  match 'mobileapps/makeit_execute', :as => :makeit_execute
 
   match 'test', :to => 'jasmine#index', :as => :jasmine_index
   match 'test/docs', :to => 'jasmine#docs', :as => :jasmine_docs

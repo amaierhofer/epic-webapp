@@ -17,4 +17,5 @@ a.ui-btn span {
 .jqm-footer {
     @include prepend-top;
 }
+.ui-controlgroup-label { font-size: 20px !important; }
 
