@@ -2,7 +2,6 @@
 :javascript 
   $(function() {
     $('.m-right a').click(function() {
-
       $.get('/mockups/data/browserhistory_phone2browser_sample01.txt', function(text) {
         var data = $(text);
         $.nmk.log(data);
@@ -13,7 +12,8 @@
           var url = entry.find('url').text();
           var title = entry.find('title').text();
           $.nmk.log(url);
-          var li = '<li>' + url + '</li>';
+          var link = '<a href="' + url + '" rel="external">' + title + '</a>';
+          var li = '<li>' + link + '</li>';
           res.append(li);
         });
         res.listview('refresh');

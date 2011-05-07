@@ -1,6 +1,6 @@
-@mixin border($color: #d54097) {
-    border: 1px dashed $color;
-}
+///@mixin border($color: #d54097) {
+///    border: 1px dashed $color;
+///}
 
 @mixin link {
     color: darken($text, 20%);
@@ -10,6 +10,4 @@
         background-color: darken($text, 75%);
     }
 }
-.border { @include border; }
-.center { text-align: center; } 
 

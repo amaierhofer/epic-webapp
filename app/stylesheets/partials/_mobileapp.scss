@@ -1,5 +1,15 @@
+@import "compass/typography/links/unstyled-link";
+@import "compass/typography/links/link-colors";
+.m-content {
+    @include column(22);
+}
 .m-footer {
     @include column(22);
+    @include prepend-top;
+    a.ui-link { 
+        @include link-colors(#00c);
+        @include unstyled-link;
+    }
 } 
 .m-twocol {
     @include column(22);
@@ -18,7 +28,8 @@
 
 .m-xmpp-status {
     padding: 5px 10px;
-    @include column(10,true);
+    @include column(7);
+
     .m-xmpp-status-browser, .m-xmpp-status-phone {
         padding: 10px  0px 5px 10px;
         @include column(8);

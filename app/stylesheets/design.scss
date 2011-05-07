@@ -1,22 +1,26 @@
-
+@import "compass/reset";
 @import "compass/css3";
+@import "compass/typography/vertical_rhythm";
 @import "blueprint/grid";
 @import "blueprint/debug";
-@import "partials/mixins";
-@import "compass/typography/vertical_rhythm";
-@import "partials/vertical-rhythm";
+
+$text: #eee;
+$pink: #d54097;
+$blueprint-border-color: red;
+
+
 
 body {
-    font-family: Helvetica, Arial;
     background: url('../images/wood2.jpg');
 }
+.center { text-align: center; } 
 
-
+//@import "partials/mixins";
+@import "partials/vertical-rhythm";
+@import "partials/jqm";
 @import "partials/header";
 @import "partials/main";
-@import "partials/jqm";
 @import "partials/mobileapp";
-
 @import "partials/footer";
 @import "partials/showcase";
 

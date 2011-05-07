@@ -1,9 +1,7 @@
-@import "compass/reset";
-
-$text: #eee;
 $base-font-size: 20px;
 $base-line-height: 28px;
 html {
+    font-family: Helvetica, Arial;
     @include establish-baseline;
     p { @include padding-trailer; } 
     h1 { @include adjust-font-size-to(30px); }
@@ -16,5 +14,3 @@ html {
         }
     }
 }
-
-
