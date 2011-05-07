@@ -1,4 +1,4 @@
-$height: 320px;
+$height: 240px;
 #top { 
     @include column(22); 
     @include append-bottom;
@@ -13,6 +13,7 @@ $height: 320px;
         height: $height;
         overflow: hidden;
         position: relative;
+        border: 1px solid black;
         @include box-shadow;
         ul {
 			position: absolute;
@@ -75,32 +76,3 @@ $height: 320px;
         }
     }
 } 
-/*
-    #left {
-        @include column(12); 
-    }
-    #right {
-        @include prepend(2);
-        @include column(8,true); 
-        #details {
-            @include append-bottom;
-        }
-        #button {
-            //decide if we want left right or center
-            //identify propery way of positioning single 
-            //cell within grid, must be documented
-            @include prepend(3);
-            a {
-                @include fancy-button(#2966a8);
-            }
-        }
-    }
-    #top { @include column(8); }
-    #left { @include column(5); }
-    #right { @include column(3,true); }
-    #apps { 
-        @include column(8);  
-}
-    */
-
-

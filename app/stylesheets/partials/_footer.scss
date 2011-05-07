@@ -5,6 +5,4 @@
     @include prepend-top;
     @include append-bottom;
     @include prepend(1);
-
-    a { @include navi-link; }
 } 

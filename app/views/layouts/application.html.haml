@@ -22,9 +22,9 @@
         = link_to '', :root, :id => "logo", :alt => 'epic services'
 
         %ul#navi
-          %li= link_to 'intro', :about
-          %li= link_to 'use case', :about_use_cases
+          %li= link_to 'architecture', :about
           %li= link_to 'technology', :about_technology
+          %li= link_to 'applications', :about_use_cases
           %li= link_to 'downloads', :about_artifacts
 
     #main
@@ -34,8 +34,9 @@
         = yield
 
     .blackbar
-      #footer
-        me and you production 2011
+      #footer.center
+        %span This project was kindly sponsored by
+        = link_to (image_tag 'netidee-logo_100x49.png'), 'http://netidee.at'
 
 
 
