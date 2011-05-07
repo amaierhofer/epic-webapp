@@ -17,26 +17,14 @@
   
   %body
 
-    .blackbar 
-      #header
-        = link_to '', :root, :id => "logo", :alt => 'epic services'
-
-        %ul#navi
-          %li= link_to 'architecture', :about
-          %li= link_to 'technology', :about_technology
-          %li= link_to 'applications', :about_use_cases
-          %li= link_to 'downloads', :about_artifacts
-
+    = render :partial => 'shared/header'
     #main
       #title 
         = content_tag :h1, yield(:title) if show_title?
       #content
         = yield
 
-    .blackbar
-      #footer.center
-        %span This project was kindly sponsored by
-        = link_to (image_tag 'netidee-logo_100x49.png'), 'http://netidee.at'
+    = render :partial => 'shared/footer'
 
 
 

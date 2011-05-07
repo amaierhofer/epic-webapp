@@ -1,7 +1,5 @@
 
-- if user_signed_in?
-  %div{'data-role' => 'footer', 'data-id' => 'footer', 'data-position' => 'fixed' }
-    %div{'data-role' => 'navbar', 'data-type' => 'horizontal'}
-      %ul
-        %li= link_to 'Home', :user_profile, 'data-icon' => 'back'
-        %li= link_to 'Devices', :root , 'data-icon' => 'grid'
+.blackbar
+  #footer.center
+    %span This project was kindly sponsored by
+    = link_to (image_tag 'netidee-logo_100x49.png'), 'http://netidee.at'

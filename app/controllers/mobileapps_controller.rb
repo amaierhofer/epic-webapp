@@ -15,7 +15,6 @@ class MobileappsController < ApplicationController
     session.delete :action_name
   end
 
-
   protected
   def authorize
     session[:action_name] = action_name unless session[:action_name]

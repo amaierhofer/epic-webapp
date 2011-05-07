@@ -26,15 +26,7 @@
   %body
     .ui-page{'data-role' => 'page', 'data-theme' => 'c'}
       = link_to '', ''
-      .blackbar 
-        #header
-          = link_to_root
-
-          %ul#navi
-            %li= link_to 'intro', :about, :rel => 'external'
-            %li= link_to 'use case', :about_use_cases, :rel => 'external' 
-            %li= link_to 'technology', :about_technology, :rel => 'external'
-            %li= link_to 'downloads', :about_artifacts, :rel => 'external'
+      = render :partial => 'shared/header'
 
       #main
         #title 
@@ -47,9 +39,6 @@
             = render :partial => 'shared/set_js_credentials_from_session'
             = render :partial => 'footer'
 
-      .blackbar
-        #footer
-          me and you production 2011, contact 
-
+      = render :partial => 'shared/footer'
     .ui-page{'data-role' => 'page', 'data-theme' => 'c'}
       #console
