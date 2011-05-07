@@ -16,5 +16,8 @@ a.ui-btn span {
 .jqm-right { text-align: right; }
 .jqm-footer { @include prepend-top; }
 label.ui-input-text { font-size: 20px !important; }
-.ui-controlgroup-label { font-size: 20px !important; }
+.ui-controlgroup-label { 
+    margin: 0 5% 0 0 !important;
+    font-size: 20px !important; 
+}
 

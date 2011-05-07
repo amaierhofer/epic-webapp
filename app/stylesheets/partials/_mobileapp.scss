@@ -17,10 +17,19 @@
         @include column(10);
         @include append(1);
     }
+    .m-left-big {
+        @include column(14);
+    }
     .m-right {
         @include prepend(1);
         @include column(10,true);
     }
+    .m-right-small {
+        @include column(8,true);
+    }
+}
+.m-span {
+    @include column(22);
 }
 .results {
     @include column(22);

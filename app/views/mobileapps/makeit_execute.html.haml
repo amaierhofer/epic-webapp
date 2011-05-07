@@ -8,7 +8,7 @@
       var form = $('form');
       addParam({
         name: form.find('#name').val(),
-        type: form.find(':checked').val(),
+        type: form.find(':checked').val() || '',
         value: form.find('#value').val()
       });
     });
@@ -16,10 +16,14 @@
     $('#exec').click(function() {
       $.nmk.log(params);
     });
+    $('#clear').click(function() {
+      params = [];
+      ul.find('li').remove();
+    });
 
     function addParam(p) {
-      ul.find('li').remove();
       params.push(p);
+      ul.find('li').remove();
       _.each(params, function(p) {
         ul.append('<li>' + JSON.stringify(p) + '</li>');
       });
@@ -28,27 +32,29 @@
     }
   });
 
+%p Use the form below to add parameters to your call. 
+.m-twocol
+  .m-left-big
+    %form{:action => '#', :method => 'get'}
+      %div{'data-role' => 'fieldcontain'}
+        %label{:for => 'name'} Name
+        %input{:id => 'name', :type => 'text', :name => 'name', :value => ''}
 
-%h2 Adding parameters to call
 
-%form{:action => '#', :method => 'get'}
-  %div{'data-role' => 'fieldcontain'}
-    %label{:for => 'name'} Parameter name
-    %input{:id => 'name', :type => 'text', :name => 'name', :value => ''}
+      %div{'data-role' => 'fieldcontain'}
+        %fieldset{'data-role' => 'controlgroup', 'data-type' => 'horizontal'}
+          %legend Type
+          - %w[string boolean integer].each_with_index do |type|
+            %input{:id => type, :name => 'type', :type => 'radio', :value => type}/
+            %label{:for => type}= type
 
+      %div{'data-role' => 'fieldcontain'}
+        %label{:for => 'value'} Value 
+        %input{:id => 'value', :type => 'text', :name => 'value', :value => ''}
 
-  %div{'data-role' => 'fieldcontain'}
-    %fieldset{'data-role' => 'controlgroup', 'data-type' => 'horizontal'}
-      %legend Parameter type
-      - %w[string boolean integer].each_with_index do |type|
-        %input{:id => type, :name => 'type', :type => 'radio', :value => type}/
-        %label{:for => type}= type
+  .m-right-small
+    = btn_link_to 'Add Parameter', '#', :id => 'add'
+    = btn_link_to 'Execute Action', '#', :id => 'exec'
+    = btn_link_to 'Clear List', '#', :id => 'clear'
 
-  %div{'data-role' => 'fieldcontain'}
-    %label{:for => 'value'} Parameter value
-    %input{:id => 'value', :type => 'text', :name => 'value', :value => ''}
-
-  = btn_link_to 'Add Parameter', '#', :id => 'add'
-= btn_link_to 'Execute Action', '#', :id => 'exec'
-
-%ul.params{'data-role' => 'listview', 'data-inset' => 'true', 'data-theme' => 'a'}
+%ul.params.m-span{'data-role' => 'listview', 'data-inset' => 'true', 'data-theme' => 'a'}

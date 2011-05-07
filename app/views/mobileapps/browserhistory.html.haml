@@ -29,12 +29,10 @@
 
   .m-right
     %div{'data-role' => 'controlgroup', 'data-type' => 'horizontal'}
-      = link_to  'most recent', '#', :id => 'most-recent', 'data-role' => 'button'
-      = link_to  'most recent', '#', :id => 'most-visisted', 'data-role' => 'button'
+      = btn_link_to 'most recent', '#', :id => 'most-recent'
+      = btn_link_to 'most visisted', '#', :id => 'most-visited'
 
 %ul.results{'data-role' => 'listview', 'data-inset' => 'true', 'data-theme' => 'a'}
-  %li a
-  %li b
     
 
 
