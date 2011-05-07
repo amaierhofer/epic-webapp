@@ -8,11 +8,7 @@
   If you know how to write an android app you can easily write one that talks with this page! Just download the <a href='https://github.com/peterrautek/epic-androidsdk'>epic-androidSdk from
   github</a>. You can immediately deploy it to your phone and test it. It will install two more epic actions for your phone.
   Check for epic actions currently on your phone by pressing this button.
-  = link_to 'Retrieve app list', :makeit_list, 'data-role' => 'button'
-
-  %input{:id => "epicactionsbutton", :type => "submit", :value => "Retrieve epic actions!"}
-
-  %ul{:id => "action-list"}
+  = btn_link_to 'Retrieve app list', :makeit_list
 
   %p After you verified that everything works with the sdk, you can look at its source and modify it, or write your own epic enabled  Android application from scratch. To test your app you will soon be able to enter data on this page, that will be sent to your app. For the moment that's not possible - sorry!
 

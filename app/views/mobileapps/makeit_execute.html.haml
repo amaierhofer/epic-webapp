@@ -14,6 +14,8 @@
     });
 
     $('#exec').click(function() {
+      alert('executing: ' + action + ' with params: ' + JSON.stringify(params));
+      $.nmk.log(action);
       $.nmk.log(params);
     });
     $('#clear').click(function() {
@@ -57,4 +59,5 @@
     = btn_link_to 'Execute Action', '#', :id => 'exec'
     = btn_link_to 'Clear List', '#', :id => 'clear'
 
+%h2 Parameters
 %ul.params.m-span{'data-role' => 'listview', 'data-inset' => 'true', 'data-theme' => 'a'}
