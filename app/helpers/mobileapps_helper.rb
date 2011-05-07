@@ -1,5 +1,14 @@
 module MobileappsHelper
 
+  def btn_link_to(*args,&block)
+    if args.last.is_a? Hash
+      args.last['data-role'] = 'button'
+    else
+      args << { 'data-role' => 'button' }
+    end
+    link_to(*args,&block)
+  end
+
   def app_link(sym)
     case sym
       when :ri then link_to (ri_icon), :action => :ringit 

@@ -2,21 +2,39 @@
 
 :javascript
   $(function() {
-    var action = "${params[:epic_action]}";
-    $('a').click(function() {
-      alert('executing' + action);
+    var action = "#{params[:epic_action]}", ul = $('ul.params'), params = [];
+
+    $('#add').click(function() {
+      var form = $('form');
+      addParam({
+        name: form.find('#name').val(),
+        type: form.find(':checked').val(),
+        value: form.find('#value').val()
+      });
     });
+
+    $('#exec').click(function() {
+      $.nmk.log(params);
+    });
+
+    function addParam(p) {
+      ul.find('li').remove();
+      params.push(p);
+      _.each(params, function(p) {
+        ul.append('<li>' + JSON.stringify(p) + '</li>');
+      });
+      $.nmk.log(params);
+      ul.listview('refresh');
+    }
   });
-
-
 
 
 %h2 Adding parameters to call
 
 %form{:action => '#', :method => 'get'}
   %div{'data-role' => 'fieldcontain'}
-    %label{:for => 'param_name'} Parameter name
-    %input{:type => 'text', :name => 'param_name', :value => ''}
+    %label{:for => 'name'} Parameter name
+    %input{:id => 'name', :type => 'text', :name => 'name', :value => ''}
 
 
   %div{'data-role' => 'fieldcontain'}
@@ -26,9 +44,11 @@
         %input{:id => type, :name => 'type', :type => 'radio', :value => type}/
         %label{:for => type}= type
 
-
   %div{'data-role' => 'fieldcontain'}
-    %label{:for => 'param_value'} Parameter value
-    %input{:type => 'text', :name => 'param_value', :value => ''}
-= link_to 'Execute Action', '#' 
+    %label{:for => 'value'} Parameter value
+    %input{:id => 'value', :type => 'text', :name => 'value', :value => ''}
 
+  = btn_link_to 'Add Parameter', '#', :id => 'add'
+= btn_link_to 'Execute Action', '#', :id => 'exec'
+
+%ul.params{'data-role' => 'listview', 'data-inset' => 'true', 'data-theme' => 'a'}
