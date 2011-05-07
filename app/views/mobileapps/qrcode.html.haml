@@ -11,22 +11,26 @@
     $("#qrcode").append(img);
   });
 
-%p A user has been created with the supplied credentials. This user will be used when exchanging messages between this website and your mobile phone. 
+.m-twocol
+  .m-left-big
+    %p A user has been created with the supplied credentials. This user will be used when exchanging messages between this website and your mobile phone. 
 
-%p The easiest way to get these credentials onto your phone is to start the EpicService. At the Login screen take a picture of the qrcode displayed below
+    %p The easiest way to get these credentials onto your phone is to start the EpicService. At the Login screen take a picture of the qrcode displayed below
 
+  .m-left-small
+    #qrcode.center
 
-.ui-grid-a
-  %ul.ui-block-a
-    %li url: #{APP_CONFIG[:bosh]}
-    %li domain: #{APP_CONFIG[:domain]}
-    %li username: #{current_user.name}
-    %li password: #{current_user.password}
-    %li= @action
-    - if @action
-      = link_to 'Proceed to application', :action => @action
-
-  #qrcode.ui-block-b.jqm-center
+/.ui-grid-a
+/  %ul.ui-block-a
+/    %li url: #{APP_CONFIG[:bosh]}
+/    %li domain: #{APP_CONFIG[:domain]}
+/    %li username: #{current_user.name}
+/    %li password: #{current_user.password}
+/    %li= @action
+/    - if @action != "qrcode"
+/      = link_to 'Proceed to application', :action => @action
+/
+/  #qrcode.ui-block-b.jqm-center
 
 
 
