@@ -3,11 +3,13 @@
 ///}
 
 @mixin link {
-    color: darken($text, 20%);
+
+    color: darken($text,35%);
     text-decoration: none;
     &:hover { 
-        color: $text; 
-        background-color: darken($text, 75%);
+
+        color: $text;
+        background-color: darken($text, 45%);
     }
 }
 
