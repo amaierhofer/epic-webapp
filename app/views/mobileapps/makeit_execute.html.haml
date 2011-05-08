@@ -1,11 +1,26 @@
-%h1.center Execute "#{params[:epic_action]}"
 
+%script#mi-msg-tmpl{:type => "text/x-jquery-tmpl"}
+  %data{type: 'map'}
+
+%script#mi-entry-tmpl{:type => "text/x-jquery-tmpl"}
+  <${name} type="${type}">${value}</${name}>
+
+
+%h1.center Execute "#{params[:epic_action]}"
 :javascript
   $(function() {
-    var action = "#{params[:epic_action]}", ul = $('ul.params'), params = [];
-
-    $('#add').click(function() {
-      var form = $('form');
+    var action = "#{params[:epic_action]}",  params = [];
+    var actionClass = action.replace(/\./g,'-');
+    function $withClass(selector) {
+      $.nmk.log('.' + actionClass + ' ' + selector);
+      return $('.' + actionClass + ' ' + selector);
+    }
+    function showResult(data) {
+      $.nmk.log(data);
+    }
+    var ul = $withClass('ul.params');
+    $withClass('#add').click(function() {
+      var form = $withClass('form');
       addParam({
         name: form.find('#name').val(),
         type: form.find(':checked').val() || '',
@@ -13,12 +28,15 @@
       });
     });
 
-    $('#exec').click(function() {
-      alert('executing: ' + action + ' with params: ' + JSON.stringify(params));
-      $.nmk.log(action);
-      $.nmk.log(params);
+    $withClass('#exec').click(function() {
+      var msg = $('#mi-msg-tmpl').tmpl();
+      _.each(params, function(p) {
+        msg.append($('#mi-entry-tmpl').tmpl(p));
+      });
+      epic.app('send', action, msg, showResult);
     });
-    $('#clear').click(function() {
+
+    $withClass('#clear').click(function() {
       params = [];
       ul.find('li').remove();
     });
@@ -35,29 +53,30 @@
   });
 
 %p Use the form below to add parameters to your call. 
-.m-twocol
-  .m-left-big
-    %form{:action => '#', :method => 'get'}
-      %div{'data-role' => 'fieldcontain'}
-        %label{:for => 'name'} Name
-        %input{:id => 'name', :type => 'text', :name => 'name', :value => ''}
+%div{class: "#{params[:epic_action].gsub('.','-')}"}
+  .m-twocol
+    .m-left-big
+      %form{:action => '#', :method => 'get'}
+        %div{'data-role' => 'fieldcontain'}
+          %label{:for => 'name'} Name
+          %input{:id => 'name', :type => 'text', :name => 'name', :value => ''}
 
 
-      %div{'data-role' => 'fieldcontain'}
-        %fieldset{'data-role' => 'controlgroup', 'data-type' => 'horizontal'}
-          %legend Type
-          - %w[string boolean integer].each_with_index do |type|
-            %input{:id => type, :name => 'type', :type => 'radio', :value => type}/
-            %label{:for => type}= type
+        %div{'data-role' => 'fieldcontain'}
+          %fieldset{'data-role' => 'controlgroup', 'data-type' => 'horizontal'}
+            %legend Type
+            - %w[string boolean integer].each_with_index do |type|
+              %input{:id => type, :name => 'type', :type => 'radio', :value => type}/
+              %label{:for => type}= type
 
-      %div{'data-role' => 'fieldcontain'}
-        %label{:for => 'value'} Value 
-        %input{:id => 'value', :type => 'text', :name => 'value', :value => ''}
+        %div{'data-role' => 'fieldcontain'}
+          %label{:for => 'value'} Value 
+          %input{:id => 'value', :type => 'text', :name => 'value', :value => ''}
 
-  .m-right-small
-    = btn_link_to 'Add Parameter', '#', :id => 'add'
-    = btn_link_to 'Execute Action', '#', :id => 'exec'
-    = btn_link_to 'Clear List', '#', :id => 'clear'
+    .m-right-small
+      = btn_link_to 'Add Parameter', '#', :id => 'add'
+      = btn_link_to 'Execute Action', '#', :id => 'exec'
+      = btn_link_to 'Clear List', '#', :id => 'clear'
 
-%h2 Parameters
-%ul.params.m-span{'data-role' => 'listview', 'data-inset' => 'true', 'data-theme' => 'a'}
+  %h2 Parameters
+  %ul.params.m-span{'data-role' => 'listview', 'data-inset' => 'true', 'data-theme' => 'a'}
