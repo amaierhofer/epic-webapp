@@ -64,7 +64,7 @@
         %div{'data-role' => 'fieldcontain'}
           %fieldset{'data-role' => 'controlgroup', 'data-type' => 'horizontal'}
             %legend Type
-            - %w[string boolean integer].each_with_index do |type|
+            - %w[string int boolean].each_with_index do |type|
               %input{:id => type, :name => 'type', :type => 'radio', :value => type}/
               %label{:for => type}= type
 
@@ -76,6 +76,6 @@
       = btn_link_to 'Add Parameter', '#', :id => 'add'
       = btn_link_to 'Execute Action', '#', :id => 'exec'
       = btn_link_to 'Clear List', '#', :id => 'clear'
+  %ul.params.m-span{'data-role' => 'listview', 'data-inset' => 'true', 'data-theme' => 'a'}
 
   %h2 Parameters
-  %ul.params.m-span{'data-role' => 'listview', 'data-inset' => 'true', 'data-theme' => 'a'}
