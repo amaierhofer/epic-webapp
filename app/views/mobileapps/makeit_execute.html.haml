@@ -12,11 +12,10 @@
     var action = "#{params[:epic_action]}",  params = [];
     var actionClass = action.replace(/\./g,'-');
     function $withClass(selector) {
-      $.nmk.log('.' + actionClass + ' ' + selector);
       return $('.' + actionClass + ' ' + selector);
     }
     function showResult(data) {
-      $.nmk.log(data);
+      $('#dialog-link').click();
     }
     var ul = $withClass('ul.params');
     $withClass('#add').click(function() {
