@@ -52,7 +52,7 @@ module EpicWebapp
 
 
 
-    config.action_view.javascript_expansions[:xmpp] = %w(strophe underscore jquery-1.5.2.min jquery.ui.widget xmpp/jquery.xmpp xmpp/peek jquery.app app)
+    config.action_view.javascript_expansions[:xmpp] = %w(strophe underscore jquery-1.5.2.min jquery.tmpl.min jquery.ui.widget xmpp/jquery.xmpp xmpp/peek jquery.app app)
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"

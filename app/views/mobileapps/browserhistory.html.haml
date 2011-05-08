@@ -1,23 +1,38 @@
-/ = javascript_include_tag 'mobileapps/browserhistory.js'
+%script#most-recent-tmpl{:type => "text/x-jquery-tmpl"}
+  %data{type: 'map'}
+    %start{type: 'int'} ${start}
+    %size{type: 'int'} ${size}
+
+%script#most-visited-tmpl{:type => "text/x-jquery-tmpl"}
+  %data{type: 'map'}
+    %order{type: 'string'} visits
+    %start{type: 'int'} ${start}
+    %size{type: 'int'} ${size}
+
 :javascript 
   $(function() {
-    $('.m-right a').click(function() {
-      $.get('/mockups/data/browserhistory_phone2browser_sample01.txt', function(text) {
-        var data = $(text);
-        $.nmk.log(data);
-        var res = $('.results');
-        res.find('li').remove();
-        data.find('data').children().each(function() {
-          var entry = $(this);
-          var url = entry.find('url').text();
-          var title = entry.find('title').text();
-          $.nmk.log(url);
-          var link = '<a href="' + url + '" rel="external">' + title + '</a>';
-          var li = '<li>' + link + '</li>';
-          res.append(li);
-        });
-        res.listview('refresh');
+    var res = $('.results');
+    function updateList(data) {
+      $.nmk.log(data);
+      res.find('li').remove();
+      data.find('data').children().each(function() {
+        var entry = $(this);
+        var url = entry.find('url').text();
+        var title = entry.find('title').text();
+        $.nmk.log(url);
+        var link = '<a href="' + url + '" rel="external">' + title + '</a>';
+        var li = '<li>' + link + '</li>';
+        res.append(li);
       });
+      res.listview('refresh');
+    }
+    $('#most-recent').click(function() {
+      var data = $( "#most-recent-tmpl" ).tmpl( { start: 0, size: 10 } )
+      epic.app('send', 'org.epic.action.ListBrowserHistory', data, updateList);
+    });
+    $('#most-visited').click(function() {
+      var data = $( "#most-visited-tmpl" ).tmpl( { start: 0, size: 10 } )
+      epic.app('send', 'org.epic.action.ListBrowserHistory', data, updateList);
     });
   });
 
@@ -28,9 +43,9 @@
     %p Load up the urls from your phones browser. some more text blablalba blubb lala:w maybe we even get a linebreak yooowow
 
   .m-right
-    %div{'data-role' => 'controlgroup', 'data-type' => 'horizontal'}
-      = btn_link_to 'most recent', '#', :id => 'most-recent'
-      = btn_link_to 'most visisted', '#', :id => 'most-visited'
+    = btn_link_to 'most recent', '#', :id => 'most-recent'
+    = btn_link_to 'most visited', '#', :id => 'most-visited'
+
 
 %ul.results{'data-role' => 'listview', 'data-inset' => 'true', 'data-theme' => 'a'}
     

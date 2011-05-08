@@ -100,7 +100,7 @@
       var link = $('[data-epic_msg]:first').attr('data-epic_msg');
       return '<a href="' + link + '?jid=' + jid + '">' + jid + '</a>';
     },
-    send: function(intent) {
+    send: function(intent,data,callback) {
       var peers = this.x.xmpp('state').peers;
       var jids = _.keys(peers);
       if(_.isEmpty(peers)) { $.nmk.log('no peers'); }
@@ -109,7 +109,7 @@
         if(peers[jid] === 'unavailable') {
           $.nmk.log('skipping unavailable peer "' + jid + '" request for "' + intent + "'");
         } else  {
-          this.x.xmpp('sendEpicIntent', jid, intent, null, null);
+          this.x.xmpp('sendEpicIntent', jid, intent, data, callback);
         }
       },this);
     }
