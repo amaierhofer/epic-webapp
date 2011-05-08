@@ -27,6 +27,14 @@
     .ui-page{'data-role' => 'page', 'data-theme' => 'c'}
       = link_to '', ''
       = render :partial => 'shared/header'
+      :javascript
+        $(function() {
+          var state = _.first(_.values(epic.xmpp('state').peers));
+          if (state == 'available') { return; }
+          $('a[data-role]="button"').each(function() {
+            $(this).button().button('disable');
+          });
+        });
 
       #main
         #title 
