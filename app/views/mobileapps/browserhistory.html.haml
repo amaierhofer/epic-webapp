@@ -9,27 +9,36 @@
     %start{type: 'int'} ${start}
     %size{type: 'int'} ${size}
 
+%script#brhi-entry{:type => "text/x-jquery-tmpl"}
+  %li
+    %a{href: '${url}', rel: 'external'} ${title}
+
 :javascript 
   $(function() {
     var res = $('.results');
+    function parseEntry(node) {
+        var entry = $(node);
+        return {
+          url: entry.find('url').text(),
+          title: entry.find('title').text()
+        }
+    }
     function updateList(data) {
       $.nmk.log(data);
       res.find('li').remove();
       data.find('data').children().each(function() {
-        var entry = $(this);
-        var url = entry.find('url').text();
-        var title = entry.find('title').text();
-        $.nmk.log(url);
-        var link = '<a href="' + url + '" rel="external">' + title + '</a>';
-        var li = '<li>' + link + '</li>';
-        res.append(li);
+        var entry = parseEntry(this);
+        $.nmk.log(entry);
+        res.append($("#brhi-entry").tmpl(entry));
       });
       res.listview('refresh');
     }
+
     $('#most-recent').click(function() {
       var data = $( "#most-recent-tmpl" ).tmpl( { start: 0, size: 10 } )
       epic.app('send', 'org.epic.action.ListBrowserHistory', data, updateList);
     });
+
     $('#most-visited').click(function() {
       var data = $( "#most-visited-tmpl" ).tmpl( { start: 0, size: 10 } )
       epic.app('send', 'org.epic.action.ListBrowserHistory', data, updateList);
