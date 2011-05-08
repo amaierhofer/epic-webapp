@@ -134,12 +134,15 @@
         var peers = _.select(_.keys(state.peers), function(jid) {
           if(/strophe|android|psi/.test(jid)) { return true; }
         }), str = [];
+        if (_.size(peers) === 0) { return; }
         $.nmk.log('peers: ' + peers);
         _.each(peers, function(peer) {
-          str.push(peer.split('/')[1] + " " + state.peers[peer]);
+          //str.push(peer.split('/')[1] + " " + state.peers[peer]);
+          str.push(state.peers[peer]);
         });
-        $(e).html(str.join(' '));
-
+        if(str.length > 0) {
+          $(e).html(str.join(' '));
+        }
       });
       var linkHandler = this.options.linkHandler;
       

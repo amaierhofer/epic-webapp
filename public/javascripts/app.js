@@ -1,5 +1,5 @@
 (function($) {
   $(function() {
-    app = $('body').app();
+    window.epic = $('body').app();
   });
 })(jQuery);
