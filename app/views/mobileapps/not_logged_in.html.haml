@@ -1,3 +1,9 @@
+:javascript
+  $(function() {
+    $('a[data-role]="button"').each(function() {
+      $(this).button('enable');
+    });
+  });
 %p Our service is build on top of #{link_to "xmpp", "http://www.xmpp.org"}. You have to register with our xmpp server before you can access the applications. If you already have an account, proceed straight to login.
 
 .center{'data-role' => 'controlgroup', 'data-type' => 'horizontal'}
