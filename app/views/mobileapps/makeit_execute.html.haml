@@ -11,6 +11,9 @@
   $(function() {
     var action = "#{params[:epic_action]}",  params = [];
     var actionClass = action.replace(/\./g,'-');
+    function filter(str) {
+      return str.replace(/[<|>|&]/,'');
+    }
     function $withClass(selector) {
       return $('.' + actionClass + ' ' + selector);
     }
@@ -21,9 +24,9 @@
     $withClass('#add').click(function() {
       var form = $withClass('form');
       addParam({
-        name: form.find('#name').val(),
-        type: form.find(':checked').val() || '',
-        value: form.find('#value').val()
+        name: filter(form.find('#name').val()),
+        type: filter(form.find(':checked').val()) || '',
+        value: filter(form.find('#value').val())
       });
     });
 
