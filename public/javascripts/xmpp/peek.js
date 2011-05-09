@@ -1,15 +1,14 @@
 (function($) {
   var Peek = {
-    show_traffic: function (body, type) {
-      var id = '#console';
+    show_traffic: function (body, type, selector) {
       if (body.childNodes.length > 0) {
-        var console = $(id).get(0);
+        var console = $(selector).get(0);
         if (console) {
           var at_bottom = console.scrollTop >= console.scrollHeight - 
             console.clientHeight;
 
           $.each(body.childNodes, function () {
-            $(id).prepend("<div class='" + type + "'>" + 
+            $(selector).prepend("<div class='" + type + "'>" + 
                           Peek.pretty_xml(this) +
                             "</div>");
           });
