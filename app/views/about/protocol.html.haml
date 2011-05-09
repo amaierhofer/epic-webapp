@@ -1,0 +1,65 @@
+- title 'Epic Protocol'
+- content_for(:head) do
+  = stylesheet_link_tag 'peek'
+  = javascript_include_tag 'xmpp/peek'
+
+:maruku
+  The EPIC Architecture consists of the EPIC service that runs on an internet connected device, and an XMPP server that handles the message exchange of multiple connected devices. With the EPIC Architecture messages are exchanged between application nodes that are part of the same application.
+
+  The application decides which type of messages are sent between different application nodes and how the protocol of the application looks like.
+
+
+  ##EPIC Service for Android
+  The EPIC Service allows other applications to connect to it. It abstracts from the complexities involved in the underlying message oriented middle-ware (i.e., XMPP) and the operating system. After initialization of the application (i.e., binding of the application to the service and initialization of all application nodes) messages are sent between the different peers.
+
+  We found a couple of good reasons why the EPIC architecture is beneficial for application developers, and users:
+
+  ###Limited resources 
+  The EPIC architecture is built to run on very different devices. Each EPIC service (respectively XMPP client) requires one long lived TCP connection. While it is probably okay for a desktop computer to run one XMPP connection for each application, it is unacceptable for devices with limited resources (e.g., smartphones, embeded systems, etc.). So there is clearly a need for one component running on the device, that handles this stuff.
+
+  ###Decentralization
+  If there is only one component running on the device that enables several internet-of-things applications - this component must not be controlled by one big company, but rather by a community of developers working on an open source project. If it was controlled by one company, this company would be in control of all internet-of-things applications that are based on this service.
+
+  ###Trust 
+  The EPIC architecture enables applications to perform actions relevant to the users security and privacy. A sensible user will not allow every application to access her EPIC network since this allows full control over all connected devices. To allow an application access to the network the user needs to trust the company that deploys the application. For small (and therefore unknown) companies this is infeasible. A sensible user can however trust a implementation of a EPIC service that is open source software and supported by a large community. Third party applications are only granted temporary access to the service which lets them still perform all actions on the behalf of the user but gives the user better control over the permissions of each applications.
+
+  ##Implementation
+  As we said its easy and based on XMPP. That means you can use any XMPP library to implement your own EPIC service.
+  Basically your service needs to filter for XMPP messages that contain an application element of namespace _'http://mobilesynergies.org/protocol/epic'_.
+  The *application* element must have two attributes, called *action* and *session*. The action attribute names the EPIC action that is to be performed.
+  The *session* attribute contains a session id that is to be provided by the caller. If the receiver decides to send back data to the caller it must use the same id.
+  A valid application element looks something like this:
+
+:javascript
+  $(function() {
+    var data = $.parseXML("<application xmlns='http://mobilesynergies.org/protocol/epic' action='org.epic.action.RingPhone' session='H6tH2m6Kw8Jr27tT'></application>");
+
+    Peek.show_traffic(data,'incoming','#impl-1');
+  });
+#impl-1.xmpp-console
+%p
+
+:maruku
+  Implementing your own EPIC service boils down to filtering for XMPP messages that contain an application element and parsing the data contained in the application element.
+  The service must try to start an appropriate application for each action, or prompt the user if there are multiple applications that can perform this action.
+  The service must also parse the data contained in the application element and provide the application with this data, and the unique session id. The service must not provide the address of the sender or any data related to the user (such as username or password) to the application!
+  If the application decides to respond, the service has to try to send a message to the initial caller including the original action attribute, the given session id and the data.
+
+  The data must start with a data element that has the attribute 'type' with value 'map'. Inside the data element any number of parameters might follow.
+  A parameter is an XML element with an attribute 'type' , and MUST contains text or other XML elements. The name of the parameter is equal to the name of the element.
+  The type MUST be one of 'int', 'boolean', 'string', 'float', or 'map'. Each of the parameters must contain text that is the value of the parameter.
+  Only the parameters of type 'map' must contain other parameters, each with a unique name. A valid data element might look like this:
+
+
+:javascript
+  $(function() {
+    var data = $.parseXML("<data type='map'><start type='int'>0</start><size type='int'>10</size></data>");
+    Peek.show_traffic(data,'incoming','#impl-2');
+  });
+#impl-2.xmpp-console
+%p
+
+:maruku
+  Note that there is currently no parameter of type 'array'.
+  If you need an array for your application you might simply use a map and name the parameters contained in it 'entry0', 'entry1', 'entry2', etc.
+  Having no arrays means less implementation effort achieving the same result. That's what the 'E' in EPIC stands for.
