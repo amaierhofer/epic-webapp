@@ -12,7 +12,7 @@
     var action = "#{params[:epic_action]}",  params = [];
     var actionClass = action.replace(/\./g,'-');
     function filter(str) {
-      return str.replace(/[<|>|&]/,'');
+      return str.replace(/[<|>|&]/g,'');
     }
     function $withClass(selector) {
       return $('.' + actionClass + ' ' + selector);
