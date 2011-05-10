@@ -82,6 +82,9 @@ $height: 240px;
 .intro {
     @include column(17);
 }
+.bottom {
+    @include column(22,true);
+}
 .buttons {
     @include prepend(1);
     @include prepend-top;
