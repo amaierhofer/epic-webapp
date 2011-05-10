@@ -13,6 +13,9 @@
 } 
 .m-twocol {
     @include column(22);
+    .m-prepend-top {
+        @include prepend-top;
+    }
     .m-left {
         @include column(10);
         @include append(1);
@@ -45,4 +48,3 @@
     }
     span { @include column(3); } 
 } 
-

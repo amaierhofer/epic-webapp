@@ -16,7 +16,7 @@
     });
   });
 
-%p You need a username and password to use this service. Read more at the #{link_to 'details', :about_technology, 'rel' => 'external' }. Your credentials should be alphanumeric only because we encode them in an url later on. Further we check the availablility of your username against the backend when you leave that field.
+%p You need a username and password to use this service. Read more at the #{link_to 'details', :about_technology, 'rel' => 'external' }. Your credentials should be alphanumeric only. Further we check the availablility of your username against the backend when you leave that field.
 
 = simple_form_for @user, :html => { 'data-ajax' => false } do |f| 
   = f.error_messages

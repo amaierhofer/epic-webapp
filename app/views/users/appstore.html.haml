@@ -1,11 +1,19 @@
-- title 'Download the EpicService'
+%h1.center Download the EpicService
+.m-twocol
+  .m-left
+    .m-prepend-top
+      You have to download the Android application from the Android Market (search for epic service mobilesynergies), or simply install the application by scanning this qr code:
 
-%p
-  You have to download the Android application from the Android Market (search for epic service mobilesynergies),
-  or simply install the application by scanning this qr code:
+    .m-prepend-top 
+      = link_to 'Create User', :new_user, 'data-role' => 'button' 
 
-= image_tag 'qrcode-market.png'
+  .m-right.m-prepend-top
+    = image_tag 'qrcode-market.png'
 
-= link_to 'Create User', :new_user, 'data-role' => 'button' 
+:javascript
+  $(function() {
 
-
+    $('a[data-role]="button"').each(function() {
+      $(this).button().button('enable');
+    });
+  });
