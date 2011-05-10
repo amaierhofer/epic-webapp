@@ -45,7 +45,7 @@
       ul.find('li').remove();
       var form = $withClass('form');
       form.find('#name').val('');
-      form.find(':checked').removeAttr('checked');
+      form.find('.ui-controlgroup-controls label.ui-btn').removeClass('ui-btn-active ui-btn-down-c');
       form.find('#value').val('');
     });
 
