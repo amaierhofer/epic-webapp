@@ -1,12 +1,8 @@
-- title ""
-
-
-%h1 TODO:
-%ol
-  %li - Fix broken links (Andi)
-
+- title "Downloads"
 
 :maruku
+  All parts of EPIC are released as open source software. We would love to get you engaged, to discuss and improve the software we wrote:
+
   ## Epic Java Client
   The Epic Java Client implements the XMPP communication. It is based on the asmack library to make it work on multiple operating systems including Android.
   It is available from [github](https://github.com/peterrautek/epic-javaclient)
@@ -19,22 +15,20 @@
   The Epic Android SDK is used to write Android applications that utilize the Epic Android Service.
   Everyone can use it to write their own Epic Applications. It is available from [github](https://github.com/peterrautek/epic-androidsdk)
 
-  ## Ruby based xmpp client
+  ## Ruby-based XMPP Client
 
-  A simple xmpp client on top of [Blather](http://#) that supports service discovery and ad-hoc commands. Sample commands have been implemented that xmacro to reply keystrokes of a laptop's function keys on ubuntu. Those keys have been exposed as commands can be called remotely. This allows to control the volumn, start, stop next and previous operations of any media application that is running. 
-
-  This project an be taken as a blueprint to implement more custom services on top.
+  A simple XMPP client on top of [Blather](http://#) that supports service discovery and ad-hoc commands. Sample commands have been implemented that xmacro to reply keystrokes of a laptop's function keys on ubuntu. The keys that are exposed as commands can be called remotely. This allows to control the volume, start, stop next and previous operations of any media running application.
+  This project can be taken as a blueprint to implement more custom services on top.
 
   ## webOS XMPP Client (Enyo)
 
-  A javascript application on top of [Strophe](http://#) and HP's new enyo framework. It implements discovery and ad-hoc commands together with webOS specifc commands to open urls in a browser. Together with a service and a simple patch to the browser it allows it can retrieve the currently active browser windows to send and make them available to other nodes on the network.
-
+  A javascript application on top of [Strophe](http://#) and HP's new enyo framework. It implements discovery and ad-hoc commands together with webOS specifc commands to open urls in a browser. Together with a service and a simple patch to the browser, it allows to retrieve the urls currently opened in the browser. The urls are sent and made available to other nodes on the network.
 
   ## Chrome Browser XMPP Extension  (Enyo)
 
-  This browser extension shares large parts of it's code base with the Webos XMPP Client mentioned above. It implements the chrome specific functionality to get and set the active browser tabs and works together with the webOS client and service to implement the sharing browser context use case. 
+  This browser extension shares large parts of its code base with the webOS XMPP Client mentioned above. It implements the chrome specific functionality to get and set the active browser tabs and works together with the webOS client and service to implement the sharing browser context use case.
 
-  ## Strophejs plugins
+  ## Strophe Plugins
 
   These are a set of plugins to the Strophe javascript library that implement service discovery and remote commands. 
 

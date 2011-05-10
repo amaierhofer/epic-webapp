@@ -1,30 +1,50 @@
-- title "technology" 
+- title "Technology"
 
 :maruku
-  XMPP is a near real time, established and extensible protocol for exchanging messages. It is best know for it's use in instant messaging but also offers functionality useful in machine to machine communication. The following describes how we leverage XMPP.
-
+  # XMPP
+  XMPP is a near real time, established and extensible protocol for exchanging messages. It is best know for its use in instant messaging but also offers functionality useful in machine to machine communication. The following describes how we leverage XMPP.
 
   ## Identity
 
   To connect to an XMPP network, you need to have a valid user name and password. You can use the following link to #{link_to 'sign up', :new_user} to our network. Once registered you can send and receive messages. XMPP also allows you to connect several times using the same credentials if you provide distinct resource identifiers. This is the foundation of our security model. 
 
-  _We only process message coming from the various resources associated with a single account._ We have not yet investigated into cross user device communication.
+  _We only process messages coming from the various resources associated with a single account._ We have not yet investigated into cross user device communication.
 
 
-  ## Discovering devices
+  ## Discovering Devices
 
   Connecting all of the user's devices with the same credentials gives us a second benefit. All devices are informed whenever their connection status changes. This is how we discover devices, by reusing a single account for anything that you want to connect.
 
-  ## Discovering capabilities
+  ## Discovering Capabilities
 
   To obtain more information about the different nodes, we plan to build on top of  [XMPP Service Discovery](http://http://xmpp.org/extensions/xep-0030.html). This extension to the base XMPP protocol defines how nodes on the network obtain more information about each other and advertise the kinds of services they offer. 
 
-  ## Triggering actions
+  ## Triggering Actions
 
   Within the variety of devices, there will be different modes of executing the aggregate of all capabilities that are offered on the network. Sometimes it is desirable to send a single message, sometimes an acknowledgement will be appropriate. Some interactions are better suited to a publish subscribe mechanism others again will require a 2 or 3 message consuming communication. XMPP offers something for all of them. 
 
-  In the future we plan on leveraging [XMPP Ad-hoc Commands](http://http://xmpp.org/extensions/xep-0050.html). Another XMPP protocol extension that defines the semantics of remote command execution, supports for multi stage processes, has rudimentary support for user interfaces and is deployed by most XMPP servers. 
+  We also tested [XMPP Ad-hoc Commands](http://http://xmpp.org/extensions/xep-0050.html), another XMPP protocol extension, that defines the semantics of remote command execution. It supports multi stage processes, has rudimentary support for user interfaces and is deployed by most XMPP servers.
 
-  ## Summary
+  # Android
+  Android is an open source operating system that is deployed in many smartphones. Android offers a lot of freedom for application developers.
+  We identified a few critical parts of Android that makes it a good choice to implement a EPIC Service:
 
-  We hope this overview gives you an idea about which direction we are going and encourages you to see some of this in action. 
+  ## Background Services
+  Android allows to implement long living services, that run in the background (unless the user shuts them down). We use the Service class to open a XMPP connection, and keep this connection open.
+  This long lived connection allows, server-side pushes of messages, at any point in time.
+  For internet-of-things applications this functionality is critical. It allows notifications, and close to realtime message exchange.
+  ## Permission Model
+  Android has a powerful in-built permission model.
+  It shows the user (at the time of installing a new application), the permissions a specific application requests.
+  We extend this permission model and define new EPIC permissions. If the user installs a new application that wants to communicate over the EPIC network,
+  the user will be prompted for permission.
+  ## Intents
+  The intent, and intent-filter architecture of Android allows applications to reuse other application's components.
+  If a component (part of an application) defines an appropriate intent-filter it will be called to perform certain actions (e.g., share content, view image, etc.).
+  If multiple application components are installed on the phone the user will be prompted which component shall perform the desired action.
+  We use this mechanism to declare special intent-filters for EPIC enabled applications. If an application defines that it implements a certain EPIC-Action it will be reachable over the EPIC network (respectively over the internet).
+  The EPIC-Action can be launched remotely by the user and data can be sent between different nodes of the application.
+
+  # Summary
+
+  We hope you got an idea about the direction we are heading and that we encouraged you to participate and see more of EPIC in action.
