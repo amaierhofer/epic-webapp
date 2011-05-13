@@ -26,15 +26,6 @@
     .ui-page{'data-role' => 'page', 'data-theme' => 'c'}
       = link_to '', ''
       = render :partial => 'shared/header'
-      :javascript
-        $(function() {
-          var state = _.first(_.values(epic.xmpp('state').peers));
-          if (state == 'available') { return; }
-          $('a[data-role]="button"').each(function() {
-            $(this).button().button('disable');
-          });
-        });
-
       #main
         #title 
           = content_tag :h1, yield(:title) if show_title?
@@ -47,5 +38,23 @@
             = render :partial => 'footer'
 
       = render :partial => 'shared/footer'
+      :javascript
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-5520036-2']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+        $(function() {
+          var state = _.first(_.values(epic.xmpp('state').peers));
+          if (state == 'available') { return; }
+          $('a[data-role]="button"').each(function() {
+            $(this).button().button('disable');
+          });
+        });
+
     .ui-page{'data-role' => 'page', 'data-theme' => 'c'}
       .xmpp-console
